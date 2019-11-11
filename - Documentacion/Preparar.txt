@@ -1,0 +1,23 @@
+Proppuest de Proyectos:
+
+1) Institucional del CFP 
+
+Inscripcion a cursos
+Asistencia al curso - Mail automaticos cuando el estudiante no asista a alguna clase (parametriado en cantidad de ausencias)
+Examen nivelatorio on-line (dependindo del curso)
+
+
+Tegnologias a utilizar:
+NodeJS, Boostrapm, MySql, typeORM, nestJS 
+
+
+Empezar con:
+Hacer el diseño del UML (diagrama)
+
+Hacer un  Admin para la carga de  inscripcion del alumnos (campo obligatorio, nombre, apellido, telefono, y mail,DNI, nivel de estudio), lista curso, lista horarios de los cursos. 
+Hacer Tablas de Curso, con asistencia, horarios, dias, y profesor asignado, duracion estimada del curso.
+Hacer Formulario de examen de creacion a eleccion por curso.
+
+Si sobra tiempo llevar de control de caja para el pago de matricula por mes.
+
+
