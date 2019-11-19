@@ -1,6 +1,7 @@
 import Persona from "./persona.entity";
 
 export default class Alumno {
+    private idAlumno: number;
     private datos: Persona;
     private nivelEstudioAlcanzado: string;
     private adeudaDocumentacion: boolean;
@@ -10,6 +11,11 @@ export default class Alumno {
         this.datos = datos;
         this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
         this.adeudaDocumentacion = adeudaDocumentacion;
+        this.idAlumno = datos.getIdPersona();
+    }
+
+    public getIdAlumno():number{
+        return this.idAlumno;
     }
 
     public getDatos(): Persona {
