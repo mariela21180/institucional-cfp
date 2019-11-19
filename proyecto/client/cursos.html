@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="Formulario.html">Formularios </a>
@@ -59,8 +59,29 @@
     <!-- Begin page content -->
     <main role="main" class="flex-shrink-0">
       <div class="container">
-        <h1 class="mt-5">Bienvenido</h1>
-        <p class="lead">Sitio de administración del CFP.</p>
+        <h1 class="mt-5">Cursos</h1>
+      </div>
+      <div class= "row text-center">
+        <div class="col-md-12">
+          <table class="table table-striped table-bordered table-hover table-responsive-lg">
+              <thead class="thead-dark">
+                <tr>
+                  <th class="">Nombre</th>
+                  <th class="">Horario</th>
+                  <th class="">Descripcion</th>
+                  <th class=""><a class="btn btn-success btn-block h-100 w-2" id="btnCrearExamen" href="crearCurso.html">Crear Curso </a></th>
+                </tr>
+              </thead>
+              <tbody id="tblFormulario">
+                <tr>
+                  <td>Programacion Full Stack</td>
+                  <td>lun, mier y vier de 19 a 21 hs</td>
+                  <td>Nest, Node js, MySQL, TypeORM</td>
+                  <td><button type="button" class="btn btn-primary">Editar</button><button type="button" class="btn btn-danger">Borrar</button></td>                      
+                </tr>                         
+              </tbody>
+          </table>
+        </div>
       </div>
     </main>
     
