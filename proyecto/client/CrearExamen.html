@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Centro de Formacion Profesional 403</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">CFP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            </div>
+        </nav>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">CFP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Formulario.html">Formularios </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cursos.html">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Alumnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Asistencias</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Otros</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Item 1</a>
+                            <a class="dropdown-item" href="#">Item 2</a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="btn btn-sm btn-light my-2 my-sm-0" type="button">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <!-- Comenzar el contenido de la pagin -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <div class="row">
+                <h1 class=" col-10 mt-5 ">CREAR EXAMEN</h1>
+
+                <button type="button" class="col-2 mb-5 mt-5 btn btn-primary nav-item dropdown" data-toggle="modal"
+                    data-target="#exampleModal" data-whatever="">Agregar Campos</button>
+
+                <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Texto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Consigna</label>
+                                        <input type="text" class="form-control" id="texto-consigna">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Puntaje</label>
+                                        <select class=" form-control custom-select"></select>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+        <form>
+                <div class="form-group">
+                  <label for="formGroupExampleInput" class="col-12">Nombre de Formulario</label>
+                  <input type="text" class="form-control col-10" id="formGroupExampleInput" placeholder="Nombre de Formulario">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2" class="col-12">Descripcion</label>
+                  <input type="text" class="form-control col-10" id="formGroupExampleInput2" placeholder="Descripcion">
+                </div>
+                <div class="form-group">
+                        <label for="formGroupExampleInput2" class="col-12">Curso</label>
+                        <select name="" id="" class="custom-select col-10" type="text" >
+                            <option value="$">Seleccionar Curso...</option>
+                        </select>
+                </div>
+              </form>
+              <hr />
+
+              <h5>Campos </h5>
+              <form>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput" class="col-12">Consigna</label>
+                      <input type="text" class="form-control col-10" id="formGroupExampleInput" placeholder="Consigna">
+                    </div>
+                    
+                    </div>
+                  </form>
+                  <center>
+                  <div class="form-group">
+                        <button type="button" class="btn col-md-2 btn-primary">Guardar</button>
+                        <button type="button" class="btn col-md-2 btn-secondary" data-dismiss="modal">Cancelar</button>
+                        
+                    </div>
+                </center>
+    </main>
+
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted float-right">Desarrollado por <a href="#">Nosotros</a></span>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
