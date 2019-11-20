@@ -23,7 +23,7 @@
             </button>
             </div>
         </nav>
-        <!-- Fixed navbar -->
+        <!-- Fixed navbar  buscar dif entre nest y gulp (@@include)hacerlo en nest y if activo en navbar-->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="#">CFP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -63,14 +63,28 @@
     <!-- Comenzar el contenido de la pagin -->
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <div class="row">
-                <h1 class=" col-10 mt-5 ">CREAR EXAMEN</h1>
+            <div class="row align-items-center">
+                <h1 class=" col ">CREAR EXAMEN</h1>
+                <div class="dropdown col-auto">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Agregar Campos
+                          </button>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#textModal">Texto</a>
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#opSimpleModal">Opcion Simple</a>
+                        <a class="dropdown-item" href="#">Opcion Multiple</a>
+                        <a class="dropdown-item" href="#">Opcion por Lista</a>
+                    </div>
+                </div>
 
-                <button type="button" class="col-2 mb-5 mt-5 btn btn-primary nav-item dropdown" data-toggle="modal"
-                    data-target="#exampleModal" data-whatever="">Agregar Campos</button>
+                <!-- <button type="button" class="col-2 mb-5 mt-5 btn btn-primary nav-item dropdown" data-toggle="modal"
+                    data-target="#exampleModal" data-whatever="">Agregar Campos</button> -->
 
-                <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade " id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -100,44 +114,81 @@
                     </div>
                 </div>
 
+                <div class="modal fade " id="opSimpleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Consigna</label>
+                                        <input type="text" class="form-control" id="texto-consigna">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Puntaje</label>
+                                        <input type="number" min="0" step="0.5" class="form-control"
+                                            id="texto-consigna">
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <form class="row">
+                <div class="form-group col-12 col-lg-6">
+                    <label for="formGroupExampleInput" class="">Nombre de Formulario</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Nombre de Formulario">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="formGroupExampleInput2" >Descripcion</label>
+                    <input type="text" class="form-control " id="formGroupExampleInput2"
+                        placeholder="Descripcion">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="formGroupExampleInput2" >Curso</label>
+                    <select name="" id="" class="custom-select " type="text">
+                        <option value="$">Seleccionar Curso...</option>
+                    </select>
+                </div>
+            </form>
+            <hr />
+
+            <h5>Campos </h5>
+            <form class="row">
+                <div class="form-group col-12">
+                    <label for="formGroupExampleInput" >Consigna</label>
+                    <input type="text" class="form-control " id="formGroupExampleInput" placeholder="Consigna">
+                </div>
+
+        </div>
+        </form>
+
+        <div class="row ">
+            <div class="form-group col  text-center">
+                <button type="button" class="btn col-auto btn-primary ">Guardar</button>
+                <button type="button" class="btn col-auto btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+
         </div>
 
-        
-        <form>
-                <div class="form-group">
-                  <label for="formGroupExampleInput" class="col-12">Nombre de Formulario</label>
-                  <input type="text" class="form-control col-10" id="formGroupExampleInput" placeholder="Nombre de Formulario">
-                </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput2" class="col-12">Descripcion</label>
-                  <input type="text" class="form-control col-10" id="formGroupExampleInput2" placeholder="Descripcion">
-                </div>
-                <div class="form-group">
-                        <label for="formGroupExampleInput2" class="col-12">Curso</label>
-                        <select name="" id="" class="custom-select col-10" type="text" >
-                            <option value="$">Seleccionar Curso...</option>
-                        </select>
-                </div>
-              </form>
-              <hr />
+        </div>
 
-              <h5>Campos </h5>
-              <form>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput" class="col-12">Consigna</label>
-                      <input type="text" class="form-control col-10" id="formGroupExampleInput" placeholder="Consigna">
-                    </div>
-                    
-                    </div>
-                  </form>
-                  <center>
-                  <div class="form-group">
-                        <button type="button" class="btn col-md-2 btn-primary">Guardar</button>
-                        <button type="button" class="btn col-md-2 btn-secondary" data-dismiss="modal">Cancelar</button>
-                        
-                    </div>
-                </center>
+
+
     </main>
 
 
