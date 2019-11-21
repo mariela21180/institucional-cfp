@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Centro de Formacion Profesional 403</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <div w3-include-html="assets\include\navbar.html"></div>
+    </header>
+
+    <!-- Comenzar el contenido de la pagin -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <h1 class=" col ">CREAR EXAMEN</h1>
+                <div class="dropdown col-auto">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Agregar Campos
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#textModal">Texto</a>
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#opSimpleModal">Opcion Simple</a>
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#opMultiModal">Opcion Multiple</a>
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#opListaModal">Opcion por Lista</a>
+                    </div>
+                </div>
+
+                <!-- Modal de Texto -->
+
+                <div class="modal fade " id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Texto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <p>Complete la consigna y el puntaje de la pregunta.</p>
+                                    <div class="form-group">
+
+                                        <label for="recipient-name" class="col-form-label">Consigna</label>
+                                        <input type="text" class="form-control" id="texto-consigna">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Puntaje</label>
+                                        <input type="number" min="0" step="0.5">
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de Opcion Simple -->
+
+                <div class="modal fade " id="opSimpleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <p>Complete la consigna, y agregue la lista de opciones indicando cual es la
+                                        correcta y el puntaje de la pregunta.</p>
+
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Consigna</label>
+                                        <input type="text" class="form-control" id="texto-consigna">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Puntaje</label>
+                                        <input type="number" min="0" step="0.5">
+
+                                    </div>
+                                    <div class="form-group btn-group-sm text-right">
+                                        <button type="button" class="btn btn-success">+Agregar Opción</button>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="" id="">
+                                        <input type="text" class="form-control">
+
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="" id="">
+                                        <input type="text" class="form-control">
+
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="" id="">
+                                        <input type="text" class="form-control">
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de Opcion Multiple -->
+
+                <div class="modal fade " id="opMultiModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <p>Complete la consigna, y agregue la lista de opciones indicando cual/es es/son
+                                        la/s correcta</p>
+
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Consigna</label>
+                                        <input type="text" class="form-control" id="texto-consigna">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Puntaje</label>
+                                        <input type="number" min="0" step="0.5">
+
+                                    </div>
+                                    <div class="form-group btn-group-sm text-right">
+                                        <button type="button" class="btn btn-success">+Agregar Opción</button>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="" id="">
+                                        <input type="text" class="form-control">
+
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="" id="">
+                                        <input type="text" class="form-control">
+
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="" id="">
+                                        <input type="text" class="form-control">
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <form class="row">
+                <div class="form-group col-12 col-lg-6">
+                    <label for="formGroupExampleInput" class="">Nombre de Formulario</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Nombre de Formulario">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="formGroupExampleInput2">Descripción</label>
+                    <input type="text" class="form-control " id="formGroupExampleInput2" placeholder="Descripción">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="formGroupExampleInput2">Curso</label>
+                    <select name="" id="" class="custom-select " type="text">
+                        <option value="$">Seleccionar Curso...</option>
+                    </select>
+                </div>
+            </form>
+            <hr />
+
+            <h5>Campos </h5>
+            <p>Consigna </p>
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <input type="text" class="col-10 form-control">
+                    <div class="dropdown col-auto">
+                        <button type="button" class="btn col-auto btn-danger" data-dismiss="modal">Borrar</button>
+                        <button type="button" class="btn col-auto btn-primary ">Editar</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="mt-auto py-5">
+                <div class="row ">
+                    <div class="form-group col  text-center">
+                        <button type="button" class="btn col-auto btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn col-auto btn-primary ">Guardar</button>
+                    </div>
+
+                </div>
+
+        </div>
+        </footer>
+
+
+
+
+    </main>
+
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted float-right">Desarrollado por <a href="#">Nosotros</a></span>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+    <script>include(); </script>
+</body>
+
+</html>
