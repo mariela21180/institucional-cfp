@@ -14,60 +14,20 @@
 </head>
 <body class="d-flex flex-column h-100">
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">CFP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            </div>
-        </nav>
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">CFP</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  href="Formulario.html">Formularios </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cursos.html">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Alumnos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Asistencias</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Otros</a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Item 1</a>
-                    <a class="dropdown-item" href="#">Item 2</a>
-                    </div>
-                </li>
-            </ul>
-            <button class="btn btn-sm btn-light my-2 my-sm-0" type="button">Cerrar Sesión</button>
-      </nav>
+      <div include-html="assets\include\navbar.html"></div>
     </header>
     
     <!-- Begin page content -->
     <main role="main" class="flex-shrink-0">
-      <div class="container">
-        <h1 class="mt-5">Bienvenido</h1>
-        <p class="lead">Sitio de administración del CFP.</p>
-      </div>
+        <div class="container">
+            <div>
+                <h1 class="mt-5">Agregar Clase</h1>
+            </div>
+        </div>
     </main>
     
     <footer class="footer mt-auto py-3">
-      <div class="container">
-        <span class="text-muted float-right">Desarrollado por <a href="#">Nosotros</a></span>
-      </div>
+      <div include-html="assets\include\footer.html"></div>
     </footer>
 
     <!-- Optional JavaScript -->
@@ -76,6 +36,8 @@
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/include.js"></script>
+    <script>include(); </script>
 </body>
 
 </html>
