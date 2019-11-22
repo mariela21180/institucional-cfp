@@ -21,24 +21,35 @@
     <!-- Begin page content -->
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <h1 class="mt-5">Asistencias</h1>
+            <div class="row mt-5">
+                <div class="col-4">
+                    <h1 class="">Asistencias</h1>
+                </div>
+                <div class="text-center col-8">
+
+                    <select name="" id="" class="custom-select " type="text">
+                        <option value="$">Seleccionar Curso...</option>
+                        <option value="1">Cursos de Progrmación</option>
+                    </select>
+                </div>
+            </div>
             <div class="row text-center">
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered table-hover table-responsive-lg">
                         <thead class="thead-dark">
                             <tr>
-                                <th class="">Curso</th>
+                                <th class="">Clases</th>
                                 <th>Fecha</th>
                                 <th>Día</th>
                                 <th class="">Hora Inicio</th>
                                 <th class="">Hora Fin</th>
-                                <th class=""><button type="button" class=" btn btn-success" data-toggle="modal"
-                                        data-target="#exampleModal">Agregar Clase</button></th>
+                                <th class=""><a class="m-auto btn btn-success btn-block h-100 w-2 w-75"
+                                    id="btnAgregarClase" href="agregar-clase.html">Agregar Clase </a></th>
                             </tr>
                         </thead>
                         <tbody id="tblAsistencias">
                             <tr>
-                                <td>Curso de Programación</td>
+                                <td>Curso de Programación FullStack</td>
                                 <td>25/11/2019</td>
                                 <td>Viernes</td>
                                 <td>19</td>
@@ -54,6 +65,23 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                    <td>Curso de Programación Diseño Grafico</td>
+                                    <td>24/11/2019</td>
+                                    <td>Jueves</td>
+                                    <td>19</td>
+                                    <td>21</td>
+                                    <td>
+                                        <div class="row align-items-center">
+                                            <div class="col-auto m-0 w-100">
+                                                <button type="button" class="btn m-1 btn-success"><i class="fa fa-eye"
+                                                    aria-hidden="true"></i></button>    <button type="button"
+                                                class="btn m-1 btn-primary"><i class="fa fa-pencil"
+                                                    aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                 </div>
