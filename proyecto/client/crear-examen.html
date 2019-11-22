@@ -41,173 +41,9 @@
                     </div>
                 </div>
 
-                <!-- Modal de Texto -->
 
-                <div class="modal fade " id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Agregar Texto</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <p>Complete la consigna y el puntaje de la pregunta.</p>
-                                    <div class="form-group">
 
-                                        <label for="recipient-name" class="col-form-label">Consigna</label>
-                                        <input type="text" class="form-control" id="texto-consigna">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">Puntaje</label>
-                                        <input type="number" min="0" step="0.5">
 
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success">Agregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal de Opcion Multiple -->
-
-                <div class="modal fade " id="opMultiModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <p>Complete la consigna, y agregue la lista de opciones indicando cual/es es/son
-                                        la/s correcta</p>
-
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">Consigna</label>
-                                        <input type="text" class="form-control" id="texto-consigna">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">Puntaje</label>
-                                        <input type="number" min="0" step="0.5">
-
-                                    </div>
-                                    <div class="form-group btn-group-sm text-right">
-                                        <button type="button" class="btn btn-success">+Agregar Opción</button>
-                                    </div>
-                                    <div class="row m-0 mb-2">
-                                        <div class="col form-check">
-                                            <input class="form-check-input" type="checkbox" name="" id="">
-                                            <input type="text" class="form-control">
-
-                                        </div>
-                                        <div class="col-auto p-0">
-                                            <button type="button" class="btn col-auto btn-danger"
-                                                data-dismiss="modal"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 mb-2">
-                                        <div class="col form-check">
-                                            <input class="form-check-input" type="checkbox" name="" id="">
-                                            <input type="text" class="form-control">
-
-                                        </div>
-                                        <div class="col-auto p-0">
-                                            <button type="button" class="btn col-auto btn-danger"
-                                                data-dismiss="modal"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success">Agregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal de Opcion Simple -->
-
-                <div class="modal fade " id="opSimpleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <p>Complete la consigna, y agregue la lista de opciones indicando cual es la
-                                        correcta y el puntaje de la pregunta.</p>
-
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">Consigna</label>
-                                        <input type="text" class="form-control" id="texto-consigna">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">Puntaje</label>
-                                        <input type="number" min="0" step="0.5">
-
-                                    </div>
-                                    <div class="form-group btn-group-sm text-right">
-                                        <button type="button" class="btn btn-success">+Agregar Opción</button>
-                                    </div>
-                                    <div class="row m-0 mb-2">
-                                        <div class="col form-check">
-                                            <input class="form-check-input" type="radio" name="customRadio" id="">
-                                            <input type="text" class="form-control">
-
-                                        </div>
-                                        <div class="col-auto p-0">
-                                            <button type="button" class="btn col-auto btn-danger"
-                                                data-dismiss="modal"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 mb-2">
-                                        <div class="col form-check">
-                                            <input class="form-check-input" type="radio" name="customRadio" id="">
-                                            <input type="text" class="form-control">
-
-                                        </div>
-                                        <div class="col-auto p-0">
-                                            <button type="button" class="btn col-auto btn-danger"
-                                                data-dismiss="modal"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 mb-2">
-                                        <div class="col form-check">
-                                            <input class="form-check-input" type="radio" name="customRadio" id="">
-                                            <input type="text" class="form-control">
-
-                                        </div>
-                                        <div class="col-auto p-0">
-                                            <button type="button" class="btn col-auto btn-danger"
-                                                data-dismiss="modal"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success">Agregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
@@ -237,8 +73,10 @@
 
                 <input type="text" class="col-10 form-control">
                 <div class="dropdown md-2 col-auto">
-                    <button type="button" class="btn btn-danger"><i class="col-auto  fa fa-trash" aria-hidden="true"></i></button>
-                    <button type="button"class="btn btn-primary"><i class=" col-auto fa fa-pencil" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-danger"><i class=" fa fa-trash"
+                            aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-primary"><i class=" fa fa-pencil"
+                            aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
@@ -260,6 +98,175 @@
 
 
     </main>
+
+
+    <!-- Modal de Texto -->
+
+    <div class="modal fade " id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Texto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p>Complete la consigna y el puntaje de la pregunta.</p>
+                        <div class="form-group">
+
+                            <label for="recipient-name" class="col-form-label">Consigna</label>
+                            <input type="text" class="form-control" id="texto-consigna">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Puntaje</label>
+                            <input type="number" min="0" step="0.5">
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Opcion Multiple -->
+
+    <div class="modal fade " id="opMultiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p>Complete la consigna, y agregue la lista de opciones indicando cual/es es/son
+                            la/s correcta</p>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Consigna</label>
+                            <input type="text" class="form-control" id="texto-consigna">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Puntaje</label>
+                            <input type="number" min="0" step="0.5">
+
+                        </div>
+                        <div class="form-group btn-group-sm text-right">
+                            <button type="button" class="btn btn-success">+Agregar Opción</button>
+                        </div>
+                        <div class="row m-0 mb-2">
+                            <div class="col form-check">
+                                <input class="form-check-input" type="checkbox" name="" id="">
+                                <input type="text" class="form-control">
+
+                            </div>
+                            <div class="col-auto p-0">
+                                <button type="button" class="btn col-auto btn-danger" data-dismiss="modal"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="row m-0 mb-2">
+                            <div class="col form-check">
+                                <input class="form-check-input" type="checkbox" name="" id="">
+                                <input type="text" class="form-control">
+
+                            </div>
+                            <div class="col-auto p-0">
+                                <button type="button" class="btn col-auto btn-danger" data-dismiss="modal"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Opcion Simple -->
+
+    <div class="modal fade " id="opSimpleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p>Complete la consigna, y agregue la lista de opciones indicando cual es la
+                            correcta y el puntaje de la pregunta.</p>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Consigna</label>
+                            <input type="text" class="form-control" id="texto-consigna">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Puntaje</label>
+                            <input type="number" min="0" step="0.5">
+
+                        </div>
+                        <div class="form-group btn-group-sm text-right">
+                            <button type="button" class="btn btn-success">+Agregar Opción</button>
+                        </div>
+                        <div class="row m-0 mb-2">
+                            <div class="col form-check">
+                                <input class="form-check-input" type="radio" name="customRadio" id="">
+                                <input type="text" class="form-control">
+
+                            </div>
+                            <div class="col-auto p-0">
+                                <button type="button" class="btn col-auto btn-danger" data-dismiss="modal"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="row m-0 mb-2">
+                            <div class="col form-check">
+                                <input class="form-check-input" type="radio" name="customRadio" id="">
+                                <input type="text" class="form-control">
+
+                            </div>
+                            <div class="col-auto p-0">
+                                <button type="button" class="btn col-auto btn-danger" data-dismiss="modal"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="row m-0 mb-2">
+                            <div class="col form-check">
+                                <input class="form-check-input" type="radio" name="customRadio" id="">
+                                <input type="text" class="form-control">
+
+                            </div>
+                            <div class="col-auto p-0">
+                                <button type="button" class="btn col-auto btn-danger" data-dismiss="modal"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Opcion Lista -->
 
@@ -324,17 +331,17 @@
                             </div>
                         </div>
                         <div class="modal-footer ">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success">Agregar</button>
-                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-success">Agregar</button>
                         </div>
                 </div>
             </div>
-           
-            </form>
         </div>
-        
-    
+
+        </form>
+    </div>
+
+
 
     <footer class="footer mt-auto py-3">
         <div include-html="assets\include\footer.html"></div>
