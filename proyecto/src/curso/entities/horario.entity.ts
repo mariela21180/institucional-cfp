@@ -1,6 +1,7 @@
 import { Curso } from "./curso.entity";
 
 export default class Horario {
+    private idHorario: number;
     private curso: Curso;
     private dia: String;
     private horaInicio: Date; // ver si está bien poner tipo Date
@@ -11,6 +12,13 @@ export default class Horario {
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+    }
+
+    public getIdHorario(): number {
+        return this.idHorario;
+    }
+    public setIdHorario(idHorario: number): void {
+        this.idHorario = idHorario;
     }
 
     public getCurso(): Curso {

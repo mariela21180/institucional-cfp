@@ -39,7 +39,7 @@ export class Examen {
     public getIdExamen(): number {
         return this.idExamen;
     }
-    private setIdExamen(idExamen: number): void {
+    public setIdExamen(idExamen: number): void {
         this.idExamen = idExamen;
     }
     public getFormulario(): Formulario {

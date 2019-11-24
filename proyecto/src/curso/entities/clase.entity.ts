@@ -3,6 +3,7 @@ import Alumno from "src/persona/entities/alumno.entity";
 import Material from "./material.entity";
 
 export default class Clase {
+    private idClase: number;
     private curso: Curso;
     private fecha: Date;
     private horaInicio: Date; // ver si está bien poner tipo Date
@@ -16,6 +17,13 @@ export default class Clase {
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+    }
+
+    public getIdClase(): number {
+        return this.idClase;
+    }
+    public setIdClase(idClase: number): void {
+        this.idClase = idClase;
     }
 
     public getCurso(): Curso {

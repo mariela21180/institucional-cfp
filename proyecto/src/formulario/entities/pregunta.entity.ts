@@ -57,7 +57,7 @@ export class Pregunta {
     public getIdPregunta(): number {
         return this.idPregunta;
     }
-    private setIdPregunta(idPregunta: number): void {
+    public setIdPregunta(idPregunta: number): void {
         this.idPregunta = idPregunta;
     }
     public getEsEditable(): boolean {

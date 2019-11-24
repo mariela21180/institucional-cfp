@@ -5,6 +5,7 @@ import { Examen } from "src/formulario/entities/examen.entity";
 import Clase from "./clase.entity";
 
 export class Curso {
+    private idCurso: number;
     private nombre: string;
     private descripcion: string;
     private profesor: Docente;
@@ -18,6 +19,15 @@ export class Curso {
     private alumnos: Alumno[];
     private examenes: Examen[];
     private clasesDictadas: Clase[];
+
+    constructor() {}
     
+
+    public getIdCurso(): number {
+        return this.idCurso;
+    }
+    public setIdCurso(idCurso: number): void {
+        this.idCurso = idCurso;
+    }
 
 }

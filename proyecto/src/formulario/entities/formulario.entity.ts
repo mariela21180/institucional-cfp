@@ -18,7 +18,7 @@ export class Formulario {
     public getIdFormulario(): number {
         return this.idFormulario;
     }
-    private setIdFormulario(idFormulario: number): void {
+    public setIdFormulario(idFormulario: number): void {
         this.idFormulario = idFormulario;
     }
     public getEsEditable(): boolean {

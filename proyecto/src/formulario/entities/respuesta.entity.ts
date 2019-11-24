@@ -25,7 +25,7 @@ export class Respuesta {
     public getIdRespuesta(): number {
         return this.idRespuesta;
     }
-    private setIdRespuesta(idRespuesta: number): void {
+    public setIdRespuesta(idRespuesta: number): void {
         this.idRespuesta = idRespuesta;
     }
     

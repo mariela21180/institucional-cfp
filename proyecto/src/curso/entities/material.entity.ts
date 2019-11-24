@@ -1,4 +1,5 @@
 export default class Material {
+    private idMaterial: number;
     private archivos: String[];
     private temas: String[];
     private habilitado: boolean; // por defecto true
@@ -13,6 +14,14 @@ export default class Material {
         else {
             this.habilitado = true;
         }
+    }
+
+
+    public getIdMaterial(): number {
+        return this.idMaterial;
+    }
+    public setIdMaterial(idMaterial: number): void {
+        this.idMaterial = idMaterial;
     }
 
     public getArchivos(): String[] {
