@@ -12,6 +12,8 @@ export class Examen {
     constructor(formulario: Formulario, curso: Curso, puntajeTotal?: number, estaRespondido?: boolean, estaCorregido?: boolean) {
         this.formulario = formulario;
         this.curso = curso;
+        this.setIdExamen(formulario.getIdFormulario());
+        this.idExamen = this.getIdExamen();
 
         if (puntajeTotal) {
             this.puntajeTotal = puntajeTotal;
@@ -34,7 +36,6 @@ export class Examen {
         } else {
             this.estaCorregido = false;
         }
-
     }
     public getIdExamen(): number {
         return this.idExamen;
