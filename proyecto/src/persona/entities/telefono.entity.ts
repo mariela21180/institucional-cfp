@@ -9,6 +9,10 @@ export default class Telefono {
       
     }
 
+    public setIdtelefono(id: number) {
+        this.idTelefono = id;
+    }
+
     public getIdTelefono(): number{
         return this.idTelefono;
     }

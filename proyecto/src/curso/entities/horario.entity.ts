@@ -4,10 +4,10 @@ export default class Horario {
     private idHorario: number;
     private curso: Curso;
     private dia: String;
-    private horaInicio: Date; // ver si está bien poner tipo Date
-    private horaFin: Date; // ver si está bien poner tipo Date
+    private horaInicio: String; 
+    private horaFin: String; 
 
-    public constructor (curso: Curso, dia: String, horaInicio: Date, horaFin: Date) {
+    public constructor (curso: Curso, dia: String, horaInicio: String, horaFin: String) {
         this.curso = curso;
         this.dia = dia;
         this.horaInicio = horaInicio;
@@ -29,11 +29,11 @@ export default class Horario {
         return this.dia;
     }
 
-    public getHoraInicio(): Date {
+    public getHoraInicio(): String {
         return this.horaInicio;
     }
 
-    public getHoraFin(): Date {
+    public getHoraFin(): String {
         return this.horaFin;
     }
 
@@ -41,15 +41,15 @@ export default class Horario {
         this.curso = curso;
     }
 
-    public setDia(dia: string): void {
+    public setDia(dia: String): void {
         this.dia = dia;
     }
 
-    public setHoraInicio(hora: Date): void {
+    public setHoraInicio(hora: String): void {
         this.horaInicio = hora;
     }
 
-    public setHoraFin(hora: Date): void {
+    public setHoraFin(hora: String): void {
         this.horaFin = hora;
     }
  

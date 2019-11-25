@@ -4,15 +4,32 @@ export default class Material {
     private temas: String[];
     private habilitado: boolean; // por defecto true
 
-    public constructor (archivos: String[], temas: String[], habilitado?: boolean) {
-        this.archivos = archivos;
-        this.temas = temas;
+    public constructor(archivos?: String[], temas?: String[], habilitado?: boolean) {
+        try {
+            if (!archivos && !temas) {
+                throw new Error('Al menos debe tener un archivo o un tema');
+            } else {
+                if (archivos) {
+                    this.archivos = archivos;
+                } else {
+                    this.archivos = [];
+                }
+                if (temas) {
+                    this.temas = temas;
+                } else {
+                    this.temas = [];
+                }
+            }
 
-        if(habilitado) {
-            this.habilitado = habilitado;
+            if (habilitado) {
+                this.habilitado = habilitado;
+            }
+            else {
+                this.habilitado = true;
+            }
         }
-        else {
-            this.habilitado = true;
+        catch (error) {
+            console.log(error.message);
         }
     }
 
@@ -33,7 +50,7 @@ export default class Material {
     }
 
     public habilitarDeshabilitar(): void {
-        if(this.habilitado) {
+        if (this.habilitado) {
             this.habilitado = false;
         }
         else {
