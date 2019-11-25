@@ -11,7 +11,12 @@ export default class Alumno {
         this.datos = datos;
         this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
         this.adeudaDocumentacion = adeudaDocumentacion;
-        this.idAlumno = datos.getIdPersona();
+        this.setIdAlumno(datos.getIdPersona());
+        this.idAlumno = this.getIdAlumno();
+    }
+
+    public setIdAlumno(id: number) {
+        this.idAlumno = id;
     }
 
     public getIdAlumno():number{

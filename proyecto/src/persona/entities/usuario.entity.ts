@@ -11,13 +11,18 @@ export default class Usuario {
         this.persona = persona;
         this.usuario = usuario;
         this.password = password;
-        this.idUsuario = persona.getIdPersona();
+        this.setIdUsuario(persona.getIdPersona());
+        this.idUsuario = this.getIdUsuario();
         if (nivelAcceso == undefined) {
             this.nivelAcceso = 1;
         }
         else {
             this.nivelAcceso = nivelAcceso;
         }
+    }
+
+    public setIdUsuario(id: number) {
+        this.idUsuario = id;
     }
 
     public getIdUsuario(): number {

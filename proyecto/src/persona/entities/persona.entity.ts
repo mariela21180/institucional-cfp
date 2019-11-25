@@ -24,6 +24,10 @@ export default class Persona {
         };
     }
 
+    public setIdPersona(id: number) {
+        this.idPersona = id;
+    }
+
     public getIdPersona():number{
         return this.idPersona;
     }

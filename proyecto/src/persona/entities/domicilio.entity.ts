@@ -19,6 +19,10 @@ export default class Domicilio {
         else this.dpto = null;
     }
 
+    public setIdDomicilio(dom: number) {
+        this.idDomicilio = dom;
+    }
+
     public getIdDomicilio(): number {
         return this.idDomicilio;
     }

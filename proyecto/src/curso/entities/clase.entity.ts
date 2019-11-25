@@ -5,23 +5,33 @@ import Material from "./material.entity";
 export default class Clase {
     private idClase: number;
     private curso: Curso;
-    private fecha: Date;
-    private horaInicio: Date; // ver si está bien poner tipo Date
-    private horaFin: Date; // ver si está bien poner tipo Date
+    private inicio: Date;
+    private fin: Date;
     private asistencia: Alumno[]; 
     private material: Material[];
     
 
-    public constructor (curso: Curso, fecha: Date, horaInicio: Date, horaFin: Date) {
+    public constructor (curso: Curso, inicio: Date, fin: Date, asistencia?: Alumno[], material?: Material[]) {
         this.curso = curso;
-        this.fecha = fecha;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        this.inicio = inicio;
+        this.fin = fin;
+        if(asistencia) {
+            this.asistencia = asistencia;
+        } else {
+            this.asistencia = [];
+        }
+
+        if(material) {
+            this.material = material;
+        } else {
+            this.material = [];
+        }
     }
 
     public getIdClase(): number {
         return this.idClase;
     }
+
     public setIdClase(idClase: number): void {
         this.idClase = idClase;
     }
@@ -30,16 +40,20 @@ export default class Clase {
         return this.curso;
     }
     
-    public getFecha(): Date {
-        return this.fecha;
+    public getInicio(): Date {
+        return this.inicio;
     }
 
-    public getHoraInicio(): Date {
-        return this.horaInicio
+    public setInicio(fecha: Date): void {
+        this.inicio = fecha;
     }
 
-    public getHoraFin(): Date {
-        return this.horaFin
+    public getFin(): Date {
+        return this.fin;
+    }
+
+    public setFin(fecha: Date): void {
+        this.fin = fecha;
     }
 
     public getAsistencia(): Alumno[] {
