@@ -6,7 +6,6 @@ function include() {
       elmnt = z[i];
       /*search for elements with a certain atrribute:*/
       file = elmnt.getAttribute("include-html");
-      console.log(file)
       if (file) {
         /* Make an HTTP request using the attribute value as the file name: */
         xhttp = new XMLHttpRequest();
@@ -25,4 +24,5 @@ function include() {
         return;
       }
     }
+    activarNav();
   }
