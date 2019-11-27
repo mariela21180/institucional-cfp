@@ -1,5 +1,5 @@
 export class DocenteDto {
-    private readonly datos: any; // VERRRR
-    private readonly nivelEstudioAlcanzado: string;
-    private readonly titulo: string;
+    readonly datos: number;
+    readonly nivelEstudioAlcanzado: string;
+    readonly titulo: string;
 }

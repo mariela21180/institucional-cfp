@@ -1,4 +1,4 @@
 export class TelefonoDto {
-    private readonly codArea: number;
-    private readonly nro: number;
+    readonly codArea: number;
+    readonly nro: number;
 }
