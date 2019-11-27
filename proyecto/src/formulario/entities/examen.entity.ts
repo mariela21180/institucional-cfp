@@ -82,4 +82,8 @@ export class Examen {
         // Terminar método. Recorrer la lista de preguntas del Formulario y sumar puntajes
         // Estoy en duda si se calcula es puntaje total de las preguntas (al crear el form), o la calificacion total de las respuestas (despues de estar respondido y corregido) 
     }
+
+    public agregarPregunta(): void {
+        // Al crear la pregunta, como es de examen, hay que validar que al menos una de las opciones tenga tru (respuesta correcta)
+    }
 }

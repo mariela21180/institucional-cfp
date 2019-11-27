@@ -1,5 +1,5 @@
-export class Respuesta {
-    private idRespuesta: number;
+export class Opcion {
+    private idOpcion: number;
     private texto: string;
     private isOk: boolean; // nulleable
     private calificacion: number;
@@ -9,7 +9,7 @@ export class Respuesta {
         if (isOk) {
             this.isOk = isOk;
         } else {
-            this.isOk = null; // Si la pregunta no es para un Examen, isOk es null, y hay que evitar hacer todos los cálculos de la "respuesta correcta"
+            this.isOk = false; // Si la pregunta no es para un Examen, isOk es null, y hay que evitar hacer todos los cálculos de la "respuesta correcta"
         }
         
         // Por defecto es "1". 
@@ -22,11 +22,11 @@ export class Respuesta {
         }
     }
 
-    public getIdRespuesta(): number {
-        return this.idRespuesta;
+    public getIdOpcion(): number {
+        return this.idOpcion;
     }
-    public setIdRespuesta(idRespuesta: number): void {
-        this.idRespuesta = idRespuesta;
+    public setIdOpcion(idOpcion: number): void {
+        this.idOpcion = idOpcion;
     }
     
     public getTexto(): string {

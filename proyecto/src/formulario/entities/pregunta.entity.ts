@@ -1,23 +1,37 @@
-import { Respuesta } from "./respuesta.entity";
-import { TipoPregunta } from "./tipopregunta";
+import { Opcion } from "./opcion.entity";
+import { TipoPregunta } from "./tipopregunta.entity";
 
 export class Pregunta {
     private idPregunta: number;
     private esEditable: boolean; // nulleable
     private consigna: string;
     private tipo: TipoPregunta;
-    private opciones: Respuesta[];
+    private opciones: Opcion[];
     private estaRespondida: boolean;
     private puntaje: number; // nulleable
-    private respuesta: Respuesta[]; // nulleable
+    private respuesta: Opcion[]; // nulleable
 
-    constructor(consigna: string, tipo: TipoPregunta, opciones: Respuesta[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Respuesta[], puntaje?: number) {
+    constructor(consigna: string, tipo: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Opcion[], puntaje?: number) {
         this.consigna = consigna;
         this.tipo = tipo;
 
-        // Como mínimo debe venir 1.
+        // Si es de texto puede venir vacía
+        // Si es de otro tipo, debe venir como mínimo debe venir 1.
         // Si es pregunta de examen, debe venir al menos una con "isOk"
-        this.opciones = opciones;
+        try {
+            if (this.tipo.getValue() != 1) {
+                if (!opciones) {
+                    throw new Error('Debe haber como mínimo una opción.')
+                }
+            }
+            if (opciones) {
+                this.opciones = opciones;                
+            } else {
+                this.opciones = [];
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
 
         // Por defecto es true.
         // Si la pregunta no es de Texto, hay que setearlo a false.
@@ -75,10 +89,10 @@ export class Pregunta {
     public getTipo(): TipoPregunta {
         return this.tipo;
     }
-    public getOpciones(): Respuesta[] {
+    public getOpciones(): Opcion[] {
         return this.opciones;
     }
-    public setOpciones(opciones: Respuesta[]): void {
+    public setOpciones(opciones: Opcion[]): void {
         this.opciones = opciones;
     }
     
@@ -89,10 +103,10 @@ export class Pregunta {
         this.estaRespondida = estaRespondida;
     }
 
-    public getRespuesta(): Respuesta[] {
+    public getRespuesta(): Opcion[] {
         return this.respuesta;
     }
-    public setRespuesta(respuesta: Respuesta[]): void {
+    public setRespuesta(respuesta: Opcion[]): void {
         this.respuesta = respuesta;
     }
 
@@ -101,5 +115,9 @@ export class Pregunta {
     }
     public setPuntaje(puntaje: number): void {
         this.puntaje = puntaje;
+    }
+
+    public agregarOpcion(opcion: Opcion) {
+        this.opciones.push(opcion);
     }
 }
