@@ -1,9 +1,8 @@
 export class PreguntaDto {
-    readonly consigna: string;
-    readonly tipo: number;
-    readonly opciones?: number[];
     readonly esEditable?: boolean;
+    readonly consigna: string;
+    readonly idTipoPregunta: number;
     readonly estaRespondida?: boolean;
     readonly puntaje?: number;
-    readonly respuesta?: number[];
+    readonly idFormulario: number;
 }
