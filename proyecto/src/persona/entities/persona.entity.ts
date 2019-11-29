@@ -5,7 +5,7 @@ import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany
 @Entity('persona')
 export default class Persona {
     @PrimaryGeneratedColumn()
-    idPersona: number;
+    private idPersona: number;
 
     @Column()
     private nombre: string;
@@ -17,16 +17,16 @@ export default class Persona {
     private dni: number;
 
     @Column('int', {nullable: false})
-    idDomicilio: number;
+    private idDomicilio: number;
 
     @JoinColumn({name: "idDomicilio"})
-    @OneToOne(type => Domicilio, domicilio => domicilio.idDomicilio)
+    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio)
     private domicilio: Domicilio;
 
     @Column()
     private eMail: string;
 
-    @OneToMany(type => Telefono, telefono => telefono.idTelefono)
+    @OneToMany(type => Telefono, telefono => telefono.getIdTelefono)
     private telefono: Telefono[];
     
     public constructor(nombre: string, apellido: string, dni: number, domicilio: Domicilio, eMail: string, telefono?: Telefono[]) {

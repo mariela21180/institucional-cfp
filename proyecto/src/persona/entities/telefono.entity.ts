@@ -4,7 +4,7 @@ import Persona from "./persona.entity";
 @Entity('telefono')
 export default class Telefono {
     @PrimaryGeneratedColumn()
-    idTelefono: number;
+    private idTelefono: number;
 
     @Column()
     private codArea: number;
@@ -16,7 +16,7 @@ export default class Telefono {
     idPersona: number;
 
     @JoinColumn({name: 'idPersona'})
-    @ManyToOne(type => Persona, titular => titular.idPersona)
+    @ManyToOne(type => Persona, titular => titular.getIdPersona)
     private titular: Persona;
 
     public constructor(codArea:number, nro:number, titular: Persona) {
