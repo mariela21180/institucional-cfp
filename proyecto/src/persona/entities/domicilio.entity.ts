@@ -1,8 +1,20 @@
+import { PrimaryGeneratedColumn, Column, Entity } from "typeorm";
+
+@Entity('domicilio')
 export default class Domicilio {
-    private idDomicilio: number;
+    @PrimaryGeneratedColumn()
+    idDomicilio: number;
+
+    @Column()
     private calle: string;
+
+    @Column()
     private altura: number;
+
+    @Column('text', {nullable: true})
     private piso: string;
+
+    @Column('text', {nullable: true})
     private dpto: string;
 
     public constructor(calle: string, altura: number, piso?: string, dpto?: string) {

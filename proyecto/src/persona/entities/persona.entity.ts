@@ -1,13 +1,32 @@
 import Domicilio from "./domicilio.entity";
 import Telefono from "./telefono.entity";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany } from "typeorm";
 
+@Entity('persona')
 export default class Persona {
-    private idPersona: number;
+    @PrimaryGeneratedColumn()
+    idPersona: number;
+
+    @Column()
     private nombre: string;
+
+    @Column()
     private apellido: string;
+
+    @Column()
     private dni: number;
+
+    @Column('int', {nullable: false})
+    idDomicilio: number;
+
+    @JoinColumn({name: "idDomicilio"})
+    @OneToOne(type => Domicilio, domicilio => domicilio.idDomicilio)
     private domicilio: Domicilio;
+
+    @Column()
     private eMail: string;
+
+    @OneToMany(type => Telefono, telefono => telefono.idTelefono)
     private telefono: Telefono[];
     
     public constructor(nombre: string, apellido: string, dni: number, domicilio: Domicilio, eMail: string, telefono?: Telefono[]) {
