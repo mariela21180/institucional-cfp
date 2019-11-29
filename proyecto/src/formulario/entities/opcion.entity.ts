@@ -1,5 +1,10 @@
-export class Opcion {
-    private idOpcion: number;
+import { Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity('opcion')
+export default class Opcion {
+    @PrimaryGeneratedColumn()
+    idOpcion: number;
+    
     private texto: string;
     private isOk: boolean; // nulleable
     private calificacion: number;

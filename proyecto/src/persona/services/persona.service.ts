@@ -5,10 +5,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class PersonaService {
-    public constructor(@InjectRepository(Persona)
-    private readonly personaRepository: Repository<Persona>){
-        
-    }
+    public constructor(
+        @InjectRepository(Persona) private readonly personaRepository: Repository<Persona>
+    ) {}
 
 
 } 

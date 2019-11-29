@@ -1,8 +1,12 @@
-import { Formulario } from "./formulario.entity";
-import { Curso } from "../../curso/entities/curso.entity";
+import Formulario from "./formulario.entity";
+import Curso from "../../curso/entities/curso.entity";
+import { Entity, PrimaryColumn } from "typeorm";
 
-export class Examen {
-    private idExamen: number;
+@Entity('examen')
+export default class Examen {
+    @PrimaryColumn()
+    idExamen: number;
+    
     private formulario: Formulario;
     private curso: Curso;
     private puntajeTotal: number;
@@ -12,8 +16,8 @@ export class Examen {
     constructor(formulario: Formulario, curso: Curso, puntajeTotal?: number, estaRespondido?: boolean, estaCorregido?: boolean) {
         this.formulario = formulario;
         this.curso = curso;
-        this.setIdExamen(formulario.getIdFormulario());
-        this.idExamen = this.getIdExamen();
+        // this.setIdExamen(formulario.getIdFormulario());
+        // this.idExamen = this.getIdExamen();
 
         if (puntajeTotal) {
             this.puntajeTotal = puntajeTotal;

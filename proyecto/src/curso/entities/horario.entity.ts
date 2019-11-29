@@ -1,7 +1,11 @@
-import { Curso } from "./curso.entity";
+import Curso from "./curso.entity";
+import { PrimaryGeneratedColumn, Entity } from "typeorm";
 
+@Entity('horario')
 export default class Horario {
-    private idHorario: number;
+    @PrimaryGeneratedColumn()
+    idHorario: number;
+    
     private curso: Curso;
     private dia: String;
     private horaInicio: String; 

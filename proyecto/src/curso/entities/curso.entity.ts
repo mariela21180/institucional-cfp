@@ -1,11 +1,15 @@
-import Docente from "src/persona/entities/docente.entity";
-import Horario from "./horario.entity";
+import Docente from "../../persona/entities/docente.entity";
 import Alumno from "src/persona/entities/alumno.entity";
-import { Examen } from "src/formulario/entities/examen.entity";
+import Examen from "src/formulario/entities/examen.entity";
+import Horario from "./horario.entity";
 import Clase from "./clase.entity";
+import { Entity, PrimaryGeneratedColumn } from "typeorm";
 
-export class Curso {
-    private idCurso: number;
+@Entity('curso')
+export default class Curso {
+    @PrimaryGeneratedColumn()
+    idCurso: number;
+    
     private nombre: string;
     private descripcion: string;
     private profesor: Docente;

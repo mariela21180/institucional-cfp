@@ -1,9 +1,13 @@
-import { Curso } from "./curso.entity";
+import Curso from "./curso.entity";
 import Alumno from "src/persona/entities/alumno.entity";
 import Material from "./material.entity";
+import { Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity('clase')
 export default class Clase {
-    private idClase: number;
+    @PrimaryGeneratedColumn()
+    idClase: number;
+    
     private curso: Curso;
     private inicio: Date;
     private fin: Date;

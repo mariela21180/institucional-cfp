@@ -1,8 +1,12 @@
-import { Opcion } from "./opcion.entity";
-import { TipoPregunta } from "./tipopregunta.entity";
+import Opcion from "./opcion.entity";
+import TipoPregunta from "./tipopregunta.entity";
+import { Entity, PrimaryGeneratedColumn } from "typeorm";
 
-export class Pregunta {
-    private idPregunta: number;
+@Entity('pregunta')
+export default class Pregunta {
+    @PrimaryGeneratedColumn()
+    idPregunta: number;
+    
     private esEditable: boolean; // nulleable
     private consigna: string;
     private idTipoPregunta: TipoPregunta;

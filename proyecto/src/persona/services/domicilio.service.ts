@@ -5,8 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class DomicilioService {
-    public constructor(@InjectRepository(Domicilio)
-    private readonly domicilioRepository: Repository<Domicilio>){
-        
-    }
+    public constructor(
+        @InjectRepository(Domicilio) private readonly domicilioRepository: Repository<Domicilio>
+    ) {}
 }

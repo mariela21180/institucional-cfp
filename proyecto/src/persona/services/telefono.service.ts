@@ -5,8 +5,7 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class TelefonoService {
-    public constructor(@InjectRepository(Telefono)
-    private readonly domicilioRepository: Repository<Telefono>){
-        
-    }
+    public constructor(
+        @InjectRepository(Telefono) private readonly domicilioRepository: Repository<Telefono>
+    ) {}
 }

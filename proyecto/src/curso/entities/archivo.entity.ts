@@ -1,5 +1,10 @@
+import { PrimaryGeneratedColumn, Entity, Column } from "typeorm";
+
+@Entity('archivo')
 export default class Archivo {
-    private idArchivo: number;
+    @PrimaryGeneratedColumn()
+    idArchivo: number;
+
     private ruta: String;
 
     public constructor(ruta: String) {

@@ -1,5 +1,10 @@
-export class TipoPregunta {
-    private idTipoPregunta: number;
+import { Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity('tipo_pregunta')
+export default class TipoPregunta {
+    @PrimaryGeneratedColumn()
+    idTipoPregunta: number;
+    
     private text: string;
     // Texto = 1,
     // OpcionSimple = 2,

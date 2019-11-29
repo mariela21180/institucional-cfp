@@ -1,7 +1,11 @@
 import Persona from "./persona.entity";
+import { Entity, PrimaryColumn } from "typeorm";
 
+@Entity('usuario')
 export default class Usuario {
-    private idUsuario: number;
+    @PrimaryColumn()
+    idUsuario: number;
+
     private usuario: string;
     private password: string;
     private nivelAcceso: number;
@@ -11,8 +15,8 @@ export default class Usuario {
         this.persona = persona;
         this.usuario = usuario;
         this.password = password;
-        this.setIdUsuario(persona.getIdPersona());
-        this.idUsuario = this.getIdUsuario();
+        // this.setIdUsuario(persona.getIdPersona());
+        // this.idUsuario = this.getIdUsuario();
         if (nivelAcceso == undefined) {
             this.nivelAcceso = 1;
         }

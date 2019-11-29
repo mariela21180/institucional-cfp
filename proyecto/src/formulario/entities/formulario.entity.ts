@@ -1,9 +1,13 @@
-import { Pregunta } from "./pregunta.entity"
-import { Opcion } from "./opcion.entity";
+import Pregunta from "./pregunta.entity"
+import Opcion from "./opcion.entity";
 import { text } from "body-parser";
+import { Entity, PrimaryGeneratedColumn } from "typeorm";
 
-export class Formulario {
-    private idFormulario: number;
+@Entity('formulario')
+export default class Formulario {
+    @PrimaryGeneratedColumn()
+    idFormulario: number;
+    
     private esEditable: boolean;
     private nombre: string;
     private descripcion: string;

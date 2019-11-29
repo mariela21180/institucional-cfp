@@ -1,7 +1,11 @@
 import Persona from "./persona.entity";
+import { Entity, PrimaryColumn } from "typeorm";
 
+@Entity('docente')
 export default class Docente {
-    private idDocente: number;
+    @PrimaryColumn()
+    idDocente: number;
+
     private datos: Persona;
     private nivelEstudioAlcanzado: string;
     private titulo: string;
@@ -11,8 +15,8 @@ export default class Docente {
         this.datos = datos;
         this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
         this.titulo = titulo;
-        this.setIdDocente(datos.getIdPersona());
-        this.idDocente = this.getIdDocente();
+        // this.setIdDocente(datos.getIdPersona());
+        // this.idDocente = this.getIdDocente();
     }
 
     public setIdDocente(id: number) {

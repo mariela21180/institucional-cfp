@@ -1,5 +1,10 @@
+import { PrimaryGeneratedColumn, Entity } from "typeorm";
+
+@Entity('material')
 export default class Material {
-    private idMaterial: number;
+    @PrimaryGeneratedColumn()
+    idMaterial: number;
+
     private archivos: String[];
     private temas: String[];
     private habilitado: boolean; // por defecto true
