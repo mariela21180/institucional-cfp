@@ -1,17 +1,17 @@
 export class TipoPregunta {
-    private value: number;
+    private idTipoPregunta: number;
     private text: string;
     // Texto = 1,
     // OpcionSimple = 2,
     // OpcionMultiple = 3,
     // OpcionPorLista = 4
-    constructor(value: number, text: string) {
-        this.value = value;
+    constructor(idTipoPregunta: number, text: string) {
+        this.idTipoPregunta = idTipoPregunta;
         this.text = text;
     }
 
-    public getValue(): number {
-        return this.value;
+    public getIdTipoPregunta(): number {
+        return this.idTipoPregunta;
     }
     public getText(): string {
         return this.text;

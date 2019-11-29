@@ -5,21 +5,21 @@ export class Pregunta {
     private idPregunta: number;
     private esEditable: boolean; // nulleable
     private consigna: string;
-    private tipo: TipoPregunta;
+    private idTipoPregunta: TipoPregunta;
     private opciones: Opcion[];
     private estaRespondida: boolean;
     private puntaje: number; // nulleable
     private respuesta: Opcion[]; // nulleable
 
-    constructor(consigna: string, tipo: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Opcion[], puntaje?: number) {
+    constructor(consigna: string, idTipoPregunta: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Opcion[], puntaje?: number) {
         this.consigna = consigna;
-        this.tipo = tipo;
+        this.idTipoPregunta = idTipoPregunta;
 
         // Si es de texto puede venir vacía
-        // Si es de otro tipo, debe venir como mínimo debe venir 1.
+        // Si es de otro idTipoPregunta, debe venir como mínimo debe venir 1.
         // Si es pregunta de examen, debe venir al menos una con "isOk"
         try {
-            if (this.tipo.getValue() != 1) {
+            if (this.idTipoPregunta.getIdTipoPregunta() != 1) {
                 if (!opciones) {
                     throw new Error('Debe haber como mínimo una opción.')
                 }
@@ -87,7 +87,7 @@ export class Pregunta {
         this.consigna = consigna;
     }
     public getTipo(): TipoPregunta {
-        return this.tipo;
+        return this.idTipoPregunta;
     }
     public getOpciones(): Opcion[] {
         return this.opciones;
