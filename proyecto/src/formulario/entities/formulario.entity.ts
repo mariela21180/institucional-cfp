@@ -6,7 +6,7 @@ import { Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('formulario')
 export default class Formulario {
     @PrimaryGeneratedColumn()
-    idFormulario: number;
+    private idFormulario: number;
     
     private esEditable: boolean;
     private nombre: string;

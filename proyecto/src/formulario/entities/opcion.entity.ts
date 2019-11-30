@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('opcion')
 export default class Opcion {
     @PrimaryGeneratedColumn()
-    idOpcion: number;
+    private idOpcion: number;
     
     private texto: string;
     private isOk: boolean; // nulleable

@@ -5,7 +5,7 @@ import { Entity, PrimaryColumn } from "typeorm";
 @Entity('examen')
 export default class Examen {
     @PrimaryColumn()
-    idExamen: number;
+    private idExamen: number;
     
     private formulario: Formulario;
     private curso: Curso;
@@ -16,8 +16,7 @@ export default class Examen {
     constructor(formulario: Formulario, curso: Curso, puntajeTotal?: number, estaRespondido?: boolean, estaCorregido?: boolean) {
         this.formulario = formulario;
         this.curso = curso;
-        // this.setIdExamen(formulario.getIdFormulario());
-        // this.idExamen = this.getIdExamen();
+        this.idExamen = formulario.getIdFormulario();
 
         if (puntajeTotal) {
             this.puntajeTotal = puntajeTotal;

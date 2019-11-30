@@ -3,7 +3,7 @@ import { PrimaryGeneratedColumn, Entity } from "typeorm";
 @Entity('tema')
 export default class Tema {
     @PrimaryGeneratedColumn()
-    idTema: number;
+    private idTema: number;
     
     private tema: String;
 
