@@ -3,7 +3,7 @@ import { PrimaryGeneratedColumn, Entity, Column } from "typeorm";
 @Entity('archivo')
 export default class Archivo {
     @PrimaryGeneratedColumn()
-    idArchivo: number;
+    private idArchivo: number;
 
     private ruta: String;
 

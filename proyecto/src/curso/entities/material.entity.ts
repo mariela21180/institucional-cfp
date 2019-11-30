@@ -3,7 +3,7 @@ import { PrimaryGeneratedColumn, Entity } from "typeorm";
 @Entity('material')
 export default class Material {
     @PrimaryGeneratedColumn()
-    idMaterial: number;
+    private idMaterial: number;
 
     private archivos: String[];
     private temas: String[];

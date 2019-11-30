@@ -5,7 +5,7 @@ import { Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('pregunta')
 export default class Pregunta {
     @PrimaryGeneratedColumn()
-    idPregunta: number;
+    private idPregunta: number;
     
     private esEditable: boolean; // nulleable
     private consigna: string;

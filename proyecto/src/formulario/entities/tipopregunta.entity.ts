@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('tipo_pregunta')
 export default class TipoPregunta {
     @PrimaryGeneratedColumn()
-    idTipoPregunta: number;
+    private idTipoPregunta: number;
     
     private text: string;
     // Texto = 1,

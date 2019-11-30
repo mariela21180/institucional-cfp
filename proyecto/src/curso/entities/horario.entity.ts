@@ -4,7 +4,7 @@ import { PrimaryGeneratedColumn, Entity } from "typeorm";
 @Entity('horario')
 export default class Horario {
     @PrimaryGeneratedColumn()
-    idHorario: number;
+    private idHorario: number;
     
     private curso: Curso;
     private dia: String;

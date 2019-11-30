@@ -8,7 +8,7 @@ import { Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('curso')
 export default class Curso {
     @PrimaryGeneratedColumn()
-    idCurso: number;
+    private idCurso: number;
     
     private nombre: string;
     private descripcion: string;
