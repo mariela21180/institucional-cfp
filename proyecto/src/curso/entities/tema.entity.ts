@@ -1,10 +1,11 @@
-import { PrimaryGeneratedColumn, Entity } from "typeorm";
+import { PrimaryGeneratedColumn, Entity, Column } from "typeorm";
 
 @Entity('tema')
 export default class Tema {
     @PrimaryGeneratedColumn()
     private idTema: number;
     
+    @Column()
     private tema: String;
 
     public constructor(tema: String) {

@@ -6,13 +6,13 @@ export default class Telefono {
     @PrimaryGeneratedColumn()
     private idTelefono: number;
 
-    @Column()
+    @Column('int')
     private codArea: number;
 
-    @Column()
+    @Column('int')
     private nro: number;
 
-    @Column()
+    @Column('int')
     idPersona: number;
 
     @JoinColumn({name: 'idPersona'})
