@@ -1,22 +1,29 @@
 import Persona from "./persona.entity";
-import { Entity, PrimaryColumn } from "typeorm";
+import { Entity, PrimaryColumn, JoinColumn, OneToOne, Column } from "typeorm";
 
 @Entity('usuario')
 export default class Usuario {
     @PrimaryColumn()
-    idUsuario: number;
+    private idUsuario: number;
 
+    @Column({unique: true})
     private usuario: string;
+
+    @Column()
     private password: string;
+
+    @Column({default: 1})
     private nivelAcceso: number;
+
+    @JoinColumn({name: "idUsuario"})
+    @OneToOne(type => Persona, persona => persona.getIdPersona)
     private persona: Persona;
 
     public constructor(usuario: string, password: string, persona: Persona, nivelAcceso?: number) {
         this.persona = persona;
         this.usuario = usuario;
         this.password = password;
-        // this.setIdUsuario(persona.getIdPersona());
-        // this.idUsuario = this.getIdUsuario();
+        this.idUsuario = persona.getIdPersona();
         if (nivelAcceso == undefined) {
             this.nivelAcceso = 1;
         }

@@ -1,13 +1,19 @@
 import Persona from "./persona.entity";
-import { Entity, PrimaryColumn } from "typeorm";
+import { Entity, PrimaryColumn, JoinColumn, OneToOne, Column } from "typeorm";
 
 @Entity('docente')
 export default class Docente {
     @PrimaryColumn()
-    idDocente: number;
+    private idDocente: number;
 
+    @JoinColumn({name: "idDocente"})
+    @OneToOne(type => Persona, datos => datos.getIdPersona)
     private datos: Persona;
+
+    @Column()
     private nivelEstudioAlcanzado: string;
+
+    @Column()
     private titulo: string;
 
 
@@ -15,8 +21,7 @@ export default class Docente {
         this.datos = datos;
         this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
         this.titulo = titulo;
-        // this.setIdDocente(datos.getIdPersona());
-        // this.idDocente = this.getIdDocente();
+        this.idDocente = datos.getIdPersona();
     }
 
     public setIdDocente(id: number) {
