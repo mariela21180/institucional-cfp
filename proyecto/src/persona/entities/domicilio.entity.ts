@@ -5,16 +5,16 @@ export default class Domicilio {
     @PrimaryGeneratedColumn()
     private idDomicilio: number;
 
-    @Column()
+    @Column('varchar')
     private calle: string;
 
-    @Column()
+    @Column('int')
     private altura: number;
 
-    @Column('text', {nullable: true})
+    @Column('varchar', {nullable: true})
     private piso: string;
 
-    @Column('text', {nullable: true})
+    @Column('varchar', {nullable: true})
     private dpto: string;
 
     public constructor(calle: string, altura: number, piso?: string, dpto?: string) {

@@ -3,17 +3,17 @@ import { Entity, PrimaryColumn, Column, JoinColumn, OneToOne } from "typeorm";
 
 @Entity('alumno')
 export default class Alumno {
-    @PrimaryColumn()
+    @PrimaryColumn('int')
     private idAlumno: number;    
 
     @JoinColumn({name: "idAlumno"})
     @OneToOne(type => Persona, datos => datos.getIdPersona)
     private datos: Persona;
 
-    @Column()
+    @Column('varchar')
     private nivelEstudioAlcanzado: string;
 
-    @Column()
+    @Column('bit')
     private adeudaDocumentacion: boolean;
 
 

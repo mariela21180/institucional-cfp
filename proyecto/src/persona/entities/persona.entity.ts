@@ -7,13 +7,13 @@ export default class Persona {
     @PrimaryGeneratedColumn()
     private idPersona: number;
 
-    @Column()
+    @Column('varchar')
     private nombre: string;
 
-    @Column()
+    @Column('varchar')
     private apellido: string;
 
-    @Column()
+    @Column('int')
     private dni: number;
 
     @Column('int', {nullable: false})
@@ -23,7 +23,7 @@ export default class Persona {
     @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio)
     private domicilio: Domicilio;
 
-    @Column()
+    @Column('varchar')
     private eMail: string;
 
     @OneToMany(type => Telefono, telefono => telefono.getIdTelefono)

@@ -3,25 +3,51 @@ import Alumno from "src/persona/entities/alumno.entity";
 import Examen from "src/formulario/entities/examen.entity";
 import Horario from "./horario.entity";
 import Clase from "./clase.entity";
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne } from "typeorm";
 
 @Entity('curso')
 export default class Curso {
     @PrimaryGeneratedColumn()
     private idCurso: number;
     
+    @Column('varchar')
     private nombre: string;
+
+    @Column({type: 'varchar', length: 150, nullable: true})
     private descripcion: string;
+
+    @JoinColumn({name: "idDocente"})
+    @OneToOne(type => Docente, profesor => profesor.getIdDocente)
     private profesor: Docente;
+
+    @Column({type: 'int', nullable: true})
     private cupoMaximoAlumnos: number;
+
+    @Column({type: 'int', default: 1})
     private asistenciaMinima: number;
+
+
     private horarios: Horario[];
+
+    @Column('int')
     private cargaHorariaTotal: number;
+
+    @Column('date')
     private fechaInicio: Date;
+
+    @Column({type: 'date', nullable: true})
     private fechaFin: Date;
+
+    // No lo tenemos en la BD, pero lo podemos calcular por relaciones con otras tablas y de ultima se puede setear por metodo en la misma clase
     private horasDictadas: number;
+
+
     private alumnos: Alumno[];
+
+
     private examenes: Examen[];
+
+    
     private clasesDictadas: Clase[];
 
     public constructor(nombre: string, profesor: Docente, fechaInicio: Date, horarios: Horario[], fechaFin?: Date, descripcion?: string, cupoMaximoAlumnos?: number, asistenciaMinima?: number, cargaHorariaTotal?: number) {

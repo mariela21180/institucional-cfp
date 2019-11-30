@@ -3,16 +3,16 @@ import { Entity, PrimaryColumn, JoinColumn, OneToOne, Column } from "typeorm";
 
 @Entity('usuario')
 export default class Usuario {
-    @PrimaryColumn()
+    @PrimaryColumn('int')
     private idUsuario: number;
 
-    @Column({unique: true})
+    @Column('varchar', {unique: true})
     private usuario: string;
 
-    @Column()
+    @Column('varchar')
     private password: string;
 
-    @Column({default: 1})
+    @Column('int', {default: 1})
     private nivelAcceso: number;
 
     @JoinColumn({name: "idUsuario"})
