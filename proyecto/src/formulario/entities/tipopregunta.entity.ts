@@ -1,10 +1,11 @@
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity('tipo_pregunta')
 export default class TipoPregunta {
     @PrimaryGeneratedColumn()
     private idTipoPregunta: number;
     
+    @Column("varchar")
     private text: string;
     // Texto = 1,
     // OpcionSimple = 2,

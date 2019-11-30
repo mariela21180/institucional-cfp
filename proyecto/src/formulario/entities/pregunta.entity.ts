@@ -1,18 +1,32 @@
 import Opcion from "./opcion.entity";
 import TipoPregunta from "./tipopregunta.entity";
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany } from "typeorm";
 
 @Entity('pregunta')
 export default class Pregunta {
     @PrimaryGeneratedColumn()
     private idPregunta: number;
     
-    private esEditable: boolean; // nulleable
+    @Column("bit", {default: true})
+    private esEditable: boolean;
+
+    @Column("varchar")
     private consigna: string;
+
+    @JoinColumn({name: "idTipoPregunta"})
+    @OneToOne(type => TipoPregunta, idTipoPregunta => idTipoPregunta.getIdTipoPregunta)
     private idTipoPregunta: TipoPregunta;
+    
+    @OneToMany(type => Opcion, opciones => opciones.getIdOpcion)
     private opciones: Opcion[];
+    
+    @Column("bit", {default: false})
     private estaRespondida: boolean;
-    private puntaje: number; // nulleable
+    
+    @Column({ nullable: true })
+    private puntaje: number;
+    
+    // @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion)
     private respuesta: Opcion[]; // nulleable
 
     constructor(consigna: string, idTipoPregunta: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Opcion[], puntaje?: number) {

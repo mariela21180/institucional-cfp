@@ -4,7 +4,7 @@ import { Entity, PrimaryColumn } from "typeorm";
 
 @Entity('examen')
 export default class Examen {
-    @PrimaryColumn()
+    @PrimaryColumn("int")
     private idExamen: number;
     
     private formulario: Formulario;
