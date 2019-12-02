@@ -13,6 +13,15 @@ function activarNav(){
         if(url === '/agregar-alumno.html'){
             url = '/alumnos.html'
         }
+        if(url === '/crear-examen.html'){
+            url = '/formularios.html'
+        }
+        if(url === '/crear-curso.html'){
+            url = '/cursos.html'
+        }
+        if(url === '/agregar-clase.html'){
+            url = '/cursos.html'
+        }
 
         itemLinks.forEach(function(item) {
             let itemUrl = "/" + item.getAttribute("href");

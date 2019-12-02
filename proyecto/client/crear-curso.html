@@ -28,17 +28,16 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nombre del curso</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Nombre del curso">
+                        <input type="email" class="form-control nombreCurso" id="exampleFormControlInput1" placeholder="Nombre del curso">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Descripción</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                        <label for="exampleFormControlInput1" >Descripción</label>
+                        <input type="email" class="form-control descripcion" id="exampleFormControlInput1"
                             placeholder="Descripción">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Seleccione profesor</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control seleccionarProfesor" id="exampleFormControlSelect1">
                             <option>Seleccione...</option>
                             <option>Juan Perez</option>
                             <option>Jorge Gomez</option>
@@ -48,25 +47,25 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlInput1">Cupo máximo de alumnos (opcional)</label>
-                            <input type="number" step="1" min="1" class="form-control" placeholder="Cupo máximo">
+                            <input type="number" step="1" min="1" class="form-control cupoMaximo" placeholder="Cupo máximo">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlInput1">Porcentaje de asistencia mínima (opcional)</label>
-                            <input type="number" step="1" min="1" class="form-control" placeholder="Asistencia mínima">
+                            <input type="number" step="1" min="1" class="form-control porcentajeMinAsistencia" placeholder="Asistencia mínima">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="exampleFormControlInput1">Fecha de inicio</label>
-                            <input type="date" class="form-control" placeholder="Fecha de inicio">
+                            <input type="date" class="form-control fechaInicio" placeholder="Fecha de inicio">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleFormControlInput1">Fecha Fin (opcional)</label>
-                            <input type="date" class="form-control" placeholder="Fecha Fin">
+                            <input type="date" class="form-control fechaFin" placeholder="Fecha Fin">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleFormControlInput1">Carga Horaria (opcional)</label>
-                            <input type="number" min="1" class="form-control" placeholder="Carga Horaria">
+                            <input type="number" min="1" class="form-control cargaHoraria" placeholder="Carga Horaria">
                         </div>
                     </div>
                 </form>
@@ -230,6 +229,7 @@
     <script src="/assets/js/itemNavActivo.js"></script>
     <script src="/assets/js/include.js"></script>
     <script>include(); </script>
+    <script src="/assets/js/crear-curso.js"></script>
 </body>
 
 </html>
