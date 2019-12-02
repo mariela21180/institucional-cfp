@@ -1,15 +1,30 @@
-import { PrimaryGeneratedColumn, Entity } from "typeorm";
+import { PrimaryGeneratedColumn, Entity, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
+import Clase from "./clase.entity";
+import Archivo from "./archivo.entity";
+import Tema from "./tema.entity";
 
 @Entity('material')
 export default class Material {
     @PrimaryGeneratedColumn()
     private idMaterial: number;
 
-    private archivos: String[];
-    private temas: String[];
+    @OneToMany(type => Archivo, archivos => archivos.getIdArchivo)
+    private archivos: Archivo[];
+    
+    @OneToMany(type => Tema, temas => temas.getIdTema)
+    private temas: Tema[];
+
+    @Column('bit', {default: true})
     private habilitado: boolean; // por defecto true
 
-    public constructor(archivos?: String[], temas?: String[], habilitado?: boolean) {
+    @Column('int')
+    idClase: number;
+
+    @JoinColumn({name: 'idClase'})
+    @ManyToOne(type => Clase, clase => clase.getIdClase)
+    private clase: Clase; // lo agregué --> CONSULTAR
+
+    public constructor(archivos?: Archivo[], temas?: Tema[], habilitado?: boolean) {
         try {
             if (!archivos && !temas) {
                 throw new Error('Al menos debe tener un archivo o un tema');
@@ -46,11 +61,11 @@ export default class Material {
         this.idMaterial = idMaterial;
     }
 
-    public getArchivos(): String[] {
+    public getArchivos(): Archivo[] {
         return this.archivos;
     }
 
-    public getTemas(): String[] {
+    public getTemas(): Tema[] {
         return this.temas;
     }
 
@@ -63,11 +78,11 @@ export default class Material {
         }
     }
 
-    public addArchivo(archivo: string): void {
+    public addArchivo(archivo: Archivo): void {
         this.archivos.push(archivo);
     }
 
-    public addTema(tema: string): void {
+    public addTema(tema: Tema): void {
         this.temas.push(tema);
     }
 

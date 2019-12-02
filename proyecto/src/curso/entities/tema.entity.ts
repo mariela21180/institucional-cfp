@@ -1,13 +1,22 @@
-import { PrimaryGeneratedColumn, Entity, Column } from "typeorm";
+import { PrimaryGeneratedColumn, Entity, Column, JoinColumn, ManyToOne } from "typeorm";
+import Material from "./material.entity";
 
 @Entity('tema')
 export default class Tema {
     @PrimaryGeneratedColumn()
     private idTema: number;
     
-    @Column()
+    @Column('varchar', {length: 100})
     private tema: String;
 
+
+    @Column('int')
+    idMaterial: number;
+
+    @JoinColumn({name: 'idMaterial'})
+    @ManyToOne(type => Material, material => material.getIdMaterial)
+    private material: Material;
+    
     public constructor(tema: String) {
        this.tema = tema;
            

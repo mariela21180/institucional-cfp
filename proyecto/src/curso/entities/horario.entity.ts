@@ -1,15 +1,27 @@
 import Curso from "./curso.entity";
-import { PrimaryGeneratedColumn, Entity } from "typeorm";
+import { PrimaryGeneratedColumn, Entity, Column, JoinColumn, ManyToOne } from "typeorm";
 
 @Entity('horario')
 export default class Horario {
     @PrimaryGeneratedColumn()
     private idHorario: number;
     
-    private curso: Curso;
+    @Column('varchar', {length: 45})
     private dia: String;
+
+    @Column('varchar', {length: 45})
     private horaInicio: String; 
+
+    @Column('varchar', {length: 45})
     private horaFin: String; 
+
+    @Column('int')
+    idCurso: number;
+
+    @JoinColumn({name: 'idCurso'})
+    @ManyToOne(type => Curso, curso => curso.getIdCurso)
+    private curso: Curso;
+
 
     public constructor (curso: Curso, dia: String, horaInicio: String, horaFin: String) {
         this.curso = curso;
