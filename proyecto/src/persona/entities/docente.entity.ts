@@ -18,10 +18,18 @@ export default class Docente {
 
 
     public constructor(datos: Persona, nivelEstudioAlcanzado: string, titulo: string) {
-        this.datos = datos;
-        this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
-        this.titulo = titulo;
-        this.idDocente = datos.getIdPersona();
+        try {
+            if (!datos) {
+                throw new Error('Debe haber una Persona como parámetro.');
+            } else {
+                this.datos = datos;
+                this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
+                this.titulo = titulo;
+                this.idDocente = datos.getIdPersona();
+            }            
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     public setIdDocente(id: number) {

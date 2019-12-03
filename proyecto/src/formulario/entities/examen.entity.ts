@@ -14,9 +14,17 @@ export default class Examen {
     private estaCorregido: boolean;
 
     constructor(formulario: Formulario, curso: Curso, puntajeTotal?: number, estaRespondido?: boolean, estaCorregido?: boolean) {
-        this.formulario = formulario;
         this.curso = curso;
-        this.idExamen = formulario.getIdFormulario();
+        try {
+            if (!formulario) {
+                throw new Error('Debe haber un formulario como parámetro.');
+            } else {
+                this.formulario = formulario;
+                this.idExamen = this.formulario.getIdFormulario();
+            }            
+        } catch (error) {
+            console.log(error.message);
+        }
 
         if (puntajeTotal) {
             this.puntajeTotal = puntajeTotal;

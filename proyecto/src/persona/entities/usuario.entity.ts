@@ -20,15 +20,23 @@ export default class Usuario {
     private persona: Persona;
 
     public constructor(usuario: string, password: string, persona: Persona, nivelAcceso?: number) {
-        this.persona = persona;
-        this.usuario = usuario;
-        this.password = password;
-        this.idUsuario = persona.getIdPersona();
-        if (nivelAcceso == undefined) {
-            this.nivelAcceso = 1;
-        }
-        else {
-            this.nivelAcceso = nivelAcceso;
+        try {
+            if (!persona) {
+                throw new Error('Debe haber una Persona como parámetro.');
+            } else {
+                this.persona = persona;
+                this.usuario = usuario;
+                this.password = password;
+                this.idUsuario = persona.getIdPersona();
+                if (nivelAcceso == undefined) {
+                    this.nivelAcceso = 1;
+                }
+                else {
+                    this.nivelAcceso = nivelAcceso;
+                }
+            }            
+        } catch (error) {
+            console.log(error.message);
         }
     }
 
