@@ -1,16 +1,23 @@
 import Pregunta from "./pregunta.entity"
 import Opcion from "./opcion.entity";
 import { text } from "body-parser";
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 @Entity('formulario')
 export default class Formulario {
     @PrimaryGeneratedColumn()
     private idFormulario: number;
     
+    @Column("bit", {default: true})
     private esEditable: boolean;
+
+    @Column("varchar")
     private nombre: string;
+
+    @Column("varchar")
     private descripcion: string;
+    
+    @OneToMany(type => Pregunta, preguntas => preguntas.getIdPregunta, { nullable: false})
     private preguntas: Pregunta[];
 
     constructor(nombre: string, descripcion: string, esEditable?: boolean, preguntas?: Pregunta[]) {
@@ -26,7 +33,7 @@ export default class Formulario {
         if (preguntas) {
             this.preguntas = preguntas;
         } else {
-            this.preguntas = [];
+            this.preguntas = null;
         }
             
     }

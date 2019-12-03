@@ -1,6 +1,7 @@
 import Opcion from "./opcion.entity";
 import TipoPregunta from "./tipopregunta.entity";
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany, JoinTable, ManyToOne } from "typeorm";
+import Formulario from "./formulario.entity";
 
 @Entity('pregunta')
 export default class Pregunta {
@@ -39,6 +40,10 @@ export default class Pregunta {
         }
     })
     private respuestas: Opcion[]; // nulleable
+
+    @JoinColumn({name: 'idFormulario', referencedColumnName: 'idFormulario'})
+    @ManyToOne(type => Formulario, pregunta => pregunta.getIdFormulario, { nullable: false})
+    idFormulario: number;
 
     constructor(consigna: string, idTipoPregunta: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuestas?: Opcion[], puntaje?: number) {
         this.consigna = consigna;
