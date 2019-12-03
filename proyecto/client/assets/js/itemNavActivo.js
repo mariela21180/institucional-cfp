@@ -22,6 +22,9 @@ function activarNav(){
         if(url === '/agregar-clase.html'){
             url = '/cursos.html'
         }
+        if(url === '/agregar-profesor.html'){
+            url = '/profesores.html'
+        }
 
         itemLinks.forEach(function(item) {
             let itemUrl = "/" + item.getAttribute("href");
