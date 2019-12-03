@@ -1,17 +1,41 @@
-import { Formulario } from "./formulario.entity";
-import { Curso } from "../../curso/entities/curso.entity";
+import Formulario from "./formulario.entity";
+import Curso from "../../curso/entities/curso.entity";
+import { Entity, PrimaryColumn, JoinColumn, OneToOne, Column } from "typeorm";
 
-export class Examen {
+@Entity('examen')
+export default class Examen {
+    @PrimaryColumn("int")
     private idExamen: number;
+    
+    @JoinColumn({name: "idExamen"})
+    @OneToOne(type => Formulario, formulario => formulario.getIdFormulario, { nullable: false})
     private formulario: Formulario;
+    
+    @JoinColumn({name: "idCurso"})
+    @OneToOne(type => Curso, curso => curso.getIdCurso, { nullable: false})
     private curso: Curso;
+
+    @Column("int", { nullable: true })
     private puntajeTotal: number;
+    
+    @Column("bit", { default: false })
     private estaRespondido: boolean;
+
+    @Column("bit", { default: false })
     private estaCorregido: boolean;
 
     constructor(formulario: Formulario, curso: Curso, puntajeTotal?: number, estaRespondido?: boolean, estaCorregido?: boolean) {
-        this.formulario = formulario;
         this.curso = curso;
+        try {
+            if (!formulario) {
+                throw new Error('Debe haber un formulario como parámetro.');
+            } else {
+                this.formulario = formulario;
+                this.idExamen = this.formulario.getIdFormulario();
+            }            
+        } catch (error) {
+            console.log(error.message);
+        }
 
         if (puntajeTotal) {
             this.puntajeTotal = puntajeTotal;
@@ -34,12 +58,11 @@ export class Examen {
         } else {
             this.estaCorregido = false;
         }
-
     }
     public getIdExamen(): number {
         return this.idExamen;
     }
-    private setIdExamen(idExamen: number): void {
+    public setIdExamen(idExamen: number): void {
         this.idExamen = idExamen;
     }
     public getFormulario(): Formulario {
@@ -80,5 +103,9 @@ export class Examen {
         return null;
         // Terminar método. Recorrer la lista de preguntas del Formulario y sumar puntajes
         // Estoy en duda si se calcula es puntaje total de las preguntas (al crear el form), o la calificacion total de las respuestas (despues de estar respondido y corregido) 
+    }
+
+    public agregarPregunta(): void {
+        // Al crear la pregunta, como es de examen, hay que validar que al menos una de las opciones tenga tru (respuesta correcta)
     }
 }

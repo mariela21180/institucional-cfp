@@ -1,17 +1,39 @@
 import Persona from "./persona.entity";
+import { Entity, PrimaryColumn, Column, JoinColumn, OneToOne } from "typeorm";
 
+@Entity('alumno')
 export default class Alumno {
-    private idAlumno: number;
+    @PrimaryColumn('int')
+    private idAlumno: number;    
+
+    @JoinColumn({name: "idAlumno"})
+    @OneToOne(type => Persona, datos => datos.getIdPersona)
     private datos: Persona;
+
+    @Column('varchar')
     private nivelEstudioAlcanzado: string;
+
+    @Column('bit')
     private adeudaDocumentacion: boolean;
 
 
     public constructor(datos: Persona, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
-        this.datos = datos;
-        this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
-        this.adeudaDocumentacion = adeudaDocumentacion;
-        this.idAlumno = datos.getIdPersona();
+        try {
+            if (!datos) {
+                throw new Error('Debe haber una Persona como parámetro.');
+            } else {
+                this.datos = datos;
+                this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
+                this.adeudaDocumentacion = adeudaDocumentacion;
+                this.idAlumno = datos.getIdPersona();
+            }            
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    public setIdAlumno(id: number) {
+        this.idAlumno = id;
     }
 
     public getIdAlumno():number{

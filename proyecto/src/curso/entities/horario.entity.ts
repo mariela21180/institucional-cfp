@@ -1,16 +1,40 @@
-import { Curso } from "./curso.entity";
+import Curso from "./curso.entity";
+import { PrimaryGeneratedColumn, Entity, Column, JoinColumn, ManyToOne } from "typeorm";
 
+@Entity('horario')
 export default class Horario {
-    private curso: Curso;
+    @PrimaryGeneratedColumn()
+    private idHorario: number;
+    
+    @Column('varchar', {length: 45})
     private dia: String;
-    private horaInicio: Date; // ver si está bien poner tipo Date
-    private horaFin: Date; // ver si está bien poner tipo Date
 
-    public constructor (curso: Curso, dia: String, horaInicio: Date, horaFin: Date) {
+    @Column('varchar', {length: 45})
+    private horaInicio: String; 
+
+    @Column('varchar', {length: 45})
+    private horaFin: String; 
+
+    @Column('int')
+    idCurso: number;
+
+    @JoinColumn({name: 'idCurso'})
+    @ManyToOne(type => Curso, curso => curso.getIdCurso)
+    private curso: Curso;
+
+
+    public constructor (curso: Curso, dia: String, horaInicio: String, horaFin: String) {
         this.curso = curso;
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+    }
+
+    public getIdHorario(): number {
+        return this.idHorario;
+    }
+    public setIdHorario(idHorario: number): void {
+        this.idHorario = idHorario;
     }
 
     public getCurso(): Curso {
@@ -21,11 +45,11 @@ export default class Horario {
         return this.dia;
     }
 
-    public getHoraInicio(): Date {
+    public getHoraInicio(): String {
         return this.horaInicio;
     }
 
-    public getHoraFin(): Date {
+    public getHoraFin(): String {
         return this.horaFin;
     }
 
@@ -33,15 +57,15 @@ export default class Horario {
         this.curso = curso;
     }
 
-    public setDia(dia: string): void {
+    public setDia(dia: String): void {
         this.dia = dia;
     }
 
-    public setHoraInicio(hora: Date): void {
+    public setHoraInicio(hora: String): void {
         this.horaInicio = hora;
     }
 
-    public setHoraFin(hora: Date): void {
+    public setHoraFin(hora: String): void {
         this.horaFin = hora;
     }
  

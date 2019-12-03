@@ -1,15 +1,30 @@
-export class Respuesta {
-    private idRespuesta: number;
+import { Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne, Column } from "typeorm";
+import Pregunta from "./pregunta.entity";
+
+@Entity('opcion')
+export default class Opcion {
+    @PrimaryGeneratedColumn()
+    private idOpcion: number;
+    
+    @Column("varchar")
     private texto: string;
-    private isOk: boolean; // nulleable
+
+    @Column("bit", { nullable: true })
+    private isOk: boolean;
+
+    @Column("int", { nullable: true })
     private calificacion: number;
+
+    @JoinColumn({name: 'idPregunta', referencedColumnName: 'idPregunta'})
+    @ManyToOne(type => Pregunta, pregunta => pregunta.getIdPregunta, { nullable: false})
+    idPregunta: number;
 
     constructor(texto: string, isOk?: boolean, calificacion?: number) {
         this.texto = texto;
         if (isOk) {
             this.isOk = isOk;
         } else {
-            this.isOk = null; // Si la pregunta no es para un Examen, isOk es null, y hay que evitar hacer todos los cálculos de la "respuesta correcta"
+            this.isOk = false; // Si la pregunta no es para un Examen, isOk es null, y hay que evitar hacer todos los cálculos de la "respuesta correcta"
         }
         
         // Por defecto es "1". 
@@ -22,11 +37,11 @@ export class Respuesta {
         }
     }
 
-    public getIdRespuesta(): number {
-        return this.idRespuesta;
+    public getIdOpcion(): number {
+        return this.idOpcion;
     }
-    private setIdRespuesta(idRespuesta: number): void {
-        this.idRespuesta = idRespuesta;
+    public setIdOpcion(idOpcion: number): void {
+        this.idOpcion = idOpcion;
     }
     
     public getTexto(): string {
