@@ -35,13 +35,13 @@ export default class Clase {
         if(asistencia) {
             this.asistencia = asistencia;
         } else {
-            this.asistencia = [];
+            this.asistencia = null;
         }
 
         if(material) {
             this.material = material;
         } else {
-            this.material = [];
+            this.material = null;
         }
     }
 
