@@ -17,7 +17,7 @@ export default class Pregunta {
     @OneToOne(type => TipoPregunta, idTipoPregunta => idTipoPregunta.getIdTipoPregunta)
     private idTipoPregunta: TipoPregunta;
     
-    @OneToMany(type => Opcion, opciones => opciones.getIdOpcion)
+    @OneToMany(type => Opcion, opciones => opciones.getIdOpcion, { nullable: false})
     private opciones: Opcion[];
     
     @Column("bit", {default: false})
@@ -26,7 +26,7 @@ export default class Pregunta {
     @Column({ nullable: true })
     private puntaje: number;
     
-    @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion)
+    @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion, { nullable: true})
     @JoinTable({
         name: "respuestas",
         joinColumn: {

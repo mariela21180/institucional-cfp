@@ -1,13 +1,23 @@
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne, Column } from "typeorm";
+import Pregunta from "./pregunta.entity";
 
 @Entity('opcion')
 export default class Opcion {
     @PrimaryGeneratedColumn()
     private idOpcion: number;
     
+    @Column("varchar")
     private texto: string;
-    private isOk: boolean; // nulleable
+
+    @Column("bit", { nullable: true })
+    private isOk: boolean;
+
+    @Column("int", { nullable: true })
     private calificacion: number;
+
+    @JoinColumn({name: 'idPregunta', referencedColumnName: 'idPregunta'})
+    @ManyToOne(type => Pregunta, pregunta => pregunta.getIdPregunta, { nullable: false})
+    idPregunta: number;
 
     constructor(texto: string, isOk?: boolean, calificacion?: number) {
         this.texto = texto;
