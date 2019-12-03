@@ -1,16 +1,27 @@
 import Formulario from "./formulario.entity";
 import Curso from "../../curso/entities/curso.entity";
-import { Entity, PrimaryColumn } from "typeorm";
+import { Entity, PrimaryColumn, JoinColumn, OneToOne, Column } from "typeorm";
 
 @Entity('examen')
 export default class Examen {
     @PrimaryColumn("int")
     private idExamen: number;
     
+    @JoinColumn({name: "idExamen"})
+    @OneToOne(type => Formulario, formulario => formulario.getIdFormulario, { nullable: false})
     private formulario: Formulario;
+    
+    @JoinColumn({name: "idCurso"})
+    @OneToOne(type => Curso, curso => curso.getIdCurso, { nullable: false})
     private curso: Curso;
+
+    @Column("int", { nullable: true })
     private puntajeTotal: number;
+    
+    @Column("bit", { default: false })
     private estaRespondido: boolean;
+
+    @Column("bit", { default: false })
     private estaCorregido: boolean;
 
     constructor(formulario: Formulario, curso: Curso, puntajeTotal?: number, estaRespondido?: boolean, estaCorregido?: boolean) {
