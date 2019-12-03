@@ -1,6 +1,6 @@
 import Opcion from "./opcion.entity";
 import TipoPregunta from "./tipopregunta.entity";
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany, JoinTable } from "typeorm";
 
 @Entity('pregunta')
 export default class Pregunta {
@@ -26,26 +26,41 @@ export default class Pregunta {
     @Column({ nullable: true })
     private puntaje: number;
     
-    // @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion)
-    private respuesta: Opcion[]; // nulleable
+    @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion)
+    @JoinTable({
+        name: "respuestas",
+        joinColumn: {
+            name: "idPregunta",
+            referencedColumnName: "idPregunta"
+        },
+        inverseJoinColumn: {
+            name: "idOpcion",
+            referencedColumnName: "idOpcion"
+        }
+    })
+    private respuestas: Opcion[]; // nulleable
 
-    constructor(consigna: string, idTipoPregunta: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Opcion[], puntaje?: number) {
+    constructor(consigna: string, idTipoPregunta: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuestas?: Opcion[], puntaje?: number) {
         this.consigna = consigna;
         this.idTipoPregunta = idTipoPregunta;
 
         // Si es de texto puede venir vacía
         // Si es de otro idTipoPregunta, debe venir como mínimo debe venir 1.
         // Si es pregunta de examen, debe venir al menos una con "isOk"
-        try {
-            if (this.idTipoPregunta.getIdTipoPregunta() != 1) {
-                if (!opciones) {
-                    throw new Error('Debe haber como mínimo una opción.')
-                }
-            }
-            if (opciones) {
-                this.opciones = opciones;                
+        try {            
+            if (!idTipoPregunta) {
+                throw new Error('Debe haber un Tipo de Pregunta como parámetro.');
             } else {
-                this.opciones = [];
+                if (this.idTipoPregunta.getIdTipoPregunta() != 1) {
+                    if (!opciones) {
+                        throw new Error('Debe haber como mínimo una opción.')
+                    }
+                }
+                if (opciones) {
+                    this.opciones = opciones;                
+                } else {
+                    this.opciones = [];
+                }
             }
         } catch(error) {
             console.log(error.message);
@@ -70,10 +85,10 @@ export default class Pregunta {
 
         // Al crearla, nunca tendrá respuesta
         // Cuando el alumno submitea el formulario, se envía la respuesta
-        if (respuesta) {
-            this.respuesta = respuesta;
+        if (respuestas) {
+            this.respuestas = respuestas;
         } else {            
-            this.respuesta = null;
+            this.respuestas = null;
         }
         
         
@@ -122,10 +137,10 @@ export default class Pregunta {
     }
 
     public getRespuesta(): Opcion[] {
-        return this.respuesta;
+        return this.respuestas;
     }
     public setRespuesta(respuesta: Opcion[]): void {
-        this.respuesta = respuesta;
+        this.respuestas = respuesta;
     }
 
     public getPuntaje(): number {
