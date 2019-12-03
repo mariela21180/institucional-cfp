@@ -1,5 +1,6 @@
-export class RespuestaDto {
+export class OpcionDto {
     readonly texto: string;
     readonly isOk?: boolean;
     readonly calificacion?: number;
+    readonly idPregunta: number;
 }

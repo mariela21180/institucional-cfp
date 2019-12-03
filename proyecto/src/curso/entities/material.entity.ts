@@ -1,30 +1,76 @@
+import { PrimaryGeneratedColumn, Entity, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
+import Clase from "./clase.entity";
+import Archivo from "./archivo.entity";
+import Tema from "./tema.entity";
+
+@Entity('material')
 export default class Material {
-    private archivos: String[];
-    private temas: String[];
+    @PrimaryGeneratedColumn()
+    private idMaterial: number;
+
+    @OneToMany(type => Archivo, archivos => archivos.getIdArchivo)
+    private archivos: Archivo[];
+    
+    @OneToMany(type => Tema, temas => temas.getIdTema)
+    private temas: Tema[];
+
+    @Column('bit', {default: true})
     private habilitado: boolean; // por defecto true
 
-    public constructor (archivos: String[], temas: String[], habilitado?: boolean) {
-        this.archivos = archivos;
-        this.temas = temas;
+    @Column('int')
+    idClase: number;
 
-        if(habilitado) {
-            this.habilitado = habilitado;
+    @JoinColumn({name: 'idClase'})
+    @ManyToOne(type => Clase, clase => clase.getIdClase)
+    private clase: Clase; // lo agregué --> CONSULTAR
+
+    public constructor(archivos?: Archivo[], temas?: Tema[], habilitado?: boolean) {
+        try {
+            if (!archivos && !temas) {
+                throw new Error('Al menos debe tener un archivo o un tema');
+            } else {
+                if (archivos) {
+                    this.archivos = archivos;
+                } else {
+                    this.archivos = [];
+                }
+                if (temas) {
+                    this.temas = temas;
+                } else {
+                    this.temas = [];
+                }
+            }
+
+            if (habilitado) {
+                this.habilitado = habilitado;
+            }
+            else {
+                this.habilitado = true;
+            }
         }
-        else {
-            this.habilitado = true;
+        catch (error) {
+            console.log(error.message);
         }
     }
 
-    public getArchivos(): String[] {
+
+    public getIdMaterial(): number {
+        return this.idMaterial;
+    }
+    public setIdMaterial(idMaterial: number): void {
+        this.idMaterial = idMaterial;
+    }
+
+    public getArchivos(): Archivo[] {
         return this.archivos;
     }
 
-    public getTemas(): String[] {
+    public getTemas(): Tema[] {
         return this.temas;
     }
 
     public habilitarDeshabilitar(): void {
-        if(this.habilitado) {
+        if (this.habilitado) {
             this.habilitado = false;
         }
         else {
@@ -32,11 +78,11 @@ export default class Material {
         }
     }
 
-    public addArchivo(archivo: string): void {
+    public addArchivo(archivo: Archivo): void {
         this.archivos.push(archivo);
     }
 
-    public addTema(tema: string): void {
+    public addTema(tema: Tema): void {
         this.temas.push(tema);
     }
 

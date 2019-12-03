@@ -1,12 +1,32 @@
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from "typeorm";
+import Persona from "./persona.entity";
+
+@Entity('telefono')
 export default class Telefono {
+    @PrimaryGeneratedColumn()
     private idTelefono: number;
+
+    @Column('int')
     private codArea: number;
+
+    @Column('int')
     private nro: number;
 
-    public constructor(codArea:number, nro:number) {
+    @Column('int')
+    idPersona: number;
+
+    @JoinColumn({name: 'idPersona'})
+    @ManyToOne(type => Persona, titular => titular.getIdPersona)
+    private titular: Persona;
+
+    public constructor(codArea:number, nro:number, titular: Persona) {
         this.codArea = codArea;
         this.nro = nro;
-      
+        this.titular = titular;
+    }
+
+    public setIdtelefono(id: number) {
+        this.idTelefono = id;
     }
 
     public getIdTelefono(): number{
@@ -21,4 +41,11 @@ export default class Telefono {
         return this.nro;
     }
 
+    public getTitular(): Persona {
+        return this.titular;
+    }
+
+    public setTitular(titular: Persona): void {
+        this.titular = titular;
+    }
 }

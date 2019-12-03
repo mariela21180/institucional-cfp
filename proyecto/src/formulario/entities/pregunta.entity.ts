@@ -1,23 +1,75 @@
-import { Respuesta } from "./respuesta.entity";
-import { TipoPregunta } from "./tipopregunta";
+import Opcion from "./opcion.entity";
+import TipoPregunta from "./tipopregunta.entity";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany, JoinTable, ManyToOne } from "typeorm";
+import Formulario from "./formulario.entity";
 
-export class Pregunta {
+@Entity('pregunta')
+export default class Pregunta {
+    @PrimaryGeneratedColumn()
     private idPregunta: number;
-    private esEditable: boolean; // nulleable
+    
+    @Column("bit", {default: true})
+    private esEditable: boolean;
+
+    @Column("varchar")
     private consigna: string;
-    private tipo: TipoPregunta;
-    private opciones: Respuesta[];
+
+    @JoinColumn({name: "idTipoPregunta"})
+    @OneToOne(type => TipoPregunta, idTipoPregunta => idTipoPregunta.getIdTipoPregunta)
+    private idTipoPregunta: TipoPregunta;
+    
+    @OneToMany(type => Opcion, opciones => opciones.getIdOpcion, { nullable: false})
+    private opciones: Opcion[];
+    
+    @Column("bit", {default: false})
     private estaRespondida: boolean;
-    private puntaje: number; // nulleable
-    private respuesta: Respuesta[]; // nulleable
+    
+    @Column({ nullable: true })
+    private puntaje: number;
+    
+    @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion, { nullable: true})
+    @JoinTable({
+        name: "respuestas",
+        joinColumn: {
+            name: "idPregunta",
+            referencedColumnName: "idPregunta"
+        },
+        inverseJoinColumn: {
+            name: "idOpcion",
+            referencedColumnName: "idOpcion"
+        }
+    })
+    private respuestas: Opcion[]; // nulleable
 
-    constructor(consigna: string, tipo: TipoPregunta, opciones: Respuesta[], esEditable?: boolean, estaRespondida?: boolean, respuesta?: Respuesta[], puntaje?: number) {
+    @JoinColumn({name: 'idFormulario', referencedColumnName: 'idFormulario'})
+    @ManyToOne(type => Formulario, pregunta => pregunta.getIdFormulario, { nullable: false})
+    idFormulario: number;
+
+    constructor(consigna: string, idTipoPregunta: TipoPregunta, opciones?: Opcion[], esEditable?: boolean, estaRespondida?: boolean, respuestas?: Opcion[], puntaje?: number) {
         this.consigna = consigna;
-        this.tipo = tipo;
+        this.idTipoPregunta = idTipoPregunta;
 
-        // Como mínimo debe venir 1.
+        // Si es de texto puede venir vacía
+        // Si es de otro idTipoPregunta, debe venir como mínimo debe venir 1.
         // Si es pregunta de examen, debe venir al menos una con "isOk"
-        this.opciones = opciones;
+        try {            
+            if (!idTipoPregunta) {
+                throw new Error('Debe haber un Tipo de Pregunta como parámetro.');
+            } else {
+                if (this.idTipoPregunta.getIdTipoPregunta() != 1) {
+                    if (!opciones) {
+                        throw new Error('Debe haber como mínimo una opción.')
+                    }
+                }
+                if (opciones) {
+                    this.opciones = opciones;                
+                } else {
+                    this.opciones = [];
+                }
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
 
         // Por defecto es true.
         // Si la pregunta no es de Texto, hay que setearlo a false.
@@ -38,10 +90,10 @@ export class Pregunta {
 
         // Al crearla, nunca tendrá respuesta
         // Cuando el alumno submitea el formulario, se envía la respuesta
-        if (respuesta) {
-            this.respuesta = respuesta;
+        if (respuestas) {
+            this.respuestas = respuestas;
         } else {            
-            this.respuesta = null;
+            this.respuestas = null;
         }
         
         
@@ -57,7 +109,7 @@ export class Pregunta {
     public getIdPregunta(): number {
         return this.idPregunta;
     }
-    private setIdPregunta(idPregunta: number): void {
+    public setIdPregunta(idPregunta: number): void {
         this.idPregunta = idPregunta;
     }
     public getEsEditable(): boolean {
@@ -73,12 +125,12 @@ export class Pregunta {
         this.consigna = consigna;
     }
     public getTipo(): TipoPregunta {
-        return this.tipo;
+        return this.idTipoPregunta;
     }
-    public getOpciones(): Respuesta[] {
+    public getOpciones(): Opcion[] {
         return this.opciones;
     }
-    public setOpciones(opciones: Respuesta[]): void {
+    public setOpciones(opciones: Opcion[]): void {
         this.opciones = opciones;
     }
     
@@ -89,11 +141,11 @@ export class Pregunta {
         this.estaRespondida = estaRespondida;
     }
 
-    public getRespuesta(): Respuesta[] {
-        return this.respuesta;
+    public getRespuesta(): Opcion[] {
+        return this.respuestas;
     }
-    public setRespuesta(respuesta: Respuesta[]): void {
-        this.respuesta = respuesta;
+    public setRespuesta(respuesta: Opcion[]): void {
+        this.respuestas = respuesta;
     }
 
     public getPuntaje(): number {
@@ -101,5 +153,9 @@ export class Pregunta {
     }
     public setPuntaje(puntaje: number): void {
         this.puntaje = puntaje;
+    }
+
+    public agregarOpcion(opcion: Opcion) {
+        this.opciones.push(opcion);
     }
 }

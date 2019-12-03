@@ -1,8 +1,20 @@
+import { PrimaryGeneratedColumn, Column, Entity } from "typeorm";
+
+@Entity('domicilio')
 export default class Domicilio {
+    @PrimaryGeneratedColumn()
     private idDomicilio: number;
+
+    @Column('varchar')
     private calle: string;
+
+    @Column('int')
     private altura: number;
+
+    @Column('varchar', {nullable: true})
     private piso: string;
+
+    @Column('varchar', {nullable: true})
     private dpto: string;
 
     public constructor(calle: string, altura: number, piso?: string, dpto?: string) {
@@ -17,6 +29,10 @@ export default class Domicilio {
             this.dpto = dpto
         }
         else this.dpto = null;
+    }
+
+    public setIdDomicilio(dom: number) {
+        this.idDomicilio = dom;
     }
 
     public getIdDomicilio(): number {
