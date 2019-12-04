@@ -13,7 +13,7 @@ let mock = [
 'descripcion':'Inscrpción de Alumnos'
 },
 {'nombreformulario':'Asistencias',
-'descripcion':'Cómputo de asistencias'
+'descripcion':'Cómputo de asistencias 1'
 }
 ];
 
