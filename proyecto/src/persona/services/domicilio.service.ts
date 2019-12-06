@@ -34,20 +34,20 @@ export class DomicilioService {
         return await this.domicilioRepository.find();
     }
 
-    async updateDomicilio(domicilioId:number, domicilioDto: DomicilioDto): Promise<Domicilio[]> {
-        const domicilio = await this.domicilioRepository.findOne(domicilioId);
+    // async updateDomicilio(domicilioId:number, domicilioDto: DomicilioDto): Promise<Domicilio[]> {
+    //     const domicilio = await this.domicilioRepository.findOne(domicilioId);
 
-        if (!domicilioId) {
-            throw new HttpException('Domicilio inexistente', 404);
-        }
-        domicilio.setCalle(domicilioDto.calle); 
-        domicilio.setAltura(domicilioDto.altura); 
-        domicilio.setPiso(domicilioDto.piso); 
-        domicilio.setDpto(domicilioDto.dpto); 
+    //     if (!domicilioId) {
+    //         throw new HttpException('Domicilio inexistente', 404);
+    //     }
+    //     domicilio.setCalle(domicilioDto.calle); 
+    //     domicilio.setAltura(domicilioDto.altura); 
+    //     domicilio.setPiso(domicilioDto.piso); 
+    //     domicilio.setDpto(domicilioDto.dpto); 
 
-        await this.domicilioRepository.save(domicilio);
+    //     await this.domicilioRepository.save(domicilio);
         
-        return await this.domicilioRepository.find();
-    }
+    //     return await this.domicilioRepository.find();
+    // }
 
 }
