@@ -26,8 +26,8 @@ export class PersonaController {
         return await this.personaService.deletePersona(parseInt(personaId));
     }
     
-    // @Put(':personaId')
-    // async updatePersona(@Param('personaId') personaId: any, @Body() persona: any) {
-    //     return await this.personaService.updatePersona(parseInt(personaId), persona);
-    // }
+    @Put(':personaId')
+    async updatePersona(@Param('personaId') personaId: any, @Body() persona: any) {
+        return await this.personaService.updatePersona(parseInt(personaId), persona);
+    }
 }

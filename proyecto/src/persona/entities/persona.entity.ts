@@ -18,16 +18,12 @@ export default class Persona {
 
     @Column('varchar')
     private eMail: string;
-
-    @OneToMany(type => Telefono, telefono => telefono.getIdTelefono)
-    private telefono: Telefono[];
     
     public constructor(nombre: string, apellido: string, dni: number, eMail: string) { 
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.eMail = eMail;
-        this.telefono = null;
     }
 
     public setIdPersona(id: number) {
@@ -68,14 +64,6 @@ export default class Persona {
 
     public setEMail(eMail: string): void {
         this.eMail = eMail;
-    }
-
-    public setTelefono(telefono: Telefono[]) {
-        this.telefono = telefono;
-    }
-
-    public getTelefono(): Telefono[] {
-        return this.telefono;
     }
 
 }

@@ -35,20 +35,20 @@ export class PersonaService {
         return await this.personaRepository.find();
     }
 
-    // async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona[]> {
-    //     const persona = await this.personaRepository.findOne(personaId);
+    async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona[]> {
+        const persona = await this.personaRepository.findOne(personaId);
 
-    //     if (!personaId) {
-    //         throw new HttpException('Persona inexistente', 404);
-    //     }
-    //     persona.setNombre(personaDto.nombre); 
-    //     persona.setApellido(personaDto.apellido); 
-    //     persona.setDni(personaDto.dni); 
-    //     persona.setEMail(personaDto.eMail); 
+        if (!personaId) {
+            throw new HttpException('Persona inexistente', 404);
+        }
+        persona.setNombre(personaDto.nombre); 
+        persona.setApellido(personaDto.apellido); 
+        persona.setDni(personaDto.dni); 
+        persona.setEMail(personaDto.eMail); 
 
-    //     await this.personaRepository.save(persona);
+        await this.personaRepository.save(persona);
         
-    //     return await this.personaRepository.find();
-    // }
+        return await this.personaRepository.find();
+    }
 
 } 
