@@ -12,7 +12,7 @@ export class PersonaService {
 
 
     async addPersona(personaDto: PersonaDto): Promise<Persona[]> {
-        const persona = new Persona(personaDto['nombre'], personaDto['apellido'], personaDto['dni'], personaDto['idDomicilio'], personaDto['eMail']);
+        const persona = new Persona(personaDto['nombre'], personaDto['apellido'], personaDto['dni'], personaDto['eMail']);
         await this.personaRepository.save(persona);
         return await this.personaRepository.find();
     }
@@ -37,7 +37,6 @@ export class PersonaService {
 
     // async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona[]> {
     //     const persona = await this.personaRepository.findOne(personaId);
-    //     console.log(persona);
 
     //     if (!personaId) {
     //         throw new HttpException('Persona inexistente', 404);

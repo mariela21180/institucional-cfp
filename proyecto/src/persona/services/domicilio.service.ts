@@ -11,7 +11,7 @@ export class DomicilioService {
     ) { }
 
     async addDomicilio(domicilioDto: DomicilioDto): Promise<Domicilio[]> {
-        const domicilio = new Domicilio(domicilioDto['calle'], domicilioDto['altura'], domicilioDto['piso'], domicilioDto['dpto']);
+        const domicilio = new Domicilio(domicilioDto['calle'], domicilioDto['altura'], domicilioDto['idPersona'], domicilioDto['piso'], domicilioDto['dpto']);
         await this.domicilioRepository.save(domicilio);
         return await this.domicilioRepository.find();
     }

@@ -16,25 +16,16 @@ export default class Persona {
     @Column('int')
     private dni: number;
 
-    @Column('int', {nullable: false})
-    private idDomicilio: number;
-
-    @JoinColumn({name: "idDomicilio"})
-    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio)
-    private domicilio: Domicilio;
-
     @Column('varchar')
     private eMail: string;
 
     @OneToMany(type => Telefono, telefono => telefono.getIdTelefono)
     private telefono: Telefono[];
     
-    public constructor(nombre: string, apellido: string, dni: number, idDomicilio: number, eMail: string) {
+    public constructor(nombre: string, apellido: string, dni: number, eMail: string) { 
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.idDomicilio = idDomicilio;
-        // this.domicilio = null;
         this.eMail = eMail;
         this.telefono = null;
     }
@@ -69,10 +60,6 @@ export default class Persona {
 
     public setDni(dni: number): void {
         this.dni = dni;
-    }
-
-    public getDomicilio():Domicilio{
-        return this.domicilio;
     }
 
     public getEMail():string {

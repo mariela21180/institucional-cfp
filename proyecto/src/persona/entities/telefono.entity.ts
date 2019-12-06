@@ -16,13 +16,14 @@ export default class Telefono {
     idPersona: number;
 
     @JoinColumn({name: 'idPersona'})
-    @ManyToOne(type => Persona, titular => titular.getIdPersona)
+    @ManyToOne(type => Persona, titular => titular.getIdPersona, { onDelete: 'CASCADE'})
     private titular: Persona;
 
-    public constructor(codArea:number, nro:number, titular: Persona) {
+    public constructor(codArea:number, nro:number, idPersona: number) {
         this.codArea = codArea;
         this.nro = nro;
-        this.titular = titular;
+        this.idPersona = idPersona;
+        // this.titular = null;
     }
 
     public setIdtelefono(id: number) {
@@ -36,9 +37,15 @@ export default class Telefono {
     public getCodArea(): number {
         return this.codArea;
     }
+    public setCodArea(codArea: number) {
+        this.codArea = codArea;
+    }
 
     public getNro():number {
         return this.nro;
+    }
+    public setNro(nro: number) {
+        this.nro = nro;
     }
 
     public getTitular(): Persona {

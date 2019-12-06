@@ -1,4 +1,5 @@
-import { PrimaryGeneratedColumn, Column, Entity } from "typeorm";
+import { PrimaryGeneratedColumn, Column, Entity, JoinColumn, OneToOne } from "typeorm";
+import Persona from "./persona.entity";
 
 @Entity('domicilio')
 export default class Domicilio {
@@ -11,15 +12,23 @@ export default class Domicilio {
     @Column('int')
     private altura: number;
 
+    @Column('int', {nullable: false})
+    private idPersona: number;
+
     @Column('varchar', {nullable: true})
     private piso: string;
 
     @Column('varchar', {nullable: true})
-    private dpto: string;
+    private dpto: string;    
 
-    public constructor(calle: string, altura: number, piso?: string, dpto?: string) {
+    @JoinColumn({name: "idPersona"})
+    @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
+    private persona: Persona;
+
+    public constructor(calle: string, altura: number, idPersona: number, piso?: string, dpto?: string) {
         this.calle = calle;
         this.altura = altura;
+        this.idPersona = idPersona;
         if (piso) {
             this.piso = piso
         }
@@ -37,6 +46,10 @@ export default class Domicilio {
 
     public getIdDomicilio(): number {
         return this.idDomicilio;
+    }
+
+    public getIdPersona(): number {
+        return this.idPersona;
     }
 
     public getCalle(): string {
