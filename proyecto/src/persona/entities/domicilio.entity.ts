@@ -43,8 +43,16 @@ export default class Domicilio {
         return this.calle;
     }
 
+    public setCalle(calle: string): void {
+        this.calle = calle;
+    }
+
     public getAltura(): number {
         return this.altura;
+    }
+
+    public setAltura(altura: number): void {
+        this.altura = altura;
     }
 
     public setPiso(piso: string): void {
@@ -63,4 +71,5 @@ export default class Domicilio {
         return this.dpto;
     }
 
+    
 }
