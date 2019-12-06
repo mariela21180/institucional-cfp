@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
 import { DomicilioService } from '../services/domicilio.service';
 
-@Controller('domicilio')
+@Controller('domicilios')
 export class DomicilioController {
     public constructor(private domicilioService: DomicilioService) {}
     

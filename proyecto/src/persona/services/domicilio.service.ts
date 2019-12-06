@@ -23,7 +23,7 @@ export class DomicilioService {
     async getDomicilio(domicilioId: number): Promise<Domicilio> {
         const domicilio = await this.domicilioRepository.findOne(domicilioId);
 
-        if (!domicilioId) {
+        if (!domicilio) {
             throw new HttpException('Domicilio inexistente', 404);
         }
         return domicilio;
