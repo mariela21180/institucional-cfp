@@ -11,3 +11,7 @@ insert into domicilio(idDomicilio, calle, altura, idPersona) values (3, "Canada"
 insert into telefono values (1, 0249, 154633817, 1);
 insert into telefono values (2, 0249, 4420983, 1);
 insert into telefono values (3, 0249, 154997785, 2);
+
+insert into docente values (1, "Universitario Incompleto", "Lisenciado en Administración");
+insert into docente values (2, "Universitario Completo", "Contador Publico");
+insert into docente values (3, "Terciario Incompleto", "Analista en Sistemas");
