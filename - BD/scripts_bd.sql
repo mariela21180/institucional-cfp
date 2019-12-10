@@ -14,4 +14,9 @@ insert into telefono values (3, 0249, 154997785, 2);
 
 insert into docente values (1, "Universitario Incompleto", "Lisenciado en Administración");
 insert into docente values (2, "Universitario Completo", "Contador Publico");
-insert into docente values (3, "Terciario Incompleto", "Analista en Sistemas");
+
+insert into alumno values (1, "Universitario Incompleto", false);
+insert into alumno values (2, "Universitario Completo", false);
+insert into alumno values (3, "Terciario Incompleto", true);
+
+insert into usuario values (1, "mariela21180", "testpass123", 1);
