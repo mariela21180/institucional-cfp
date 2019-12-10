@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             {
                 idCurso: 1,
                 nombreFormulario: 'Curso',
-                descripcion: 'curso programador full stack'
+                descripcion: 'Curso programador full stack'
             },
             {
                 idCurso: 2,
@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     console.log(mock.values[1]);
-
-    let campos = [];
 
     function agrregarTabla(curso) {
         return `

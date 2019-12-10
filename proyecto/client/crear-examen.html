@@ -31,13 +31,13 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#textModal">Texto</a>
+                            data-target="#textModal" value="0">Texto</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opSimpleModal">Opcion Simple</a>
+                            data-target="#opSimpleModal" value="1">Opcion Simple</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opMultiModal">Opcion Multiple</a>
+                            data-target="#opMultiModal" value="2">Opcion Multiple</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opListaModal">Opcion por Lista</a>
+                            data-target="#opListaModal" value="3">Opcion por Lista</a>
                     </div>
                 </div>
             </div>
@@ -63,23 +63,8 @@
                 <hr />
 
                 <h5>Campos </h5>
-                <div class="row ">
-                    <div class="col-11">
-                        <label for="">Consigna</label>
-                        <input type="text" class=" form-control">
-                    </div>
-                    <div class="col-1">
-                        <div class="row align-items-center">                        
-                            <div class="mt-4">
-                                <button type="button" class="btn  btn-primary"><i class="fa fa-pencil"
-                                        aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"
-                                        aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-
-                    </div>
-
+                <div class="row" id="tblCampos">
+                    
                 </div>
             </form>
 
@@ -354,7 +339,7 @@
     <script src="/assets/js/itemNavActivo.js"></script>
     <script src="/assets/js/include.js"></script>
     <script>include(); </script>
-    <script src="/assets/js/formulario.js"></script>
+    <script src="/assets/js/crear-examen.js"></script>
 </body>
 
 </html>
