@@ -38,7 +38,7 @@ export class PersonaService {
     async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona[]> {
         const persona = await this.personaRepository.findOne(personaId);
 
-        if (!personaId) {
+        if (!persona) {
             throw new HttpException('Persona inexistente', 404);
         }
         persona.setNombre(personaDto.nombre); 

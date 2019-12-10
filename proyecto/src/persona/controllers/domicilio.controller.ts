@@ -3,8 +3,8 @@ import { DomicilioService } from '../services/domicilio.service';
 
 @Controller('domicilios')
 export class DomicilioController {
-    public constructor(private domicilioService: DomicilioService) {}
-    
+    public constructor(private domicilioService: DomicilioService) { }
+
     @Get()
     async getDomicilios() {
         return await this.domicilioService.getDomicilios();
@@ -25,9 +25,9 @@ export class DomicilioController {
         return await this.domicilioService.deleteDomicilio(parseInt(domicilioId));
     }
 
-    // @Put(':domicilioId')
-    // async updateDomicilio(@Param('domicilioId') domicilioId: any, @Body() domicilio: any) {
-    //     return await this.domicilioService.updateDomicilio(parseInt(domicilioId), domicilio);
-    // }
-    
+    @Put(':domicilioId')
+    async updateDomicilio(@Param('domicilioId') domicilioId: any, @Body() domicilio: any) {
+        return await this.domicilioService.updateDomicilio(parseInt(domicilioId), domicilio);
+    }
+
 }

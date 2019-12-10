@@ -8,7 +8,7 @@ import { TelefonoDto } from '../dto/telefono-dto';
 export class TelefonoService {
     public constructor(
         @InjectRepository(Telefono) private readonly telefonoRepository: Repository<Telefono>
-    ) {}
+    ) { }
 
     async addTelefono(telefonoDto: TelefonoDto): Promise<Telefono[]> {
         const telefono = new Telefono(telefonoDto['codArea'], telefonoDto['nro'], telefonoDto['idPersona']);
@@ -34,17 +34,17 @@ export class TelefonoService {
         return await this.telefonoRepository.find();
     }
 
-    // async updateTelefono(telefonoId:number, telefonoDto: TelefonoDto): Promise<Telefono[]> {
-    //     const telefono = await this.telefonoRepository.findOne(telefonoId);
+    async updateTelefono(telefonoId: number, telefonoDto: TelefonoDto): Promise<Telefono[]> {
+        const telefono = await this.telefonoRepository.findOne(telefonoId);
 
-    //     if (!telefonoId) {
-    //         throw new HttpException('Telefono inexistente', 404);
-    //     }
-    //     telefono.setCodArea(telefonoDto.codArea); 
-    //     telefono.setNro(telefonoDto.nro); 
+        if (!telefono) {
+            throw new HttpException('Telefono inexistente', 404);
+        }
+        telefono.setCodArea(telefonoDto.codArea);
+        telefono.setNro(telefonoDto.nro);
 
-    //     await this.telefonoRepository.save(telefono);
-        
-    //     return await this.telefonoRepository.find();
-    // }
+        await this.telefonoRepository.save(telefono);
+
+        return await this.telefonoRepository.find();
+    }
 }

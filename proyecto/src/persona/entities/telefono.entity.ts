@@ -16,7 +16,7 @@ export default class Telefono {
     idPersona: number;
 
     @JoinColumn({name: 'idPersona'})
-    @ManyToOne(type => Persona, titular => titular.getIdPersona, { onDelete: 'CASCADE'})
+    @ManyToOne(type => Persona, titular => titular.getIdPersona, { onDelete: 'CASCADE', nullable: true})
     private titular: Persona;
 
     public constructor(codArea:number, nro:number, idPersona: number) {

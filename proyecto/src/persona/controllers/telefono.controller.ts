@@ -26,8 +26,8 @@ export class TelefonoController {
         return await this.telefonoService.deleteTelefono(parseInt(telefonoId));
     }
     
-    // @Put(':telefonoId')
-    // async updateTelefono(@Param('telefonoId') telefonoId: any, @Body() telefono: any) {
-    //     return await this.telefonoService.updateTelefono(parseInt(telefonoId), telefono);
-    // }
+    @Put(':telefonoId')
+    async updateTelefono(@Param('telefonoId') telefonoId: any, @Body() telefono: any) {
+        return await this.telefonoService.updateTelefono(parseInt(telefonoId), telefono);
+    }
 }
