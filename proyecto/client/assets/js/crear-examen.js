@@ -27,24 +27,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
         case "texto": 
 
         htmlCampo += `
-        <div class="col-12 form-group">
-            <textArea  id="respConsigna" class=" form-control" rows="5">
-            </textArea>
-            </div>
-            </div>
-        </div>
+                <div class="col-11  form-group">
+                    <textArea  id="respConsigna" class="form-control" rows="7">
+                    </textArea>
+                </div>
 
-        <div class="row align-items-center">
-            <div class="col-auto m-0 w-100">
-                <button type="button" data-id="${campos.idCampos}" class="btn editarCampos m-1 btn-primary">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+        
+            <div class="col-auto  row align-items-center ml-auto ">
+                <button type="button" data-id="${campos.idCampos}" class="btn editarCampos btn-sm m-1 btn-primary">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
-                            <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos m-1 btn-danger">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                
+                <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos btn-sm m-1 btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+                
             </div>
         </div>
+      
             `;
             break;
         case "simple":
@@ -86,13 +86,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
            {idCampos:1,
             consigna: 'Como hacer una cosa en js',
             tipo: "texto"
+           },
+           {idCampos:2,
+            consigna: 'Como hacer una cosa en js',
+            tipo: "texto"
            } 
          ]
     }
 
     function consigna(campos){
         return `
-        <div class="col">
         <div class="row">
             <div class="col-12">
             <label for="">${campos.consigna}</label>
