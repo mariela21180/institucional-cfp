@@ -13,23 +13,14 @@ export default class Alumno {
     @Column('varchar')
     private nivelEstudioAlcanzado: string;
 
-    @Column('bit')
+    @Column('boolean')
     private adeudaDocumentacion: boolean;
 
 
-    public constructor(datos: Persona, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
-        try {
-            if (!datos) {
-                throw new Error('Debe haber una Persona como parámetro.');
-            } else {
-                this.datos = datos;
+    public constructor(idAlumno: number, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
+                this.idAlumno = idAlumno;
                 this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
                 this.adeudaDocumentacion = adeudaDocumentacion;
-                this.idAlumno = datos.getIdPersona();
-            }            
-        } catch (error) {
-            console.log(error.message);
-        }
     }
 
     public setIdAlumno(id: number) {
@@ -40,11 +31,11 @@ export default class Alumno {
         return this.idAlumno;
     }
 
-    public getDatos(): Persona {
-        return this.datos;
+    public setNivelEstudioAlcanzado(nivel: string)  {
+        this.nivelEstudioAlcanzado = nivel;
     }
 
-    public getNivelEstudioAlcanzado(): string {
+    public getNivelEstudioAlcanzado(): string  {
         return this.nivelEstudioAlcanzado;
     }
 
@@ -52,14 +43,7 @@ export default class Alumno {
         return this.adeudaDocumentacion;
     }
 
-    public cambiarEstadoDocumentacion(): void {
-        if(this.adeudaDocumentacion) {
-            this.adeudaDocumentacion = false;
-        }
-        else {
-            this.adeudaDocumentacion = true;
-        }
+    public setAdeudaDocumentacion(estado: boolean): void {
+        this.adeudaDocumentacion = estado;
     }
-
-
 }
