@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
            {idCampos:1,
             consigna: 'Como hacer una cosa en js',
             tipo: "texto"
-
            } 
          ]
     }
