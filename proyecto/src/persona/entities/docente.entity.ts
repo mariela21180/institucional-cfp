@@ -6,8 +6,8 @@ export default class Docente {
     @PrimaryColumn('int')
     private idDocente: number;
 
-    @JoinColumn({name: "idDocente"})
-    @OneToOne(type => Persona, datos => datos.getIdPersona)
+    @JoinColumn({ name: "idDocente" })
+    @OneToOne(type => Persona, datos => datos.getIdPersona, {onDelete: 'CASCADE'})
     private datos: Persona;
 
     @Column('varchar')
@@ -16,27 +16,17 @@ export default class Docente {
     @Column('varchar')
     private titulo: string;
 
-
-    public constructor(datos: Persona, nivelEstudioAlcanzado: string, titulo: string) {
-        try {
-            if (!datos) {
-                throw new Error('Debe haber una Persona como parámetro.');
-            } else {
-                this.datos = datos;
-                this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
-                this.titulo = titulo;
-                this.idDocente = datos.getIdPersona();
-            }            
-        } catch (error) {
-            console.log(error.message);
-        }
+    public constructor(idDocente: number, nivelEstudioAlcanzado: string, titulo: string) {
+        this.idDocente = idDocente;
+        this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
+        this.titulo = titulo;
     }
 
     public setIdDocente(id: number) {
         this.idDocente = id;
     }
 
-    public getIdDocente():number{
+    public getIdDocente(): number {
         return this.idDocente;
     }
 
@@ -49,9 +39,16 @@ export default class Docente {
         return this.nivelEstudioAlcanzado;
     }
 
+    public setNivelEstudioAlcanzado(nivel: string) {
+        this.nivelEstudioAlcanzado = nivel;
+    }
+
     public getTitulo(): string {
         return this.titulo;
     }
 
+    public setTitulo(titulo: string) {
+        this.titulo = titulo;
+    }
 
 }
