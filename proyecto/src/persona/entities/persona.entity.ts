@@ -18,6 +18,9 @@ export default class Persona {
 
     @Column('varchar')
     private eMail: string;
+
+    @OneToMany(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'NO ACTION', nullable: true})
+    private telefonos: Telefono[];
     
     public constructor(nombre: string, apellido: string, dni: number, eMail: string) { 
         this.nombre = nombre;
