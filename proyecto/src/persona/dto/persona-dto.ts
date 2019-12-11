@@ -3,5 +3,4 @@ export class PersonaDto {
     readonly  apellido: string;
     readonly  dni: number;
     readonly  eMail: string;
-    readonly  idDomicilio: number;
 }

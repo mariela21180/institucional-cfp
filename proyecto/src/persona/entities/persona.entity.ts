@@ -16,31 +16,17 @@ export default class Persona {
     @Column('int')
     private dni: number;
 
-    @Column('int', {nullable: false})
-    private idDomicilio: number;
-
-    @JoinColumn({name: "idDomicilio"})
-    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio)
-    private domicilio: Domicilio;
-
     @Column('varchar')
     private eMail: string;
 
-    @OneToMany(type => Telefono, telefono => telefono.getIdTelefono)
-    private telefono: Telefono[];
+    @OneToMany(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'NO ACTION', nullable: true})
+    private telefonos: Telefono[];
     
-    public constructor(nombre: string, apellido: string, dni: number, domicilio: Domicilio, eMail: string, telefono?: Telefono[]) {
+    public constructor(nombre: string, apellido: string, dni: number, eMail: string) { 
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.domicilio = domicilio;
         this.eMail = eMail;
-        if (telefono) {
-            this.telefono = telefono;
-        }
-        else {
-        this.telefono = null;
-        };
     }
 
     public setIdPersona(id: number) {
@@ -55,28 +41,32 @@ export default class Persona {
         return this.nombre;
     }
 
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+
     public getApellido():string {
         return this.apellido;
+    }
+
+    public setApellido(apellido: string): void {
+        this.apellido = apellido;
     }
 
     public getDni():number {
         return this.dni;
     }
 
-    public getDomicilio():Domicilio{
-        return this.domicilio;
+    public setDni(dni: number): void {
+        this.dni = dni;
     }
 
     public getEMail():string {
         return this.eMail;
     }
 
-    public setTelefono(telefono: Telefono[]) {
-        this.telefono = telefono;
-    }
-
-    public getTelefono(): Telefono[] {
-        return this.telefono;
+    public setEMail(eMail: string): void {
+        this.eMail = eMail;
     }
 
 }

@@ -16,28 +16,21 @@ export default class Usuario {
     private nivelAcceso: number;
 
     @JoinColumn({name: "idUsuario"})
-    @OneToOne(type => Persona, persona => persona.getIdPersona)
+    @OneToOne(type => Persona, persona => persona.getIdPersona, {onDelete: 'CASCADE', primary: true})
     private persona: Persona;
 
-    public constructor(usuario: string, password: string, persona: Persona, nivelAcceso?: number) {
-        try {
-            if (!persona) {
-                throw new Error('Debe haber una Persona como parámetro.');
-            } else {
-                this.persona = persona;
+    public constructor(usuario: string, password: string, idUsuario: number, nivelAcceso?: number) {
+              
                 this.usuario = usuario;
                 this.password = password;
-                this.idUsuario = persona.getIdPersona();
+                this.idUsuario = idUsuario;
                 if (nivelAcceso == undefined) {
                     this.nivelAcceso = 1;
                 }
                 else {
                     this.nivelAcceso = nivelAcceso;
                 }
-            }            
-        } catch (error) {
-            console.log(error.message);
-        }
+                     
     }
 
     public setIdUsuario(id: number) {
@@ -48,19 +41,27 @@ export default class Usuario {
         return this.idUsuario;
     }
 
-    public getPersona(): Persona {
-        return this.persona;
-    }
-
     public getUsuario(): string {
         return this.usuario;
+    }
+
+    public setUsuario(usuario: string) {
+        this.usuario = usuario;
     }
 
     public getPassword(): string {
         return this.password;
     }
 
+    public setPassword(password: string) {
+        this.password = password;
+    }
+
     public getNivelAcceso(): number {
         return this.nivelAcceso;
+    }
+
+    public setNivelAcceso(nivel: number) {
+        this.nivelAcceso = nivel;
     }
 }
