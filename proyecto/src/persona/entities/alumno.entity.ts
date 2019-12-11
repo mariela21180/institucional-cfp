@@ -17,8 +17,8 @@ export default class Alumno {
     private adeudaDocumentacion: boolean;
 
 
-    public constructor(idAlumno: number, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
-                this.idAlumno = idAlumno;
+    public constructor(idPersona: number, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
+                this.idAlumno = idPersona;
                 this.nivelEstudioAlcanzado = nivelEstudioAlcanzado;
                 this.adeudaDocumentacion = adeudaDocumentacion;
     }
