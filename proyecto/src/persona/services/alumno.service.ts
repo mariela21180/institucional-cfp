@@ -18,7 +18,7 @@ export class AlumnoService {
         if(!persona) {
             throw new HttpException('Persona does not exist!', 404);
         } 
-        const alumno = new Alumno(alumnoDto['idAlumno'], alumnoDto['nivelEstudioAlcanzado'], alumnoDto['adeudaDocumentacion']);
+        const alumno = new Alumno(alumnoDto['idPersona'], alumnoDto['nivelEstudioAlcanzado'], alumnoDto['adeudaDocumentacion']);
         await this.alumnoRepository.save(alumno);
         return await this.alumnoRepository.find();
     }
