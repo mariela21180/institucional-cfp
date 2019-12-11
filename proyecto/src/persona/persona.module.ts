@@ -46,6 +46,9 @@ import { UsuarioController } from './controllers/usuario.controller';
     DomicilioController,
     TelefonoController,
     UsuarioController
+  ],
+  exports: [
+    UsuarioService
   ]
 })
 export class PersonaModule {}

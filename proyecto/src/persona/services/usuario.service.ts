@@ -54,4 +54,20 @@ export class UsuarioService {
 
         return await this.usuarioRepository.find();
     }
+
+    async getUsuarioByUsername(nombreUsuario: string): Promise<Usuario> {
+        console.log("Buscando");
+        console.log(nombreUsuario);
+        const usuario = await this.usuarioRepository.findOne({
+            where: {
+                "usuario": nombreUsuario
+            }
+        });
+        console.log("Rtdo busqueda ", usuario);
+
+        if (!usuario) {
+            throw new HttpException('Usuario inexistente', 404);
+        }
+        return usuario;
+    }
 }
