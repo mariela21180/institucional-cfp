@@ -16,19 +16,19 @@ export class UsuarioController {
         return await this.usuarioService.getUsuario(parseInt(usuarioId));
     }
     
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Post() // si se pone un id ya existente: SOBREESCRIBE!!! ---> VER proximamente!!!
     async addUsuario(@Body() usuario: any) {
         return await this.usuarioService.addUsuario(usuario);
     }
     
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Delete(':usuarioId')
     async deleteUsuario(@Param('usuarioId') usuarioId: any) {
         return await this.usuarioService.deleteUsuario(parseInt(usuarioId));
     }
     
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Put(':usuarioId')
     async updateUsuario(@Param('usuarioId') usuarioId: any, @Body() usuario: any) {
         return await this.usuarioService.updateUsuario(parseInt(usuarioId), usuario);
