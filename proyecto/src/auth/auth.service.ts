@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import { UsuarioService } from '../persona/services/usuario.service';
 import { JwtService } from '@nestjs/jwt';
 import passport = require('passport');
@@ -14,10 +14,7 @@ export class AuthService {
   ) {}
 
   async validateUser(usuario: UsuarioDto): Promise < Usuario > {
-    console.log("Validando");
-    console.log(usuario);
     const user = await this.usuarioService.getUsuarioByUsername(usuario.usuario);
-    console.log(user);
     if (user && user.getPassword() === crypto.createHmac('sha256', usuario.password).digest('hex')) {
       return user;
     }
@@ -27,9 +24,12 @@ export class AuthService {
   async login(user: UsuarioDto) {
     return this.validateUser(user).then((userData)=>{
       if(!userData){
-        return { status: 404 };
+        throw new HttpException('Usuario inexistente', 404);
       }
-      let payload = { username: userData.getUsuario(), idUsuario: userData.getIdUsuario() };
+      let payload = { 
+        username: userData.getUsuario(), 
+        idUsuario: userData.getIdUsuario() 
+      };
       const accessToken  = this.jwtService.sign(payload);
       return {
         expires_in: 3600,
