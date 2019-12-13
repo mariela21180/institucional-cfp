@@ -1,43 +1,86 @@
-<!doctype html>
-<html lang="en" class="h-100">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Centro de Formacion Laboral 403</title>
+	<title>CFL n° 403</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="assets/img/icons/favicon.jpg"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+<!--===============================================================================================-->
 </head>
-<body class="d-flex flex-column h-100">
-    <header>
-      <div include-html="assets\include\navbar.html"></div>
-    </header>
-    
-    <!-- Begin page content -->
-    <main role="main" class="flex-shrink-0">
-      <div class="container">
-          <h1 class="mt-5">Bienvenido</h1>
-          <p class="lead">Sitio de administración del CFP.</p>
-      </div>
-    </main>
-    
-    <footer class="footer mt-auto py-3">
-      <div include-html="assets\include\footer.html"></div>
-    </footer>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('assets/img/tandil2.jpg');">
+			<div class="wrap-login100 align-items-center">
+				<div class="text-center w-100">
+					<img src="assets/img/logo4.png" class= "" alt="AVATAR">
+				</div>
+				
+				<span class="login100-form-title p-t-20 p-b-45">
+					Centro de Formación Laboral n° 403
+				</span>
+				
+				<form class="login100-form validate-form ">
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+						<input id="nombre-usuario" class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+					</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/assets/js/popper.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/itemNavActivo.js"></script>
-    <script src="/assets/js/include.js"></script>
-    <script>include(); </script>
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+						<input id="pss-usuario" class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn p-t-10">
+						<button class="login100-form-btn" id="login-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="text-center w-full p-t-25 p-b-230">
+						<a href="#" class="txt1">
+							Forgot Username / Password?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="assets/js/jquery-3.3.1.slim.min.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/js/login.js"></script>
+
 </body>
-
 </html>
