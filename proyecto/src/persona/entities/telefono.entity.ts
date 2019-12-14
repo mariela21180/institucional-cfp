@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
 import Persona from "./persona.entity";
 
 @Entity('telefono')
@@ -12,47 +12,43 @@ export default class Telefono {
     @Column('int')
     private nro: number;
 
-    @Column('int')
+    @Column('int', {nullable: false})
     idPersona: number;
 
-    @JoinColumn({name: 'idPersona'})
-    @ManyToOne(type => Persona, titular => titular.getIdPersona, { onDelete: 'CASCADE', nullable: false})
-    private titular: Persona;
+    @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
+    private persona: Persona;
 
     public constructor(codArea:number, nro:number, idPersona: number) {
         this.codArea = codArea;
         this.nro = nro;
         this.idPersona = idPersona;
-        // this.titular = null;
     }
 
     public setIdtelefono(id: number) {
         this.idTelefono = id;
     }
-
     public getIdTelefono(): number{
         return this.idTelefono;
     }
 
-    public getCodArea(): number {
-        return this.codArea;
-    }
     public setCodArea(codArea: number) {
         this.codArea = codArea;
     }
-
-    public getNro():number {
-        return this.nro;
+    public getCodArea(): number {
+        return this.codArea;
     }
+
     public setNro(nro: number) {
         this.nro = nro;
     }
-
-    public getTitular(): Persona {
-        return this.titular;
+    public getNro():number {
+        return this.nro;
     }
 
-    public setTitular(titular: Persona): void {
-        this.titular = titular;
+    public setTitular(persona: Persona): void {
+        this.persona = persona;
+    }
+    public getTitular(): Persona {
+        return this.persona;
     }
 }

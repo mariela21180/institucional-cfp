@@ -31,72 +31,55 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#textModal">Texto</a>
+                            data-target="#textModal" value="0">Texto</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opSimpleModal">Opcion Simple</a>
+                            data-target="#opSimpleModal" value="1">Opcion Simple</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opMultiModal">Opcion Multiple</a>
+                            data-target="#opMultiModal" value="2">Opcion Multiple</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opListaModal">Opcion por Lista</a>
+                            data-target="#opListaModal" value="3">Opcion por Lista</a>
                     </div>
                 </div>
-
-
-
-
-
             </div>
 
-            <form class="row">
-                <div class="form-group col-12 col-lg-6">
-                    <label for="formGroupExampleInput" class="">Nombre de Formulario</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput"
-                        placeholder="Nombre de Formulario">
+            <form>
+                <div class="row">
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="NombreFormulario" class="">Nombre de Formulario</label>
+                        <input type="text" class="form-control" id="nombreFormulario"
+                            placeholder="Nombre de Formulario">
+                    </div>
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" class="form-control " id="descripcion" placeholder="Descripción">
+                    </div>
+                    <div class="form-group col-12 col-lg-6">
+                        <label for="formGroupExampleInput2">Curso</label>
+                        <select name="" id="" class="custom-select " type="text">
+                            <option value="$">Seleccionar Curso...</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-12 col-lg-6">
-                    <label for="formGroupExampleInput2">Descripción</label>
-                    <input type="text" class="form-control " id="formGroupExampleInput2" placeholder="Descripción">
-                </div>
-                <div class="form-group col-12 col-lg-6">
-                    <label for="formGroupExampleInput2">Curso</label>
-                    <select name="" id="" class="custom-select " type="text">
-                        <option value="$">Seleccionar Curso...</option>
-                    </select>
+                <hr />
+
+                <h5>Campos </h5>
+                <div  id="tblCampos">
+                    
                 </div>
             </form>
-            <hr />
 
-            <h5>Campos </h5>
-            <p>Consigna </p>
-
-            <div class="row align-items-center">
-
-                <input type="text" class="col-10 form-control">
-                <div class="dropdown md-2 col-auto">
-                    
-                    <button type="button" class="btn btn-primary"><i class=" fa fa-pencil"
-                            aria-hidden="true"></i></button><button type="button" class="btn btn-danger"><i class=" fa fa-trash"
-                            aria-hidden="true"></i></button>
-                </div>
-            </div>
         </div>
+
 
 
         <footer class="mt-auto py-5">
             <div class="row ">
                 <div class="form-group col  text-center">
-                    <button type="button" class="btn col-auto btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn col-auto btn-primary ">Guardar</button>
+                    <a class="btn btn-secondary" href="formularios.html">Cancelar</a>
+                    <button type="button" class="btn col-auto btn-primary" id="btnGuardarFormulario" >Guardar</button>
                 </div>
-
-            </div>
-
             </div>
         </footer>
-
-
-
-
     </main>
 
 
@@ -122,7 +105,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
-                            <input type="number" min="0" step="0.5">
+                            <input type="number" min="0" step="0.5" class="form-control">
 
                         </div>
                     </form>
@@ -158,7 +141,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
-                            <input type="number" min="0" step="0.5">
+                            <input type="number" min="0" step="0.5" class="form-control">
 
                         </div>
                         <div class="form-group btn-group-sm text-right">
@@ -219,7 +202,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
-                            <input type="number" min="0" step="0.5">
+                            <input type="number" min="0" step="0.5" class="form-control">
 
                         </div>
                         <div class="form-group btn-group-sm text-right">
@@ -291,7 +274,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
-                            <input type="number" min="0" step="0.5">
+                            <input type="number" min="0" step="0.5" class="form-control">
 
                         </div>
                         <div class="form-group btn-group-sm text-right ">
@@ -353,8 +336,10 @@
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/itemNavActivo.js"></script>
     <script src="/assets/js/include.js"></script>
     <script>include(); </script>
+    <script src="/assets/js/crear-examen.js"></script>
 </body>
 
 </html>

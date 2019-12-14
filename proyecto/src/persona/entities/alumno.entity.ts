@@ -9,7 +9,7 @@ export default class Alumno {
     private idAlumno: number;    
 
     @JoinColumn({name: "idAlumno"})
-    @OneToOne(type => Persona, datos => datos.getIdPersona, {onDelete: 'CASCADE', primary: true})
+    @OneToOne(type => Persona, datos => datos.getIdPersona, {onDelete: 'CASCADE', primary: true, eager: true, cascade: true})
     private datos: Persona;
 
     @Column('varchar')

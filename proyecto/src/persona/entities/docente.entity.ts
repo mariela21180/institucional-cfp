@@ -7,7 +7,7 @@ export default class Docente {
     private idDocente: number;
 
     @JoinColumn({ name: "idDocente" })
-    @OneToOne(type => Persona, datos => datos.getIdPersona, {onDelete: 'CASCADE', primary: true})
+    @OneToOne(type => Persona, datos => datos.getIdPersona, {onDelete: 'CASCADE', primary: true, eager: true, cascade: true})
     private datos: Persona;
 
     @Column('varchar')

@@ -6,20 +6,20 @@ export default class TipoPregunta {
     private idTipoPregunta: number;
     
     @Column("varchar")
-    private text: string;
+    private texto: string;
     // Texto = 1,
     // OpcionSimple = 2,
     // OpcionMultiple = 3,
     // OpcionPorLista = 4
-    constructor(idTipoPregunta: number, text: string) {
+    constructor(idTipoPregunta: number, texto: string) {
         this.idTipoPregunta = idTipoPregunta;
-        this.text = text;
+        this.texto = texto;
     }
 
     public getIdTipoPregunta(): number {
         return this.idTipoPregunta;
     }
     public getText(): string {
-        return this.text;
+        return this.texto;
     }
 }

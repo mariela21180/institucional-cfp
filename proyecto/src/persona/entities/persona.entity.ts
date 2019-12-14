@@ -19,8 +19,13 @@ export default class Persona {
     @Column('varchar')
     private eMail: string;
 
-    @OneToMany(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'NO ACTION', nullable: true})
-    private telefonos: Telefono[];
+    @JoinColumn({name: "idTelefono"})
+    @OneToOne(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'CASCADE', eager: true})
+    private telefono: Telefono;
+    
+    @JoinColumn({name: "idDomicilio"})
+    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio, { onDelete: 'CASCADE', eager: true})
+    private domicilio: Domicilio;
     
     public constructor(nombre: string, apellido: string, dni: number, eMail: string) { 
         this.nombre = nombre;
@@ -32,41 +37,35 @@ export default class Persona {
     public setIdPersona(id: number) {
         this.idPersona = id;
     }
-
     public getIdPersona():number{
         return this.idPersona;
-    }
-
-    public getNombre(): string {
-        return this.nombre;
     }
 
     public setNombre(nombre: string): void {
         this.nombre = nombre;
     }
-
-    public getApellido():string {
-        return this.apellido;
+    public getNombre(): string {
+        return this.nombre;
     }
 
     public setApellido(apellido: string): void {
         this.apellido = apellido;
     }
-
-    public getDni():number {
-        return this.dni;
+    public getApellido():string {
+        return this.apellido;
     }
 
     public setDni(dni: number): void {
         this.dni = dni;
     }
-
-    public getEMail():string {
-        return this.eMail;
+    public getDni():number {
+        return this.dni;
     }
 
     public setEMail(eMail: string): void {
         this.eMail = eMail;
     }
-
+    public getEMail():string {
+        return this.eMail;
+    }
 }

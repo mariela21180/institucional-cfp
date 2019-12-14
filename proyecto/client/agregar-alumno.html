@@ -24,62 +24,60 @@
             <h1 class="mt-5">Inscribir Alumno</h1>
             <form class="row">
                 <div class=" col-6 form-group">
-                    <label for="exampleFormControlInput1">Nombre</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+                    <label for="nombreAlumno">Nombre</label>
+                    <input type="email" class="form-control" id="nombreAlumno" placeholder="Nombre">
                 </div>
                 <div class=" col-6 form-group">
-                    <label for="exampleFormControlInput1">Apellido</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Apellido">
+                    <label for="apellidoAlumno">Apellido</label>
+                    <input type="email" class="form-control" id="apellidoAlumno" placeholder="Apellido">
                 </div>
                 <div class="col-4 form-group">
-                    <label for="exampleFormControlInput1">Documento</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="D.N.I">
+                    <label for="documentoAlumno">Documento</label>
+                    <input type="email" class="form-control" id="documentoAlumno" placeholder="D.N.I">
                 </div>
                 <div class=" col-8 form-group">
-                    <label for="exampleFormControlInput1">E-mail</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                    <label for="eMailAlumno">E-mail</label>
+                    <input type="email" class="form-control" id="eMailAlumno"
                         placeholder="abcdef@gmail.com">
                 </div>
                 <div class=" col-4 form-group">
-                    <label for="exampleFormControlInput1">Calle</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Calle">
+                    <label for="calleAlumno">Calle</label>
+                    <input type="email" class="form-control" id="calleAlumno" placeholder="Calle">
                 </div>
                 <div class=" col-4 form-group">
-                    <label for="exampleFormControlInput1">Altura</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Altura">
+                    <label for="alturaAlumno">Altura</label>
+                    <input type="email" class="form-control" id="alturaAlumno" placeholder="Altura">
                 </div>
                 <div class=" col-2 form-group">
-                    <label for="exampleFormControlInput1">Piso</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Piso">
+                    <label for="pisoAlumno">Piso</label>
+                    <input type="email" class="form-control" id="pisoAlumno" placeholder="Piso">
                 </div>
                 <div class=" col-2 form-group">
-                    <label for="exampleFormControlInput1">Dpto</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Dpto">
+                    <label for="dptoAlumno">Dpto</label>
+                    <input type="email" class="form-control" id="dptoAlumno" placeholder="Dpto">
                 </div>
                 <div class=" col-6 form-group">
-                        <label for="exampleFormControlInput1">Nivel de Estudio</label>
-                        <select name="" id="" class="custom-select " type="text">
-                                <option value="$">Nivel de Estudio</option>
-                                <option value="1">Primario Completo</option>
-                                <option value="2">Secundario Completo</option>
-                                <option value="3">Secundario Incompleto</option>
-                                <option value="4">Univercitario Completo</option>
-                                <option value="5">Univercitario Incompleto</option>
-                            </select>
-                    </div>
+                    <label for="nivelAlumno">Nivel de Estudio</label>
+                    <select name="" id="nivelAlumno" class="custom-select " type="text">
+                        <option value="$">Nivel de Estudio</option>
+                        <option value="1">Primario Completo</option>
+                        <option value="2">Secundario Completo</option>
+                        <option value="3">Secundario Incompleto</option>
+                        <option value="4">Univercitario Completo</option>
+                        <option value="5">Univercitario Incompleto</option>
+                    </select>
+                </div>
             </form>
             <hr />
             <h5>Agregar Teléfono</h5>
             <div class="row text-center">
                 <div class="col-md-12">
-                    <table class="table table-striped table-bordered table-hover table-responsive-lg">
+                    <table class="table table-hover table-responsive-lg">
                         <thead class="thead-dark">
                             <tr>
                                 <th class="">Codigo de Area </th>
                                 <th>Numero</th>
-                                <th class=""><button type="button" class="w-75 btn btn-success" data-toggle="modal" data-target="#agregarTelefono">
-                                        Agregar Teléfono
-                                      </button></th>
+                                <th class=""><button type="button" class="w-50 btn btn-success" data-toggle="modal" data-target="#agregarTelefono">Agregar Teléfono</button></th>
                             </tr>
                         </thead>
                         <tbody id="tblAsistencias">
@@ -88,10 +86,9 @@
                                 <td>154324355</td>
                                 <td>
                                     <div class="row align-items-center">
-                                        <div class="col-auto m-0 w-100"><button type="button"
-                                                class="btn m-1 btn-primary"><i class="fa fa-pencil"
-                                                    aria-hidden="true"></i></button> <button type="button" class="btn m-1 btn-danger"><i class="fa fa-trash"
-                                                    aria-hidden="true"></i></button> 
+                                        <div class="col-auto m-0 w-100">
+                                            <button type="button" class="btn m-1 btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button> 
                                         </div>
                                     </div>
                                 </td>
@@ -106,7 +103,7 @@
             <h5>Agregar Curso</h5>
             <div class="row text-center">
                 <div class="col-md-12">
-                    <table class="table table-striped table-bordered table-hover table-responsive-lg">
+                    <table class="table table-hover table-responsive-lg">
                         <thead class="thead-dark">
                             <tr>
                                 <th class="">Clase</th>
@@ -114,7 +111,7 @@
                                 <th class="">Horarios</th>
                                 <th class=""><button type="button" class="w-75 btn btn-success" data-toggle="modal" data-target="#agregarCurso">
                                         Agregar Curso
-                                      </button></th>
+                                    </button></th>
                             </tr>
                         </thead>
                         <tbody id="tblAsistencias">
@@ -125,10 +122,8 @@
                                 <td>
                                     <div class="row align-items-center">
                                         <div class="col-auto m-0 w-100">
-                                            <button type="button"
-                                                class="btn m-1 btn-primary"><i class="fa fa-pencil"
-                                                    aria-hidden="true"></i></button><button type="button" class="btn m-1 btn-danger"><i class="fa fa-trash"
-                                                    aria-hidden="true"></i></button>
+                                            <button type="button" class="btn m-1 btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                         </div>
                                     </div>
                                 </td>
@@ -138,65 +133,72 @@
                     </table>
                 </div>
             </div>
+            <div class="row ">
+                <div class="form-group col text-center">
+                    <a class="btn btn-secondary" href="alumnos.html">Cancelar</a>
+                    <button type="button" id="guardarAlumno" class="btn col-auto btn-primary ">Guardar</button>
+                </div>
+            </div>
 
         </div>
     </main>
 
     <!-- Modal Agregar Teléfono -->
-<div class="modal fade" id="agregarTelefono" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal fade" id="agregarTelefono" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Teléfono</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Teléfono</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Codigo de Area</label>
-                            <input type="text" class="form-control" id="codArea">
-                        </div>
-                        <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Numero Teléfono</label>
-                                <input type="text" class="form-control" id="numTel">
-                            </div>
+                        <label for="recipient-name" class="col-form-label">Codigo de Area</label>
+                        <input type="text" class="form-control" id="codArea">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Numero Teléfono</label>
+                        <input type="text" class="form-control" id="numTel">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Agregar</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-       <!-- Modal Agregar Curso -->
-<div class="modal fade" id="agregarCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <!-- Modal Agregar Curso -->
+    <div class="modal fade" id="agregarCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Teléfono</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Teléfono</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Cursos</label>
-                            <select name="" id="" class="custom-select " type="text">
-                                    <option value="$">Seleccionar Curso...</option>
-                                    <option value="1">Cursos de Progrmación FullStack</option>
-                                </select>
-                        </div>
-                        
+                        <label for="recipient-name" class="col-form-label">Cursos</label>
+                        <select name="" id="" class="custom-select " type="text">
+                            <option value="$">Seleccionar Curso...</option>
+                            <option value="1">Cursos de Progrmación FullStack</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Agregar</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
     <footer class="footer mt-auto py-3">
         <div include-html="assets\include\footer.html"></div>
@@ -208,7 +210,9 @@
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/itemNavActivo.js"></script>
     <script src="/assets/js/include.js"></script>
+    <script src="/assets/js/agregarAlumnos.js"></script>
     <script>include(); </script>
 </body>
 

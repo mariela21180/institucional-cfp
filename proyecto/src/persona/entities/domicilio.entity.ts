@@ -21,7 +21,6 @@ export default class Domicilio {
     @Column('varchar', {nullable: true})
     private dpto: string;    
 
-    @JoinColumn({name: "idPersona"})
     @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
     private persona: Persona;
 
