@@ -16,19 +16,19 @@ export class DocenteController {
         return await this.docenteService.getDocente(parseInt(docenteId));
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Post()
     async addDocente(@Body() docente: any) {
         return await this.docenteService.addDocente(docente);
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Delete(':docenteId')
     async deleteDocente(@Param('docenteId') docenteId: any) {
         return await this.docenteService.deleteDocente(parseInt(docenteId));
     }
     
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Put(':docenteId')
     async updateDocente(@Param('docenteId') docenteId: any, @Body() docente: any) {
         return await this.docenteService.updateDocente(parseInt(docenteId), docente);

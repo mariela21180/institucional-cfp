@@ -16,19 +16,19 @@ export class AlumnoController {
         return await this.alumnoService.getAlumno(parseInt(alumnoId));
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Post() // si se pone un id ya existente: SOBREESCRIBE!!! ---> VER proximamente!!!
     async addAlumno(@Body() alumno: any) {
         return await this.alumnoService.addAlumno(alumno);
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Delete(':alumnoId')
     async deleteAlumno(@Param('alumnoId') alumnoId: any) {
         return await this.alumnoService.deleteAlumno(parseInt(alumnoId));
     }
 
-    @UseGuards(AuthGuard())   
+    // @UseGuards(AuthGuard())   
     @Put(':alumnoId')
     async updateAlumno(@Param('alumnoId') alumnoId: any, @Body() alumno: any) {
         return await this.alumnoService.updateAlumno(parseInt(alumnoId), alumno);

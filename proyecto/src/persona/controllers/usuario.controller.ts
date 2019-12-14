@@ -28,7 +28,7 @@ export class UsuarioController {
         return await this.usuarioService.deleteUsuario(parseInt(usuarioId));
     }
     
-    // @UseGuards(AuthGuard())
+    // // @UseGuards(AuthGuard())
     @Put(':usuarioId')
     async updateUsuario(@Param('usuarioId') usuarioId: any, @Body() usuario: any) {
         return await this.usuarioService.updateUsuario(parseInt(usuarioId), usuario);

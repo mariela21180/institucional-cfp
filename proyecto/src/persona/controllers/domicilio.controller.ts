@@ -16,19 +16,19 @@ export class DomicilioController {
         return await this.domicilioService.getDomicilio(parseInt(domicilioId));
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Post()
     async addDomicilio(@Body() domicilio: any) {
         return await this.domicilioService.addDomicilio(domicilio);
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Delete(':domicilioId')
     async deleteDomicilio(@Param('domicilioId') domicilioId: any) {
         return await this.domicilioService.deleteDomicilio(parseInt(domicilioId));
     }
 
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @Put(':domicilioId')
     async updateDomicilio(@Param('domicilioId') domicilioId: any, @Body() domicilio: any) {
         return await this.domicilioService.updateDomicilio(parseInt(domicilioId), domicilio);
