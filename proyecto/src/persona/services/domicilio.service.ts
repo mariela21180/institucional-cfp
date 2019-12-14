@@ -10,10 +10,9 @@ export class DomicilioService {
         @InjectRepository(Domicilio) private readonly domicilioRepository: Repository<Domicilio>
     ) { }
 
-    async addDomicilio(domicilioDto: DomicilioDto): Promise<Domicilio[]> {
+    async addDomicilio(domicilioDto: DomicilioDto): Promise<Domicilio> {
         const domicilio = new Domicilio(domicilioDto['calle'], domicilioDto['altura'], domicilioDto['idPersona'], domicilioDto['piso'], domicilioDto['dpto']);
-        await this.domicilioRepository.save(domicilio);
-        return await this.domicilioRepository.find();
+        return await this.domicilioRepository.save(domicilio);
     }
 
     async getDomicilios(): Promise<Domicilio[]> {
@@ -34,7 +33,7 @@ export class DomicilioService {
         return await this.domicilioRepository.find();
     }
 
-    async updateDomicilio(domicilioId: number, domicilioDto: DomicilioDto): Promise<Domicilio[]> {
+    async updateDomicilio(domicilioId: number, domicilioDto: DomicilioDto): Promise<Domicilio> {
         const domicilio = await this.domicilioRepository.findOne(domicilioId);
 
         if (!domicilio) {
@@ -46,9 +45,7 @@ export class DomicilioService {
         domicilio.setPiso(domicilioDto.piso);
         domicilio.setDpto(domicilioDto.dpto);
 
-        await this.domicilioRepository.save(domicilio);
-
-        return await this.domicilioRepository.find();
+        return await this.domicilioRepository.save(domicilio);
     }
 
 }
