@@ -23,7 +23,7 @@ export default class Usuario {
     private nivelAcceso: number;
 
     @JoinColumn({name: "idUsuario"})
-    @OneToOne(type => Persona, persona => persona.getIdPersona, {onDelete: 'CASCADE', primary: true})
+    @OneToOne(type => Persona, persona => persona.getIdPersona, {onDelete: 'CASCADE', primary: true, eager: true, cascade: true})
     private persona: Persona;
 
     public constructor(usuario: string, password: string, idUsuario: number, nivelAcceso?: number) {              
