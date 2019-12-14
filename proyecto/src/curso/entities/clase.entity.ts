@@ -1,7 +1,7 @@
 import Curso from "./curso.entity";
 import Alumno from "src/persona/entities/alumno.entity";
 import Material from "./material.entity";
-import { Entity, PrimaryGeneratedColumn, ManyToMany, Column, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, ManyToMany, Column, JoinColumn, ManyToOne, OneToMany, JoinTable } from "typeorm";
 
 @Entity('clase')
 export default class Clase {
@@ -21,7 +21,8 @@ export default class Clase {
     @Column('date')
     private fin: Date;
 
-    // @ManyToMany(type => Alumno, asistencia => asistencia.getIdAlumno) -- VER
+    @ManyToMany(type => Alumno, asistencia => asistencia.getIdAlumno)
+    @JoinTable({name: 'asistencia'})
     private asistencia: Alumno[]; 
 
     @OneToMany(type => Material, material => material.getIdMaterial)

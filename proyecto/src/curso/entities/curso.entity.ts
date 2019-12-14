@@ -3,7 +3,7 @@ import Alumno from "src/persona/entities/alumno.entity";
 import Examen from "src/formulario/entities/examen.entity";
 import Horario from "./horario.entity";
 import Clase from "./clase.entity";
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany, JoinTable } from "typeorm";
 
 @Entity('curso')
 export default class Curso {
@@ -41,7 +41,7 @@ export default class Curso {
     // No lo tenemos en la BD, pero lo podemos calcular por relaciones con otras tablas y de ultima se puede setear por metodo en la misma clase
     private horasDictadas: number;
 
-   // @ManyToMany(type => Alumno, alumnos => alumnos.getIdAlumno) --VER
+    @ManyToMany(type => Alumno, alumno => alumno.getIdAlumno)
     private alumnos: Alumno[];
 
     @OneToMany(type => Examen, examenes => examenes.getIdExamen)
