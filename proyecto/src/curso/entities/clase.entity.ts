@@ -7,43 +7,60 @@ import { Entity, PrimaryGeneratedColumn, ManyToMany, Column, JoinColumn, ManyToO
 export default class Clase {
     @PrimaryGeneratedColumn()
     private idClase: number;
-    
-    //@Column('int')
-    //idCurso: number;
 
-    @JoinColumn({name: 'idCurso'})
+    @Column('int')
+    private idCurso: number;
+
+    @JoinColumn({ name: 'idCurso' })
     @ManyToOne(type => Curso, curso => curso.getIdCurso)
     private curso: Curso;
 
-    @Column('date')
+    @Column('datetime')
     private inicio: Date;
 
-    @Column('date')
+    @Column('datetime')
     private fin: Date;
 
-    @ManyToMany(type => Alumno, asistencia => asistencia.getIdAlumno)
-    @JoinTable({name: 'asistencia'})
-    private asistencia: Alumno[]; 
 
-    @OneToMany(type => Material, material => material.getIdMaterial)
-    private material: Material[]; // HACERLO NULLABLE??
+    @ManyToMany(type => Alumno, asistencia => asistencia.getIdAlumno, { nullable: true })
+    @JoinTable({
+        name: 'asistencia',
+        joinColumn: {
+            name: "idClase",
+            referencedColumnName: "idClase"
+        },
+        inverseJoinColumn: {
+            name: "idAlumno",
+            referencedColumnName: "idAlumno"
+        }
+    })
+    private asistencia: Alumno[];
+
+    @OneToMany(type => Material, material => material.getIdMaterial, { onDelete: 'NO ACTION', nullable: true })
+    private material: Material[];
+
     
 
-    public constructor (curso: Curso, inicio: Date, fin: Date, asistencia?: Alumno[], material?: Material[]) {
-        this.curso = curso;
+    public constructor(idCurso: number, inicio: Date, fin: Date) { /*asistencia?: Alumno[], material?: Material[]*/
+        this.idCurso = idCurso;
         this.inicio = inicio;
         this.fin = fin;
-        if(asistencia) {
+       /* if (asistencia) {
             this.asistencia = asistencia;
         } else {
             this.asistencia = null;
         }
 
-        if(material) {
+        if (material) {
             this.material = material;
         } else {
             this.material = null;
         }
+        */
+    }
+
+    public getIdCurso(): number {
+        return this.idCurso;
     }
 
     public getIdClase(): number {
@@ -57,7 +74,7 @@ export default class Clase {
     public getCurso(): Curso {
         return this.curso;
     }
-    
+
     public getInicio(): Date {
         return this.inicio;
     }
