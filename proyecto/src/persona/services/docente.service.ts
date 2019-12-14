@@ -14,14 +14,13 @@ export class DocenteService {
         private readonly personaService: PersonaService
     ) {}
 
-    async addDocente(docenteDto: DocenteDto): Promise<Docente[]> {
+    async addDocente(docenteDto: DocenteDto): Promise<Docente> {
         const persona = await this.personaService.getPersona(docenteDto.idPersona);
         if(!persona) {
             throw new HttpException('Persona does not exist!', 404);
         } 
         const docente = new Docente(docenteDto['idDocente'], docenteDto['nivelEstudioAlcanzado'], docenteDto['titulo']);
-        await this.docenteRepository.save(docente);
-        return await this.docenteRepository.find();
+        return await this.docenteRepository.save(docente);
     }
 
     async getDocentes(): Promise<Docente[]> {
@@ -42,7 +41,7 @@ export class DocenteService {
         return await this.docenteRepository.find();
     }
 
-    async updateDocente(docenteId: number, docenteDto: DocenteDto): Promise<Docente[]> {
+    async updateDocente(docenteId: number, docenteDto: DocenteDto): Promise<Docente> {
         const docente = await this.docenteRepository.findOne(docenteId);
 
         if (!docente) {
@@ -52,9 +51,7 @@ export class DocenteService {
         docente.setNivelEstudioAlcanzado(docenteDto.nivelEstudioAlcanzado);
         docente.setTitulo(docenteDto.titulo);
 
-        await this.docenteRepository.save(docente);
-
-        return await this.docenteRepository.find();
+        return await this.docenteRepository.save(docente);
     }
 
 }

@@ -11,10 +11,9 @@ export class PersonaService {
     ) {}
 
 
-    async addPersona(personaDto: PersonaDto): Promise<Persona[]> {
+    async addPersona(personaDto: PersonaDto): Promise<Persona> {
         const persona = new Persona(personaDto['nombre'], personaDto['apellido'], personaDto['dni'], personaDto['eMail']);
-        await this.personaRepository.save(persona);
-        return await this.personaRepository.find();
+        return await this.personaRepository.save(persona);
     }
     
     async getPersonas(): Promise<Persona[]> {
@@ -35,7 +34,7 @@ export class PersonaService {
         return await this.personaRepository.find();
     }
 
-    async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona[]> {
+    async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona> {
         const persona = await this.personaRepository.findOne(personaId);
 
         if (!persona) {
@@ -46,9 +45,7 @@ export class PersonaService {
         persona.setDni(personaDto.dni); 
         persona.setEMail(personaDto.eMail); 
 
-        await this.personaRepository.save(persona);
-        
-        return await this.personaRepository.find();
+        return await this.personaRepository.save(persona);
     }
 
 } 

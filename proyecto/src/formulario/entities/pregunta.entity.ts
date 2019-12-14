@@ -24,7 +24,7 @@ export default class Pregunta {
     @Column("bit", {default: false})
     private estaRespondida: boolean;
     
-    @Column({ nullable: true })
+    @Column("float", { nullable: true })
     private puntaje: number;
     
     @ManyToMany(type => Opcion, respuesta => respuesta.getIdOpcion, { nullable: true})

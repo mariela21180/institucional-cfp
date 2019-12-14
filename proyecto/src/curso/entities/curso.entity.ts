@@ -23,13 +23,13 @@ export default class Curso {
     @Column({type: 'int', nullable: true})
     private cupoMaximoAlumnos: number;
 
-    @Column({type: 'int', default: 1})
+    @Column({type: 'float', default: 1})
     private asistenciaMinima: number;
 
     @OneToMany(type => Horario, horarios => horarios.getIdHorario)
     private horarios: Horario[];
 
-    @Column('int')
+    @Column('float')
     private cargaHorariaTotal: number;
 
     @Column('date')

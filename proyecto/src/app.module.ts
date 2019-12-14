@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CursoModule } from './curso/curso.module';
 import { PersonaModule } from './persona/persona.module';
 import { FormularioModule } from './formulario/formulario.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FormularioModule } from './formulario/formulario.module';
     CursoModule,
     PersonaModule,
     FormularioModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

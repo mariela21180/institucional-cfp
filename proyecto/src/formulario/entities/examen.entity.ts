@@ -15,7 +15,7 @@ export default class Examen {
     @OneToOne(type => Curso, curso => curso.getIdCurso, { nullable: false})
     private curso: Curso;
 
-    @Column("int", { nullable: true })
+    @Column("float", { nullable: true })
     private puntajeTotal: number;
     
     @Column("bit", { default: false })

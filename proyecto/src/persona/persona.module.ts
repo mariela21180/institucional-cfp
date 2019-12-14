@@ -21,16 +21,19 @@ import { PersonaController } from './controllers/persona.controller';
 import { TelefonoController } from './controllers/telefono.controller';
 import { DomicilioController } from './controllers/domicilio.controller';
 import { UsuarioController } from './controllers/usuario.controller';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [TypeOrmModule.forFeature([
-    Alumno,
-    Docente,
-    Persona,
-    Domicilio,
-    Telefono,
-    Usuario
-  ])],
+      Alumno,
+      Docente,
+      Persona,
+      Domicilio,
+      Telefono,
+      Usuario
+    ]),
+    PassportModule.register({ defaultStrategy: 'jwt' })
+  ],
   providers: [
     AlumnoService,
     DocenteService,
@@ -46,6 +49,9 @@ import { UsuarioController } from './controllers/usuario.controller';
     DomicilioController,
     TelefonoController,
     UsuarioController
+  ],
+  exports: [
+    UsuarioService
   ]
 })
 export class PersonaModule {}

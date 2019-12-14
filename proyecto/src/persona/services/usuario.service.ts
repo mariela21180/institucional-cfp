@@ -12,14 +12,13 @@ export class UsuarioService {
         private readonly personaService: PersonaService
     ) {}
 
-    async addUsuario(usuarioDto: UsuarioDto): Promise<Usuario[]> {
+    async addUsuario(usuarioDto: UsuarioDto): Promise<Usuario> {
         const persona = await this.personaService.getPersona(usuarioDto.idPersona);
         if(!persona) {
             throw new HttpException('Persona does not exist!', 404);
         } 
         const usuario = new Usuario(usuarioDto['usuario'], usuarioDto['password'], usuarioDto['idPersona'], usuarioDto['nivelAcceso'] );
-        await this.usuarioRepository.save(usuario);
-        return await this.usuarioRepository.find();
+        return await this.usuarioRepository.save(usuario);
     }
 
     async getUsuarios(): Promise<Usuario[]> {
@@ -40,7 +39,7 @@ export class UsuarioService {
         return await this.usuarioRepository.find();
     }
 
-    async updateUsuario(usuarioId: number, usuarioDto: UsuarioDto): Promise<Usuario[]> {
+    async updateUsuario(usuarioId: number, usuarioDto: UsuarioDto): Promise<Usuario> {
         const usuario = await this.usuarioRepository.findOne(usuarioId);
 
         if (!usuario) {
@@ -50,8 +49,18 @@ export class UsuarioService {
         usuario.setPassword(usuarioDto.password);
         usuario.setNivelAcceso(usuarioDto.nivelAcceso);
 
-        await this.usuarioRepository.save(usuario);
+        return await this.usuarioRepository.save(usuario);
+    }
 
-        return await this.usuarioRepository.find();
+    async getUsuarioByUsername(nombreUsuario: string): Promise<Usuario> {
+        const usuario = await this.usuarioRepository.findOne({
+            where: {
+                "usuario": nombreUsuario
+            }
+        });
+        if (!usuario) {
+            throw new HttpException('Usuario inexistente', 404);
+        }
+        return usuario;
     }
 }

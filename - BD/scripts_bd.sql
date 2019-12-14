@@ -20,3 +20,30 @@ insert into alumno values (2, "Universitario Completo", false);
 insert into alumno values (3, "Terciario Incompleto", true);
 
 insert into usuario values (1, "mariela21180", "testpass123", 1);
+
+-- insert into asistencia values (1, 1);
+
+insert into curso values (1, "Programador Full-Stack", "-", 30, "2019-01-02", "2019-12-02", 1, 0.8, 180.5);
+
+insert into clase values (1, 1, "2019-01-02 19:00:00", "2019-01-02 22:30:00");
+
+insert into material values (1, 1, 1);
+
+insert into tema values (1, "Base de Datos", 1);
+
+insert into archivo values (1, "/assets/imagen.jpg", 1);
+
+insert into horario values (1, "Lunes", "19hs", "22:30hs", 1);
+
+insert into formulario values (1, 1, "Examen 1", "MySQL");
+
+insert into examen values (1, 1, 1, 1, 5.8);
+
+insert into tipo_pregunta values (1, "Texto");
+
+insert into pregunta values (1, 1, "¿Como me llamo?", 1, 1, 1, 2.5);
+
+insert into opcion values (1, "Mariela", 1, 1, 2.5);
+
+
+
