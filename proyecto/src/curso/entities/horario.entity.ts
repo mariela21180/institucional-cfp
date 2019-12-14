@@ -16,15 +16,15 @@ export default class Horario {
     private horaFin: String; 
 
     @Column('int')
-    idCurso: number;
+    private idCurso: number;
 
     @JoinColumn({name: 'idCurso'})
     @ManyToOne(type => Curso, curso => curso.getIdCurso)
     private curso: Curso;
 
 
-    public constructor (curso: Curso, dia: String, horaInicio: String, horaFin: String) {
-        this.curso = curso;
+    public constructor (idCurso: number, dia: String, horaInicio: String, horaFin: String) {
+        this.idCurso = idCurso;
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -51,6 +51,10 @@ export default class Horario {
 
     public getHoraFin(): String {
         return this.horaFin;
+    }
+
+    public getIdCurso(): number {
+        return this.idCurso;
     }
 
     public setCurso(curso: Curso): void {

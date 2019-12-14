@@ -8,8 +8,8 @@ export default class Clase {
     @PrimaryGeneratedColumn()
     private idClase: number;
     
-    @Column('int')
-    idCurso: number;
+    //@Column('int')
+    //idCurso: number;
 
     @JoinColumn({name: 'idCurso'})
     @ManyToOne(type => Curso, curso => curso.getIdCurso)

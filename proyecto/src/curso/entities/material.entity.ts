@@ -21,7 +21,7 @@ export default class Material {
     idClase: number;
 
     @JoinColumn({name: 'idClase'})
-    @ManyToOne(type => Clase, clase => clase.getIdClase)
+    @ManyToOne(type => Clase, clase => clase.getIdClase, { onDelete: 'CASCADE', nullable: false})
     private clase: Clase; // lo agregué --> CONSULTAR
 
     public constructor(archivos?: Archivo[], temas?: Tema[], habilitado?: boolean) {

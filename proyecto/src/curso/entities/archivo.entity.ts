@@ -13,7 +13,7 @@ export default class Archivo {
     idMaterial: number;
 
     @JoinColumn({name: 'idMaterial'})
-    @ManyToOne(type => Material, material => material.getIdMaterial)
+    @ManyToOne(type => Material, material => material.getIdMaterial, { onDelete: 'CASCADE', nullable: false})
     private material: Material;
 
     public constructor(ruta: String) {
