@@ -12,7 +12,7 @@ export default class Opcion {
     @Column("bit", { nullable: true })
     private isOk: boolean;
 
-    @Column("int", { nullable: true })
+    @Column("float", { nullable: true })
     private calificacion: number;
 
     @JoinColumn({name: 'idPregunta', referencedColumnName: 'idPregunta'})
