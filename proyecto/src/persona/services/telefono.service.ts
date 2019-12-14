@@ -10,10 +10,9 @@ export class TelefonoService {
         @InjectRepository(Telefono) private readonly telefonoRepository: Repository<Telefono>
     ) { }
 
-    async addTelefono(telefonoDto: TelefonoDto): Promise<Telefono[]> {
+    async addTelefono(telefonoDto: TelefonoDto): Promise<Telefono> {
         const telefono = new Telefono(telefonoDto['codArea'], telefonoDto['nro'], telefonoDto['idPersona']);
-        await this.telefonoRepository.save(telefono);
-        return await this.telefonoRepository.find();
+        return await this.telefonoRepository.save(telefono);
     }
 
     async getTelefonos(): Promise<Telefono[]> {
@@ -34,7 +33,7 @@ export class TelefonoService {
         return await this.telefonoRepository.find();
     }
 
-    async updateTelefono(telefonoId: number, telefonoDto: TelefonoDto): Promise<Telefono[]> {
+    async updateTelefono(telefonoId: number, telefonoDto: TelefonoDto): Promise<Telefono> {
         const telefono = await this.telefonoRepository.findOne(telefonoId);
 
         if (!telefono) {
@@ -43,8 +42,6 @@ export class TelefonoService {
         telefono.setCodArea(telefonoDto.codArea);
         telefono.setNro(telefonoDto.nro);
 
-        await this.telefonoRepository.save(telefono);
-
-        return await this.telefonoRepository.find();
+        return await this.telefonoRepository.save(telefono);
     }
 }
