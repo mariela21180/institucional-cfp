@@ -25,7 +25,7 @@ insert into usuario(idUsuario, usuario, password, nivelAcceso) values (1, "marie
 
 -- insert into asistencia values (1, 1);
 
-insert into curso(idCurso, nombre, descripcion, cupoMaximoAlumnos, asisteciaMinima, cargaHorariaTotal, fechaInicio, fechaFin, idDocente) values (1, "Programador Full-Stack", "-", 30, 0.8, 180.5, "2019-01-02", "2019-12-02", 1);
+insert into curso(idCurso, nombre, descripcion, cupoMaximoAlumnos, asistenciaMinima, cargaHorariaTotal, fechaInicio, fechaFin, idDocente) values (1, "Programador Full-Stack", "-", 30, 0.8, 180.5, "2019-01-02", "2019-12-02", 1);
 
 insert into clase(idClase, idCurso, inicio, fin) values (1, 1, "2019-01-02 19:00:00", "2019-01-02 22:30:00");
 
