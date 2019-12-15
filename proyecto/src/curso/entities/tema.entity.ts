@@ -9,17 +9,16 @@ export default class Tema {
     @Column('varchar', {length: 100})
     private tema: String;
 
-
     @Column('int')
-    idMaterial: number;
+    private idMaterial: number;
 
     @JoinColumn({name: 'idMaterial'})
     @ManyToOne(type => Material, material => material.getIdMaterial, { onDelete: 'CASCADE', nullable: false})
     private material: Material;
     
-    public constructor(tema: String) {
-       this.tema = tema;
-           
+    public constructor(tema: String, idMaterial: number) {
+        this.tema = tema;
+        this.idMaterial = idMaterial;
     }
 
     public getIdTema(): number {
@@ -38,5 +37,7 @@ export default class Tema {
         this.tema = tema;
     }
     
-
+    public getIdMaterial(): number {
+        return this.idMaterial;
+    }
 }
