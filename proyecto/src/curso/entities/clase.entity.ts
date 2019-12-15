@@ -41,22 +41,10 @@ export default class Clase {
 
     
 
-    public constructor(idCurso: number, inicio: Date, fin: Date) { /*asistencia?: Alumno[], material?: Material[]*/
+    public constructor(idCurso: number, inicio: Date, fin: Date) { 
         this.idCurso = idCurso;
         this.inicio = inicio;
         this.fin = fin;
-       /* if (asistencia) {
-            this.asistencia = asistencia;
-        } else {
-            this.asistencia = null;
-        }
-
-        if (material) {
-            this.material = material;
-        } else {
-            this.material = null;
-        }
-        */
     }
 
     public getIdCurso(): number {

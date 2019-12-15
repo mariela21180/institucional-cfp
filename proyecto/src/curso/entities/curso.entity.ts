@@ -3,7 +3,7 @@ import Alumno from "src/persona/entities/alumno.entity";
 import Examen from "src/formulario/entities/examen.entity";
 import Horario from "./horario.entity";
 import Clase from "./clase.entity";
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToOne, OneToMany, ManyToMany } from "typeorm";
 
 @Entity('curso')
 export default class Curso {
@@ -15,6 +15,9 @@ export default class Curso {
 
     @Column({type: 'varchar', length: 150, nullable: true})
     private descripcion: string;
+
+    @Column('int')
+    private idDocente: number;
 
     @JoinColumn({name: "idDocente"})
     @OneToOne(type => Docente, profesor => profesor.getIdDocente)
@@ -38,39 +41,25 @@ export default class Curso {
     @Column({type: 'date', nullable: true})
     private fechaFin: Date;
 
-    // No lo tenemos en la BD, pero lo podemos calcular por relaciones con otras tablas y de ultima se puede setear por metodo en la misma clase
-    private horasDictadas: number;
-
     @ManyToMany(type => Alumno, alumno => alumno.getIdAlumno)
     private alumnos: Alumno[];
 
     @OneToMany(type => Examen, examenes => examenes.getIdExamen)
     private examenes: Examen[];
 
-    @OneToMany(type => Clase, clasesDictadas => clasesDictadas.getIdClase)
-    private clasesDictadas: Clase[];
+    @OneToMany(type => Clase, clases => clases.getIdClase)
+    private clases: Clase[];
 
-    public constructor(nombre: string, profesor: Docente, fechaInicio: Date, horarios: Horario[], fechaFin?: Date, descripcion?: string, cupoMaximoAlumnos?: number, asistenciaMinima?: number, cargaHorariaTotal?: number) {
+    public constructor(nombre: string, idDocente: number, fechaInicio: Date, cargaHorariaTotal: number, fechaFin?: Date, descripcion?: string, cupoMaximoAlumnos?: number, asistenciaMinima?: number) {
         this.nombre = nombre;
-        this.profesor = profesor;
+        this.idDocente = idDocente;
         this.fechaInicio = fechaInicio;
-        this.horarios = horarios;
+        this.cargaHorariaTotal = cargaHorariaTotal;
+
         if (fechaFin) {
             this.fechaFin = fechaFin;
-            if (!cargaHorariaTotal) {
-                this.cargaHorariaTotal = this.calcularCargaHoraria(this.horarios, this.fechaInicio, this.fechaFin);
-            }
         } else {
             this.fechaFin = null;
-        }
-
-        if (cargaHorariaTotal) {
-            this.cargaHorariaTotal = cargaHorariaTotal;
-            if (!fechaFin) {
-                this.cargaHorariaTotal = this.calcularCargaHoraria(this.horarios, this.fechaInicio, null, this.cargaHorariaTotal);
-            }
-        } else {
-            this.cargaHorariaTotal = null;
         }
 
         if (descripcion) {
@@ -90,7 +79,6 @@ export default class Curso {
         } else {
             this.asistenciaMinima = 1;
         }
-
     }
 
     public getIdCurso(): number {
@@ -99,49 +87,73 @@ export default class Curso {
     public setIdCurso(idCurso: number): void {
         this.idCurso = idCurso;
     }
-
-    public getHorasDictadas(): number {
-        return this.horasDictadas;
+    
+    public getNombre(): string {
+        return this.nombre;
+    }
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
     }
 
-    public setHorasDictadas(horas: number): void {
-        this.horasDictadas = horas;
+    public getDescripcion(): string {
+        return this.descripcion;
+    }
+    public setDescripcion(descripcion: string): void {
+        this.descripcion = descripcion;
     }
 
+    public getIdDocente(): number {
+        return this.idDocente;
+    }
+    public setIdDocente(idDocente: number): void {
+        this.idDocente = idDocente;
+    }
+
+    public getCupoMaximoAlumnos(): number {
+        return this.cupoMaximoAlumnos;
+    }    
+    public setCupoMaximoAlumnos(cupoMaximoAlumnos: number): void {
+        this.cupoMaximoAlumnos = cupoMaximoAlumnos;
+    }
+
+    public getAsistenciaMinima(): number {
+        return this.asistenciaMinima;
+    }    
+    public setAsistenciaMinima(asistenciaMinima: number): void {
+        this.asistenciaMinima = asistenciaMinima;
+    }
+    
+    public getCargaHorariaTotal(): number {
+        return this.cargaHorariaTotal;
+    }
     public setCargaHorariaTotal(cargaHoraria: number): void {
         this.cargaHorariaTotal = cargaHoraria;
+    }
+    
+    public getFechaInicio(): Date {
+        return this.fechaInicio;
+    }    
+    public setFechaInicio(fecha: Date): void {
+        this.fechaInicio = fecha;
+    }
+    
+    public getFechaFin(): Date {
+        return this.fechaFin;
+    }    
+    public setFechaFin(fecha: Date): void {
+        this.fechaFin = fecha;
     }
 
     public agregarAlumno(alumno: Alumno): void {
         this.alumnos.push(alumno);
     }
-
+    
     public agregarExamen(examen: Examen): void {
         this.examenes.push(examen);
     }
-
-    public agregarClaseDictada(clase: Clase): void {
-        this.clasesDictadas.push(clase);
+    
+    public agregarClase(clase: Clase): void {
+        this.clases.push(clase);
     }
-
-    public calcularCargaHoraria(horarios: Horario[], fechaInicio: Date, fechaFin?: Date, cargaHoraria?: number): number {
-        return null;
-    }
-
-    public getNombre(): string {
-        return this.nombre;
-    }
-    public getDescripcion(): string {
-        return this.descripcion;
-    }
-    public getProfesor(): Docente {
-        return this.profesor;
-    }
-    public getCupoMaximoAlumnos(): number {
-        return this.cupoMaximoAlumnos;
-    }
-    public getAsistenciaMinima(): number {
-        return this.asistenciaMinima;
-    }
-
+    
 }

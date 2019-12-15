@@ -45,4 +45,17 @@ export class ClaseService {
 
         return await this.claseRepository.save(clase);
     }
+
+    
+    async getClasesByCurso(idCurso: number): Promise<Clase[]> {
+        const clases = await this.claseRepository.find({
+            where: {
+                "idCurso": idCurso
+            }
+        }); 
+        if (!clases) {
+            throw new HttpException('No hay Clases para este curso', 404);
+        }
+        return clases;
+    }
 }
