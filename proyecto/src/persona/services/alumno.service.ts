@@ -5,6 +5,8 @@ import Alumno from '../entities/alumno.entity';
 import { PersonaService } from './persona.service';
 import { AlumnoDto } from '../dto/alumno-dto';
 import { ClaseService } from '../../curso/services/clase.service';
+import { AsistenciaDto } from '../dto/asistencia-dto';
+import { CursoService } from '../../curso/services/curso.service';
 
 @Injectable()
 export class AlumnoService {
@@ -12,7 +14,8 @@ export class AlumnoService {
         @InjectRepository(Alumno) 
         private readonly alumnoRepository: Repository<Alumno>,
         private readonly personaService: PersonaService,
-        private readonly claseService: ClaseService
+        private readonly claseService: ClaseService,
+        private readonly cursoService: CursoService
     ) {}
 
     async addAlumno(alumnoDto: AlumnoDto): Promise<Alumno> {
@@ -55,8 +58,16 @@ export class AlumnoService {
         return await this.alumnoRepository.save(alumno);
     }
 
-    async getAsistenciasPorCurso(idAlumno: number, idCurso: number): Promise<number> {
+    async getAsistenciasPorCurso(idAlumno: number, idCurso: number): Promise<AsistenciaDto> {
         let horasCursadas: number = 0;
+        let cargaHorariaTotalCurso: number = 0;
+        let curso = await this.cursoService.getCurso(idCurso);
+        let asistenciaDTO = new AsistenciaDto();
+        if (curso) {
+            cargaHorariaTotalCurso = curso.getCargaHorariaTotal();
+        } else {
+            throw new HttpException('No se encontró el Curso', 404);
+        }
         let hoy = new Date();
         let asistencia: number[] = await this.alumnoRepository.query('select a.idClase from asistencia a inner join clase cl on a.idClase = cl.idClase inner join curso cu on cl.idCurso = cu.idCurso where a.idAlumno = '+idAlumno+' and cu.idCurso = ' + idCurso); 
         if (asistencia) {
@@ -79,9 +90,13 @@ export class AlumnoService {
                     horasCursadas += horas;
                 }
             }
+        } else {
+            throw new HttpException('No se pudieron obtener las asistencias', 404);
         }
-        
-        return horasCursadas;
+
+        asistenciaDTO.setHorasCursadas(horasCursadas);
+        asistenciaDTO.setPorcentajeAsistencia((horasCursadas/cargaHorariaTotalCurso)*100); 
+        return asistenciaDTO;
     }
 
 }

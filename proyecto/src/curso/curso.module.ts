@@ -48,7 +48,8 @@ import { TemaController } from './controllers/tema.controller';
     TemaController
   ],
   exports: [
-    ClaseService
+    ClaseService,
+    CursoService
   ]
 })
 export class CursoModule {}

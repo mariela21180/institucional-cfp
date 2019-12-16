@@ -26,7 +26,7 @@ export default class Curso {
     @Column({type: 'int', nullable: true})
     private cupoMaximoAlumnos: number;
 
-    @Column({type: 'float', default: 1})
+    @Column({type: 'float', default: 100})
     private asistenciaMinima: number;
 
     @OneToMany(type => Horario, horarios => horarios.getIdHorario)
@@ -77,7 +77,7 @@ export default class Curso {
         if (asistenciaMinima) {
             this.asistenciaMinima = asistenciaMinima;
         } else {
-            this.asistenciaMinima = 1;
+            this.asistenciaMinima = 100;
         }
     }
 
