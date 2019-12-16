@@ -95,7 +95,7 @@ export class AlumnoService {
         }
 
         asistenciaDTO.setHorasCursadas(horasCursadas);
-        asistenciaDTO.setPorcentajeAsistencia((horasCursadas/cargaHorariaTotalCurso)*100); 
+        asistenciaDTO.setPorcentajeAsistencia(Math.round(((horasCursadas/cargaHorariaTotalCurso)*100)*100) /100); 
         return asistenciaDTO;
     }
 
