@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Centro de Formacion Profesional 403</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <div include-html="assets\include\navbar.html"></div>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">Profesor</h1>
+            <form class="row">
+                
+                <div class=" col-6 form-group">
+                    <label for="nombreProfesor">Nombre</label>
+                    <input type="text" class="form-control" id="nombreProfesor" placeholder="Nombre">
+                </div>
+                <div class=" col-6 form-group">
+                    <label for="apellidoProfesor">Apellido</label>
+                    <input type="text" class="form-control" id="apellidoProfesor" placeholder="Apellido">
+                </div>                
+                
+                <div class="col-4 form-group">
+                    <label for="dniProfesor">Documento</label>
+                    <input type="number" class="form-control" id="dniProfesor" placeholder="D.N.I">
+                </div>
+                <div class=" col-8 form-group">
+                    <label for="emailProfesor">E-mail</label>
+                    <input type="email" class="form-control" id="emailProfesor"
+                        placeholder="abcdef@gmail.com">
+                </div>
+                                
+                <div class=" col-4 form-group">
+                    <label for="calleProfesor">Calle</label>
+                    <input type="text" class="form-control" id="calleProfesor" placeholder="Calle">
+                </div>
+                <div class=" col-4 form-group">
+                    <label for="alturaDomicilioProfesor">Altura</label>
+                    <input type="number" min="0" class="form-control" id="alturaDomicilioProfesor" placeholder="Altura">
+                </div>
+                <div class=" col-2 form-group">
+                    <label for="pisoProfesor">Piso</label>
+                    <input type="text" class="form-control" id="pisoProfesor" placeholder="Piso">
+                </div>
+                <div class=" col-2 form-group">
+                    <label for="dptoProfesor">Dpto</label>
+                    <input type="text"  class="form-control" id="dptoProfesor" placeholder="Dpto">
+                </div>
+                
+                <div class=" col-6 form-group">
+                    <label for="codAreaProfesor">Código de área</label>
+                    <input type="number" min="0" class="form-control" id="codAreaProfesor" placeholder="Código de área">
+                </div>
+                <div class=" col-6 form-group">
+                    <label for="telefonoProfesor">Teléfono</label>
+                    <input type="number" min="0" class="form-control" id="telefonoProfesor" placeholder="Teléfono">
+                </div>
+                
+                <div class=" col-6 form-group">
+                    <label for="nivelEstudiosProfesor">Nivel de Estudio</label>
+                    <select name="" id="nivelEstudiosProfesor" class="custom-select " type="text">
+                        <option value="$">Nivel de Estudio</option>
+                        <option value="1">Primario Completo</option>
+                        <option value="2">Secundario Completo</option>
+                        <option value="3">Secundario Incompleto</option>
+                        <option value="4">Universitario Completo</option>
+                        <option value="5">Universitario Incompleto</option>
+                    </select>
+                </div>
+                <div class=" col-6 form-group">
+                    <label for="tituloProfesor">Título obtenido</label>
+                    <input type="text" class="form-control" id="tituloProfesor"
+                        placeholder="Título obtenido">
+                </div>
+                
+            </form>
+
+            <div class="row ">
+                <div class="form-group col text-center">
+                    <a class="btn btn-secondary" href="profesores.html">Cancelar</a>
+                    <button type="button" class="btn col-auto btn-primary " id="guardarProfesor">Guardar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Agregar Curso -->
+    <div class="modal fade" id="agregarCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Teléfono</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Cursos</label>
+                        <select name="" id="" class="custom-select " type="text">
+                            <option value="$">Seleccionar Curso...</option>
+                            <option value="1">Cursos de Progrmación FullStack</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3">
+        <div include-html="assets\include\footer.html"></div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/itemNavActivo.js"></script>
+    <script src="/assets/js/include.js"></script>
+    <script src="/assets/js/profesores.js"></script>
+    <script>include(); </script>
+</body>
+
+</html>

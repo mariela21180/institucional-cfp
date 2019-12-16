@@ -22,49 +22,49 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <div>
-                <h1 class="mt-5">Crear Curso</h1>
+                <h1 class="mt-5">Curso</h1>
             </div>
             <div>
                 <form>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Nombre del curso</label>
+                        <label for="nombreCurso">Nombre del curso</label>
                         <input type="email" class="form-control nombreCurso" id="nombreCurso" placeholder="Nombre del curso">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1" >Descripción</label>
+                        <label for="descripcionCurso" >Descripción</label>
                         <input class="form-control descripcion" id="descripcionCurso" placeholder="Descripción">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Seleccione profesor</label>
-                        <select class="form-control seleccionarProfesor" id="exampleFormControlSelect1">
-                            <option>Seleccione...</option>
-                            <option>Juan Perez</option>
-                            <option>Jorge Gomez</option>
-                            <option>Andrea Martinez</option>
+                        <label for="seleccionProfesor">Seleccione profesor</label>
+                        <select class="form-control seleccionarProfesor" id="seleccionProfesor">
+                            <option value="$">Seleccione...</option>
+                            <option value="1">Juan Perez</option>
+                            <option value="2">Jorge Gomez</option>
+                            <option value="3">Andrea Martinez</option>
                         </select>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlInput1">Cupo máximo de alumnos (opcional)</label>
-                            <input type="number" step="1" min="1" class="form-control cupoMaximo" placeholder="Cupo máximo">
+                            <label for="cupoMaxAlumnos">Cupo máximo de alumnos (opcional)</label>
+                            <input type="number" step="1" min="1" class="form-control cupoMaximo" id="cupoMaxAlumnos" placeholder="Cupo máximo">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlInput1">Porcentaje de asistencia mínima (opcional)</label>
-                            <input type="number" step="1" min="1" class="form-control porcentajeMinAsistencia" placeholder="Asistencia mínima">
+                            <label for="asistenciaMinima">Porcentaje de asistencia mínima (opcional)</label>
+                            <input type="number" step="1" min="1" class="form-control porcentajeMinAsistencia" id="asistenciaMinima" placeholder="Asistencia mínima">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="exampleFormControlInput1">Fecha de inicio</label>
-                            <input type="date" class="form-control fechaInicio" placeholder="Fecha de inicio">
+                            <label for="fechaInicio">Fecha de inicio</label>
+                            <input type="date" class="form-control fechaInicio" id="fechaInicio" placeholder="Fecha de inicio">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="exampleFormControlInput1">Fecha Fin (opcional)</label>
-                            <input type="date" class="form-control fechaFin" placeholder="Fecha Fin">
+                            <label for="fechaFin">Fecha Fin (opcional)</label>
+                            <input type="date" class="form-control fechaFin" id="fechaFin" placeholder="Fecha Fin">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="exampleFormControlInput1">Carga Horaria (opcional)</label>
-                            <input type="number" min="1" class="form-control cargaHoraria" placeholder="Carga Horaria">
+                            <label for="cargaHoraria">Carga Horaria (opcional)</label>
+                            <input type="number" min="1" class="form-control cargaHoraria" id="cargaHoraria" placeholder="Carga Horaria">
                         </div>
                     </div>
                 </form>
@@ -116,7 +116,7 @@
                                     <th class="">Dia</th>
                                     <th class="">Hora Inicio</th>
                                     <th class="">Hora Fin</th>
-                                    <th class=""><a class="m-auto btn btn-success btn-block h-100 w-2 w-50" id="btnAgregarClase" href="agregar-clase.html">Agregar Clase </a></th>
+                                    <th class=""><a class="m-auto btn btn-success btn-block h-100 w-2 w-50" id="btnAgregarClase" href="clase.html">Agregar Clase </a></th>
                                 </tr>
                             </thead>
                             <tbody id="tblFormulario">
@@ -158,7 +158,7 @@
             <div class="row ">
                 <div class="form-group col text-center">
                     <a class="btn btn-secondary" href="cursos.html">Cancelar</a>
-                    <button id="guardar-curso" type="button" class="btn col-auto btn-primary ">Guardar</button>
+                    <button id="guardarCurso" type="button" class="btn col-auto btn-primary ">Guardar</button>
                 </div>
             </div>
 

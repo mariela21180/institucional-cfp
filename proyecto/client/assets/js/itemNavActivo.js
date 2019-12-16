@@ -15,19 +15,19 @@ function activarNav(){
         if(url !== '/' && url !== '/index.html'){
             removeItemActive();
         }
-        if(url === '/agregar-alumno.html'){
+        if(url === '/alumno.html'){
             url = '/alumnos.html'
         }
-        if(url === '/crear-examen.html'){
+        if(url === '/examen.html'){
             url = '/formularios.html'
         }
-        if(url === '/crear-curso.html'){
+        if(url === '/curso.html'){
             url = '/cursos.html'
         }
-        if(url === '/agregar-clase.html'){
+        if(url === '/clase.html'){
             url = '/cursos.html'
         }
-        if(url === '/agregar-profesor.html'){
+        if(url === '/profesor.html'){
             url = '/profesores.html'
         }
 
