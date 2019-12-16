@@ -46,6 +46,9 @@ import { TemaController } from './controllers/tema.controller';
     HorarioController,
     MaterialController,
     TemaController
+  ],
+  exports: [
+    ClaseService
   ]
 })
 export class CursoModule {}

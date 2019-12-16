@@ -78,21 +78,4 @@ export default class Clase {
     public setFin(fecha: Date): void {
         this.fin = fecha;
     }
-
-    public getAsistencia(): Alumno[] {
-        return this.asistencia;
-    }
-
-    public setAsistencia(asistencia: Alumno[]): void {
-        this.asistencia = asistencia;
-    }
-
-    public getMaterial(): Material[] {
-        return this.material;
-    }
-
-    public setMaterial(material: Material[]): void {
-        this.material = material;
-    }
-
 }
