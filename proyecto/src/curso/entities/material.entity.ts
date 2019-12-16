@@ -10,47 +10,30 @@ export default class Material {
 
     @OneToMany(type => Archivo, archivos => archivos.getIdArchivo)
     private archivos: Archivo[];
-    
+
     @OneToMany(type => Tema, temas => temas.getIdTema)
     private temas: Tema[];
 
-    @Column('bit', {default: true})
+    @Column('boolean', { default: true })
     private habilitado: boolean; // por defecto true
 
     @Column('int')
-    idClase: number;
+    private idClase: number;
 
-    @JoinColumn({name: 'idClase'})
-    @ManyToOne(type => Clase, clase => clase.getIdClase)
+    @JoinColumn({ name: 'idClase' })
+    @ManyToOne(type => Clase, clase => clase.getIdClase, { onDelete: 'CASCADE', nullable: false })
     private clase: Clase; // lo agregué --> CONSULTAR
 
-    public constructor(archivos?: Archivo[], temas?: Tema[], habilitado?: boolean) {
-        try {
-            if (!archivos && !temas) {
-                throw new Error('Al menos debe tener un archivo o un tema');
-            } else {
-                if (archivos) {
-                    this.archivos = archivos;
-                } else {
-                    this.archivos = [];
-                }
-                if (temas) {
-                    this.temas = temas;
-                } else {
-                    this.temas = [];
-                }
-            }
+    public constructor(idClase: number, habilitado?: boolean) {
 
-            if (habilitado) {
-                this.habilitado = habilitado;
-            }
-            else {
-                this.habilitado = true;
-            }
+        if (habilitado == undefined || habilitado == null) {
+            this.habilitado = true;
         }
-        catch (error) {
-            console.log(error.message);
+        else {
+            this.habilitado = habilitado;
         }
+
+        this.idClase = idClase;
     }
 
 
@@ -69,13 +52,8 @@ export default class Material {
         return this.temas;
     }
 
-    public habilitarDeshabilitar(): void {
-        if (this.habilitado) {
-            this.habilitado = false;
-        }
-        else {
-            this.habilitado = true;
-        }
+    public setHabilitado(habilitado: boolean): void {
+        this.habilitado = habilitado;
     }
 
     public addArchivo(archivo: Archivo): void {

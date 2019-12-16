@@ -22,9 +22,11 @@ import { TelefonoController } from './controllers/telefono.controller';
 import { DomicilioController } from './controllers/domicilio.controller';
 import { UsuarioController } from './controllers/usuario.controller';
 import { PassportModule } from '@nestjs/passport';
+import { CursoModule } from '../curso/curso.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
+  imports: [
+    TypeOrmModule.forFeature([
       Alumno,
       Docente,
       Persona,
@@ -32,7 +34,8 @@ import { PassportModule } from '@nestjs/passport';
       Telefono,
       Usuario
     ]),
-    PassportModule.register({ defaultStrategy: 'jwt' })
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+    CursoModule
   ],
   providers: [
     AlumnoService,

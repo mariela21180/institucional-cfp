@@ -10,15 +10,15 @@ export default class Archivo {
     private ruta: String;
 
     @Column('int')
-    idMaterial: number;
+    private idMaterial: number;
 
     @JoinColumn({name: 'idMaterial'})
-    @ManyToOne(type => Material, material => material.getIdMaterial)
+    @ManyToOne(type => Material, material => material.getIdMaterial, { onDelete: 'CASCADE', nullable: false})
     private material: Material;
 
-    public constructor(ruta: String) {
-       this.ruta = ruta;
-           
+    public constructor(ruta: String, idMaterial: number) {
+        this.ruta = ruta;
+        this.idMaterial = idMaterial; 
     }
 
 
@@ -37,6 +37,9 @@ export default class Archivo {
     public setRuta(ruta: string): void {
         this.ruta = ruta;
     }
-    
 
+    public getIdMaterial(): number {
+        return this.idMaterial;
+    }
+    
 }

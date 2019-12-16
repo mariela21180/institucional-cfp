@@ -33,4 +33,15 @@ export class AlumnoController {
     async updateAlumno(@Param('alumnoId') alumnoId: any, @Body() alumno: any) {
         return await this.alumnoService.updateAlumno(parseInt(alumnoId), alumno);
     }
+    
+    // @UseGuards(AuthGuard())
+    @Get('/horas/:alumnoId/:cursoId')
+    async getAsistenciasPorCurso(@Param('alumnoId') alumnoId: any, @Param('cursoId') cursoId: any ) {
+        return await this.alumnoService.getAsistenciasPorCurso(parseInt(alumnoId), parseInt(cursoId));
+    }
+
+    @Post('/guardar')
+    async guardarAlumnoFull(@Body() alumnoFull: any) {
+        return await this.alumnoService.guardarAlumnoFull(alumnoFull);
+    }
 }

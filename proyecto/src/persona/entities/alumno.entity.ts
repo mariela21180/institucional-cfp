@@ -1,5 +1,7 @@
 import Persona from "./persona.entity";
-import { Entity, PrimaryColumn, Column, JoinColumn, OneToOne } from "typeorm";
+import { Entity, PrimaryColumn, Column, JoinColumn, OneToOne, ManyToMany, JoinTable } from "typeorm";
+import Clase from "src/curso/entities/clase.entity";
+import Curso from "src/curso/entities/curso.entity";
 
 @Entity('alumno')
 export default class Alumno {
@@ -16,6 +18,22 @@ export default class Alumno {
     @Column('boolean')
     private adeudaDocumentacion: boolean;
 
+    @ManyToMany(type => Clase, clase => clase.getIdClase)
+    private clases: Clase[]; // hacer metodo getClases()??
+
+    @ManyToMany(type => Curso, curso => curso.getIdCurso)
+    @JoinTable({
+        name: 'alumno_curso',
+        joinColumn: {
+            name: "idAlumno",
+            referencedColumnName: "idAlumno"
+        },
+        inverseJoinColumn: {
+            name: "idCurso",
+            referencedColumnName: "idCurso"
+        }
+    })
+    private cursos: Curso[];
 
     public constructor(idPersona: number, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
                 this.idAlumno = idPersona;
