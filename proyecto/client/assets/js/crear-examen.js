@@ -28,14 +28,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                 htmlCampo += `
                 <div class="col  form-group">
-                    <textArea  id="respConsigna" class="form-control" rows="2">
+                    <textArea  id="respConsigna" class="form-control"  rows="1">
                     </textArea>
                 </div>
 
         
-            <div class="col-auto  row align-items-center ml-auto ">
+            <div class="col-auto p-0 ">
                                
-                <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos m-1 btn-danger">
+                <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos btn-sm m-1 btn-danger">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
                 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                         </div>
                         <div class="col-auto p-0">
-                             <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                             <button type="button" data-id="${campos.idCampos}" class="btn btn-sm eliminarCampos m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                     </div>
                     <div class="col-auto p-0">
-                     <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                     <button type="button" data-id="${campos.idCampos}" class="btn btn-sm eliminarCampos m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                     </div>
                 </div>      
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                 </div>
                 <div class="col-auto p-0">
-                     <button type="button" data-id="${campos.idCampos}" class="btn eliminarCampos m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                     <button type="button" data-id="${campos.idCampos}" class="btn btn-sm eliminarCampos m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
