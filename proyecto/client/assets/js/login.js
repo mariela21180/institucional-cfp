@@ -1,73 +1,38 @@
 
-(function ($) {
+document.addEventListener("DOMContentLoaded", function(event) {
     "use strict";
+    
+    let btnLogin = document.getElementById('login-btn');
 
-    $('#login-btn').on('click', function (e) {
-        e.preventDefault(); 
-        let user = $('#nombre-usuario');
-        let pss = $('#pss-usuario');
+    let nombreUsuario = document.getElementById('nombre-usuario');
+    let pssUsuario = document.getElementById('pss-usuario');
+    
 
-        if(validarUsuario(user.val(), pss.val())){
-            window.location.href = window.location.origin + '/home.html';
-        }
+    btnLogin.addEventListener('click', login); //llama a la funcion (solo en el addEventListener)
 
-    });
-
-
-    function validarUsuario(usuario, contrasenia){
-        return (usuario == 'anotti' && contrasenia == '123') || (usuario == 'us2' && contrasenia == '123');
+    function login(event) { 
+        event.preventDefault();
+        let usuario = armarUsuario();
+        validarUsuario(usuario);   
     }
 
-    /*==================================================================
-    [ Validate ]*/
-    // var input = $('.validate-input .input100');
+    async function validarUsuario(usuarioDto){
+       let result = await fetch ("/auth/login",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(usuarioDto)})
+              
+       if(result.status != 404){
+            let json = await result.json();
+            if(json.status == 200)
+            window.location.href = window.location.origin + '/home.html';
+                                
+        }
+    }
 
-    // $('.validate-form').on('submit',function(){
-    //     var check = true;
+    function armarUsuario() { 
+        let usuario = {
+            'usuario': nombreUsuario.value,
+            'password': pssUsuario.value            
+        }
+        return usuario;
+    }
 
-    //     for(var i=0; i<input.length; i++) {
-    //         if(validate(input[i]) == false){
-    //             showValidate(input[i]);
-    //             check=false;
-    //         }
-    //     }
-
-    //     return check;
-    // });
-
-
-    // $('.validate-form .input100').each(function(){
-    //     $(this).focus(function(){
-    //        hideValidate(this);
-    //     });
-    // });
-
-    // function validate (input) {
-    //     if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-    //         if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-    //             return false;
-    //         }
-    //     }
-    //     else {
-    //         if($(input).val().trim() == ''){
-    //             return false;
-    //         }
-    //     }
-    // }
-
-    // function showValidate(input) {
-    //     var thisAlert = $(input).parent();
-
-    //     $(thisAlert).addClass('alert-validate');
-    // }
-
-    // function hideValidate(input) {
-    //     var thisAlert = $(input).parent();
-
-    //     $(thisAlert).removeClass('alert-validate');
-    // }
-    
-
-    
-
-})(jQuery);
+});
