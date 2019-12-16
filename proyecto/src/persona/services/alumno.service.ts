@@ -7,6 +7,15 @@ import { AlumnoDto } from '../dto/alumno-dto';
 import { ClaseService } from '../../curso/services/clase.service';
 import { AsistenciaDto } from '../dto/asistencia-dto';
 import { CursoService } from '../../curso/services/curso.service';
+import { AlumnoFullDto } from '../dto/alumnofull-dto';
+import Persona from '../entities/persona.entity';
+import { DomicilioService } from './domicilio.service';
+import { TelefonoService } from './telefono.service';
+import Domicilio from '../entities/domicilio.entity';
+import Telefono from '../entities/telefono.entity';
+import { DomicilioDto } from '../dto/domicilio-dto';
+import { PersonaDto } from '../dto/persona-dto';
+import { TelefonoDto } from '../dto/telefono-dto';
 
 @Injectable()
 export class AlumnoService {
@@ -15,7 +24,9 @@ export class AlumnoService {
         private readonly alumnoRepository: Repository<Alumno>,
         private readonly personaService: PersonaService,
         private readonly claseService: ClaseService,
-        private readonly cursoService: CursoService
+        private readonly cursoService: CursoService,
+        private readonly domicilioService: DomicilioService, 
+        private readonly telefonoService: TelefonoService
     ) {}
 
     async addAlumno(alumnoDto: AlumnoDto): Promise<Alumno> {
@@ -97,6 +108,66 @@ export class AlumnoService {
         asistenciaDTO.setHorasCursadas(horasCursadas);
         asistenciaDTO.setPorcentajeAsistencia(Math.round(((horasCursadas/cargaHorariaTotalCurso)*100)*100) /100); 
         return asistenciaDTO;
+    }
+
+    async guardarAlumnoFull(alumnoFull: AlumnoFullDto, idAlumno?: number): Promise<string> {
+        let resultado: string;
+
+        if (!idAlumno) {
+            let personaDTO: PersonaDto = {
+                nombre: alumnoFull.nombre,
+                apellido: alumnoFull.apellido,
+                dni: alumnoFull.dni,
+                eMail: alumnoFull.eMail
+            };
+            let persona: Persona = await this.personaService.addPersona(personaDTO);
+            if (!persona) {
+                return resultado = 'No se pudo crear la Persona';
+            }
+            let domicilioDTO: DomicilioDto = {
+                calle: alumnoFull.calle,
+                altura: alumnoFull.altura,
+                piso: alumnoFull.piso,
+                dpto: alumnoFull.dpto,
+                idPersona: persona.getIdPersona()
+            }
+            let domicilio: Domicilio = await this.domicilioService.addDomicilio(domicilioDTO);
+            if (!domicilio) {
+                return resultado = 'No se pudo crear el Domicilio';
+            }
+            let telefonoDTO: TelefonoDto = {
+                codArea: alumnoFull.codArea,
+                nro: alumnoFull.nro,
+                idPersona: persona.getIdPersona()
+            }
+
+            let telefono: Telefono = await this.telefonoService.addTelefono(telefonoDTO);
+            if (!telefono) {
+                return resultado = 'No se pudo crear el Telefono';
+            }
+            let alumnoDTO: AlumnoDto = {
+                nivelEstudioAlcanzado: alumnoFull.nivelEstudioAlcanzado,
+                adeudaDocumentacion: alumnoFull.adeudaDocumentacion,
+                idPersona: persona.getIdPersona()
+            };
+            let alumno = await this.addAlumno(alumnoDTO)
+            if (!alumno) {
+                return resultado = 'No se pudo crear el Alumno';
+            }
+
+            for (let i = 0; i < alumnoFull.cursos.length; i++) {
+                const curso = alumnoFull.cursos[i];
+                let cursoGuardado = await this.alumnoRepository.query('insert into alumno_curso(idAlumno, idCurso) values(' + alumno.getIdAlumno() + ',' + curso.idCurso + ')');                
+                if (!cursoGuardado) {
+                    return resultado = 'No se pudo guardar el Curso';
+                }
+            }
+
+            resultado = "ok";
+        }
+
+
+        return resultado;
     }
 
 }

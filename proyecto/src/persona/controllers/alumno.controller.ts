@@ -36,7 +36,12 @@ export class AlumnoController {
     
     // @UseGuards(AuthGuard())
     @Get('/horas/:alumnoId/:cursoId')
-    async getHorasDisctadasCurso(@Param('alumnoId') alumnoId: any, @Param('cursoId') cursoId: any ) {
+    async getAsistenciasPorCurso(@Param('alumnoId') alumnoId: any, @Param('cursoId') cursoId: any ) {
         return await this.alumnoService.getAsistenciasPorCurso(parseInt(alumnoId), parseInt(cursoId));
+    }
+
+    @Post('/guardar')
+    async guardarAlumnoFull(@Body() alumnoFull: any) {
+        return await this.alumnoService.guardarAlumnoFull(alumnoFull);
     }
 }

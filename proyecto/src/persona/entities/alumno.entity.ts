@@ -22,7 +22,17 @@ export default class Alumno {
     private clases: Clase[]; // hacer metodo getClases()??
 
     @ManyToMany(type => Curso, curso => curso.getIdCurso)
-    @JoinTable({name: 'alumno_curso'})
+    @JoinTable({
+        name: 'alumno_curso',
+        joinColumn: {
+            name: "idAlumno",
+            referencedColumnName: "idAlumno"
+        },
+        inverseJoinColumn: {
+            name: "idCurso",
+            referencedColumnName: "idCurso"
+        }
+    })
     private cursos: Curso[];
 
     public constructor(idPersona: number, nivelEstudioAlcanzado: string, adeudaDocumentacion: boolean) {
