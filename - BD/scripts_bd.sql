@@ -23,17 +23,12 @@ insert into alumno(idAlumno, nivelEstudioAlcanzado, adeudaDocumentacion) values 
 
 insert into usuario(idUsuario, usuario, password, nivelAcceso) values (1, "mariela21180", "testpass123", 1);
 
-insert into asistencia(idClase, idAlumno) values (1, 1);
-insert into asistencia(idClase, idAlumno) values (1, 2);
-insert into asistencia(idClase, idAlumno) values (1, 3);
-insert into asistencia(idClase, idAlumno) values (2, 1);
-
 insert into curso(idCurso, nombre, descripcion, cupoMaximoAlumnos, asistenciaMinima, cargaHorariaTotal, fechaInicio, fechaFin, idDocente) values (1, "Programador Full-Stack", "-", 30, 80, 180.5, "2019-01-02", "2019-12-02", 1);
 insert into curso(idCurso, nombre, descripcion, cupoMaximoAlumnos, asistenciaMinima, cargaHorariaTotal, fechaInicio, fechaFin, idDocente) values (2, "Android", "-", 30, 70, 180.5, "2019-01-02", "2019-12-02", 2);
 
 insert into clase(idClase, idCurso, inicio, fin) values (1, 1, "2019-01-02 19:00:00", "2019-01-02 22:30:00");
-insert into clase(idClase, idCurso, inicio, fin) values (4, 1, "2019-01-04 19:00:00", "2019-01-04 22:30:00");
-insert into clase(idClase, idCurso, inicio, fin) values (5, 2, "2019-01-05 19:00:00", "2019-01-05 22:30:00");
+insert into clase(idClase, idCurso, inicio, fin) values (2, 1, "2019-01-04 19:00:00", "2019-01-04 22:30:00");
+insert into clase(idClase, idCurso, inicio, fin) values (3, 2, "2019-01-05 19:00:00", "2019-01-05 22:30:00");
 
 insert into material(idMaterial, habilitado, idClase) values (1, 1, 1);
 
@@ -42,6 +37,11 @@ insert into tema(idTema, tema, idMaterial) values (1, "Base de Datos", 1);
 insert into archivo(idArchivo, ruta, idMaterial) values (1, "/assets/imagen.jpg", 1);
 
 insert into horario(idHorario, dia, horaInicio, horaFin, idCurso) values (1, "Lunes", "19hs", "22:30hs", 1);
+
+insert into asistencia(idClase, idAlumno) values (1, 1);
+insert into asistencia(idClase, idAlumno) values (1, 2);
+insert into asistencia(idClase, idAlumno) values (1, 3);
+insert into asistencia(idClase, idAlumno) values (2, 1);
 
 insert into formulario(idFormulario, esEditable, nombre, descripcion) values (1, 1, "Examen 1", "MySQL");
 

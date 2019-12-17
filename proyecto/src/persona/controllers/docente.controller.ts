@@ -33,4 +33,9 @@ export class DocenteController {
     async updateDocente(@Param('docenteId') docenteId: any, @Body() docente: any) {
         return await this.docenteService.updateDocente(parseInt(docenteId), docente);
     }
+
+    @Post('/guardar')
+    async guardarDocenteFull(@Body() docenteFull: any) {
+        return await this.docenteService.guardarDocenteFull(docenteFull);
+    }
 }
