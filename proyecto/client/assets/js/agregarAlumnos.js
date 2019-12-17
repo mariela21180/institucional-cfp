@@ -19,7 +19,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     guardarAlumno.addEventListener('click', crearAlumno); //llama a la funcion (solo en el addEventListener)
 
     function crearAlumno() { 
-        let persona = armarPersona();        
+        let alumno = armarAlumno();
+        agregarAlumnoServidor(alumno);
+
+
+        /* let persona = armarPersona();        
         agregarPersonaServidor(persona).then((p) => {
             
             if(p.idPersona != null){
@@ -33,10 +37,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 agregarTelefonoServidor(telefono);
             }
             
-        });
+        }); */
     }
 
-    async function agregarPersonaServidor(personadto){
+    async function agregarAlumnoServidor(alumnodto){
+        let result = await fetch ("/alumnos/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(alumnodto)})
+        
+        if(result.status != 404){
+            let json = await result.json();                      
+        }
+        return alumnodto;
+    }
+
+    function armarAlumno() { 
+        return {
+            'nivelEstudioAlcanzado': nivelAlumno.value, //
+            'adeudaDocumentacion': false,
+            'nombre': nombreAlumno.value,
+            'apellido': apellidoAlumno.value,
+            'dni': documentoAlumno.value,
+            'eMail': eMailAlumno.value,
+            'codArea': codAreaAlumno.value,
+            'nro': telefonoAlumno.value,
+            'calle': calleAlumno.value,
+            'altura': alturaDomicilioAlumno.value,
+            'piso?': pisoAlumno.value,
+            'dpto?': dptoAlumno.value,
+            'cursos': { 
+                'idCurso': 1 //ver como agregar
+            }            
+        }
+    }
+
+
+
+   
+
+
+
+    /* async function agregarPersonaServidor(personadto){
        let result = await fetch ("/personas",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(personadto)})
        if(result.status != 404){
             let json = await result.json();
@@ -44,16 +83,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         return personadto;
     }
-
-    async function agregarAlumnoServidor(alumnodto){
-        let result = await fetch ("/alumnos",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(alumnodto)})
-        
-        if(result.status != 404){
-            let json = await result.json();          
-        }
-        return alumnodto;
-    }
-
     async function agregarDomicilioServidor(domiciliodto){
         let result = await fetch ("/domicilios",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(domiciliodto)});
         if(result.status != 404){
@@ -68,16 +97,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let json = await result.json();          
         }
         return telefonodto;
-    }
-
-    function armarPersona() { 
-        return {
-            'nombre': nombreAlumno.value,
-            'apellido': apellidoAlumno.value,
-            'dni': documentoAlumno.value,
-            'eMail': eMailAlumno.value
-        }
-    }
+    } 
     
     function armarAlumno(idPersona) { 
         return {
@@ -86,6 +106,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
             'idPersona': idPersona
         }
     }
+     function armarPersona() { 
+        return {
+            'nombre': nombreAlumno.value,
+            'apellido': apellidoAlumno.value,
+            'dni': documentoAlumno.value,
+            'eMail': eMailAlumno.value
+        }
+    }
+    
 
    function armarDomicilio(idPersona) { 
         return {
@@ -105,4 +134,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
  
-});
+});*/}) 

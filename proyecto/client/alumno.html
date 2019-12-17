@@ -87,10 +87,10 @@
                     <table class="table table-hover table-responsive-lg">
                         <thead class="thead-dark">
                             <tr>
-                                <th class="">Clase</th>
+                                <th>Curso</th>
                                 <th>Dias</th>
-                                <th class="">Horarios</th>
-                                <th class=""><button type="button" class="w-75 btn btn-success" data-toggle="modal" data-target="#agregarCurso">
+                                <th>Horarios</th>
+                                <th><button type="button" class="w-75 btn btn-success" data-toggle="modal" id="btnAgregarCurso" data-target="#agregarCurso">
                                         Agregar Curso
                                     </button></th>
                             </tr>
@@ -131,7 +131,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Teléfono</h5>
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Curso</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -139,7 +139,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Cursos</label>
-                        <select name="" id="" class="custom-select " type="text">
+                        <select name="" id="selecCurso" class="custom-select " type="text">
                             <option value="$">Seleccionar Curso...</option>
                             <option value="1">Cursos de Progrmación FullStack</option>
                         </select>
