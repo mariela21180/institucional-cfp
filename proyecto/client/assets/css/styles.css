@@ -18,3 +18,29 @@ body {
 .logo-cfl{
   width: 10%;
 }
+
+textarea{
+  width: 500px;
+  min-height: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #444;
+  padding: 5px;
+}
+.noscroll{
+  overflow: hidden;
+  resize: none;
+}
+.hiddendiv{
+  display: none;
+  white-space: pre-wrap;
+  width: 500px;
+  min-height: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  padding: 5px;
+  word-wrap: break-word;
+}
+.lbr {
+  line-height: 3px;
+}

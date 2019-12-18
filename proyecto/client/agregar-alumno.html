@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Centro de Formacion Profesional 403</title>
+    <title>Centro de Formacion Laboral 403</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -25,15 +25,15 @@
             <form class="row">
                 <div class=" col-6 form-group">
                     <label for="nombreAlumno">Nombre</label>
-                    <input type="email" class="form-control" id="nombreAlumno" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombreAlumno" placeholder="Nombre">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="apellidoAlumno">Apellido</label>
-                    <input type="email" class="form-control" id="apellidoAlumno" placeholder="Apellido">
+                    <input type="text" class="form-control" id="apellidoAlumno" placeholder="Apellido">
                 </div>
                 <div class="col-4 form-group">
                     <label for="documentoAlumno">Documento</label>
-                    <input type="email" class="form-control" id="documentoAlumno" placeholder="D.N.I">
+                    <input type="text" class="form-control" id="documentoAlumno" placeholder="D.N.I">
                 </div>
                 <div class=" col-8 form-group">
                     <label for="eMailAlumno">E-mail</label>
@@ -42,19 +42,27 @@
                 </div>
                 <div class=" col-4 form-group">
                     <label for="calleAlumno">Calle</label>
-                    <input type="email" class="form-control" id="calleAlumno" placeholder="Calle">
+                    <input type="text" class="form-control" id="calleAlumno" placeholder="Calle">
                 </div>
                 <div class=" col-4 form-group">
-                    <label for="alturaAlumno">Altura</label>
-                    <input type="email" class="form-control" id="alturaAlumno" placeholder="Altura">
+                    <label for="alturaDomicilioAlumno">Altura</label>
+                    <input type="number" min="0" class="form-control" id="alturaDomicilioAlumno" placeholder="Altura">
                 </div>
                 <div class=" col-2 form-group">
                     <label for="pisoAlumno">Piso</label>
-                    <input type="email" class="form-control" id="pisoAlumno" placeholder="Piso">
+                    <input type="text" class="form-control" id="pisoAlumno" placeholder="Piso">
                 </div>
                 <div class=" col-2 form-group">
                     <label for="dptoAlumno">Dpto</label>
-                    <input type="email" class="form-control" id="dptoAlumno" placeholder="Dpto">
+                    <input type="text" class="form-control" id="dptoAlumno" placeholder="Dpto">
+                </div>
+                <div class=" col-6 form-group">
+                    <label for="codAreaAlumno">Código de área</label>
+                    <input type="number" min="0" class="form-control" id="codAreaAlumno" placeholder="Código de área">
+                </div>
+                <div class=" col-6 form-group">
+                    <label for="telefonoAlumno">Teléfono</label>
+                    <input type="number" min="1" class="form-control" id="telefonoAlumno" placeholder="Teléfono">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="nivelAlumno">Nivel de Estudio</label>
@@ -63,43 +71,16 @@
                         <option value="1">Primario Completo</option>
                         <option value="2">Secundario Completo</option>
                         <option value="3">Secundario Incompleto</option>
-                        <option value="4">Univercitario Completo</option>
-                        <option value="5">Univercitario Incompleto</option>
+                        <option value="4">Universitario Completo</option>
+                        <option value="5">Universitario Incompleto</option>
                     </select>
                 </div>
-            </form>
-            <hr />
-            <h5>Agregar Teléfono</h5>
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <table class="table table-hover table-responsive-lg">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th class="">Codigo de Area </th>
-                                <th>Numero</th>
-                                <th class=""><button type="button" class="w-50 btn btn-success" data-toggle="modal" data-target="#agregarTelefono">Agregar Teléfono</button></th>
-                            </tr>
-                        </thead>
-                        <tbody id="tblAsistencias">
-                            <tr>
-                                <td>0249</td>
-                                <td>154324355</td>
-                                <td>
-                                    <div class="row align-items-center">
-                                        <div class="col-auto m-0 w-100">
-                                            <button type="button" class="btn m-1 btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                            <button type="button" class="btn m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button> 
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                <div class="col-6 form-group">
+                    <input type="checkbox" class="" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Adeuda documentación</label>
                 </div>
-            </div>
-            <hr />
-
+            </form>
+            
             <h5>Agregar Curso</h5>
             <div class="row text-center">
                 <div class="col-md-12">
@@ -212,8 +193,8 @@
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/itemNavActivo.js"></script>
     <script src="/assets/js/include.js"></script>
-    <script src="/assets/js/agregarAlumnos.js"></script>
     <script>include(); </script>
+    <script src="/assets/js/agregarAlumnos.js"></script>
 </body>
 
 </html>
