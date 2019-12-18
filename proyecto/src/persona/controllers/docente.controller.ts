@@ -38,4 +38,9 @@ export class DocenteController {
     async guardarDocenteFull(@Body() docenteFull: any) {
         return await this.docenteService.guardarDocenteFull(docenteFull);
     }
+
+    @Put('/guardar/:docenteId')
+    async updateDocenteFull(@Param('docenteId') docenteId: any, @Body() docenteFull: any) {
+        return await this.docenteService.guardarDocenteFull(docenteFull, docenteId);
+    }
 }

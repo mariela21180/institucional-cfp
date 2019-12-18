@@ -53,5 +53,9 @@ insert into pregunta(idPregunta, esEditable, consigna, estaRespondida, puntaje, 
 
 insert into opcion(idOpcion, texto, isOk, calificacion, idPregunta) values (1, "Mariela", 1, 2.5, 1);
 
+insert into alumno_curso(idAlumno, idCurso) values (1,1);
+insert into alumno_curso(idAlumno, idCurso) values (1,2);
+insert into alumno_curso(idAlumno, idCurso) values (2,2);
+
 
 
