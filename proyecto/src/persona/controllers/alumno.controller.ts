@@ -44,4 +44,9 @@ export class AlumnoController {
     async guardarAlumnoFull(@Body() alumnoFull: any) {
         return await this.alumnoService.guardarAlumnoFull(alumnoFull);
     }
+
+    @Put('/guardar/:alumnoId')
+    async updateAlumnoFull(@Param('alumnoId') alumnoId: any, @Body() alumnoFull: any) {
+        return await this.alumnoService.guardarAlumnoFull(alumnoFull, alumnoId);
+    }
 }

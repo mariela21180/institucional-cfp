@@ -21,7 +21,7 @@ export default class Alumno {
     @ManyToMany(type => Clase, clase => clase.getIdClase)
     private clases: Clase[]; // hacer metodo getClases()??
 
-    @ManyToMany(type => Curso, curso => curso.getIdCurso)
+    @ManyToMany(type => Curso, curso => curso.getIdCurso, { onUpdate: 'RESTRICT', onDelete: 'RESTRICT' })
     @JoinTable({
         name: 'alumno_curso',
         joinColumn: {

@@ -68,4 +68,12 @@ export default class Persona {
     public getEMail():string {
         return this.eMail;
     }
+
+    public getTelefono(): Telefono {
+        return this.telefono;
+    }
+
+    public getDomicilio(): Domicilio {
+        return this.domicilio;
+    }
 }

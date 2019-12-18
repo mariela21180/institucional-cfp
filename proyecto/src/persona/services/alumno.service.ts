@@ -16,6 +16,7 @@ import Telefono from '../entities/telefono.entity';
 import { DomicilioDto } from '../dto/domicilio-dto';
 import { PersonaDto } from '../dto/persona-dto';
 import { TelefonoDto } from '../dto/telefono-dto';
+import { CursosAlumnoDto } from '../dto/cursosalumno-dto';
 
 @Injectable()
 export class AlumnoService {
@@ -112,56 +113,137 @@ export class AlumnoService {
 
     async guardarAlumnoFull(alumnoFull: AlumnoFullDto, idAlumno?: number): Promise<string> {
         let resultado: string;
+        let personaDTO: PersonaDto;
+        let persona: Persona;
+        let domicilioDTO: DomicilioDto;
+        let domicilio: Domicilio;
+        let telefonoDTO: TelefonoDto;
+        let telefono: Telefono;
+        let alumnoDTO: AlumnoDto;
+        let alumno: Alumno;
+        let curso: CursosAlumnoDto;
+        let cursoGuardado: any[];
 
         if (!idAlumno) {
-            let personaDTO: PersonaDto = {
+            personaDTO = {
                 nombre: alumnoFull.nombre,
                 apellido: alumnoFull.apellido,
                 dni: alumnoFull.dni,
                 eMail: alumnoFull.eMail
             };
-            let persona: Persona = await this.personaService.addPersona(personaDTO);
+            persona = await this.personaService.addPersona(personaDTO);
             if (!persona) {
                 return resultado = 'No se pudo crear la Persona';
             }
-            let domicilioDTO: DomicilioDto = {
+            domicilioDTO = {
                 calle: alumnoFull.calle,
                 altura: alumnoFull.altura,
                 piso: alumnoFull.piso,
                 dpto: alumnoFull.dpto,
                 idPersona: persona.getIdPersona()
             }
-            let domicilio: Domicilio = await this.domicilioService.addDomicilio(domicilioDTO);
+            domicilio = await this.domicilioService.addDomicilio(domicilioDTO);
             if (!domicilio) {
                 return resultado = 'No se pudo crear el Domicilio';
             }
-            let telefonoDTO: TelefonoDto = {
+            telefonoDTO = {
                 codArea: alumnoFull.codArea,
                 nro: alumnoFull.nro,
                 idPersona: persona.getIdPersona()
             }
 
-            let telefono: Telefono = await this.telefonoService.addTelefono(telefonoDTO);
+            telefono = await this.telefonoService.addTelefono(telefonoDTO);
             if (!telefono) {
                 return resultado = 'No se pudo crear el Telefono';
             }
-            let alumnoDTO: AlumnoDto = {
+            alumnoDTO = {
                 nivelEstudioAlcanzado: alumnoFull.nivelEstudioAlcanzado,
                 adeudaDocumentacion: alumnoFull.adeudaDocumentacion,
                 idPersona: persona.getIdPersona()
             };
-            let alumno = await this.addAlumno(alumnoDTO)
+            alumno = await this.addAlumno(alumnoDTO)
             if (!alumno) {
                 return resultado = 'No se pudo crear el Alumno';
-            }
-
-            for (let i = 0; i < alumnoFull.cursos.length; i++) {
-                const curso = alumnoFull.cursos[i];
-                let cursoGuardado = await this.alumnoRepository.query('insert into alumno_curso(idAlumno, idCurso) values(' + alumno.getIdAlumno() + ',' + curso.idCurso + ')');                
-                if (!cursoGuardado) {
-                    return resultado = 'No se pudo guardar el Curso';
+            } else {
+                for (let i = 0; i < alumnoFull.cursos.length; i++) {
+                    curso = alumnoFull.cursos[i];
+                    cursoGuardado = await this.alumnoRepository.query('insert into alumno_curso(idAlumno, idCurso) values(' + alumno.getIdAlumno() + ',' + curso.idCurso + ')');                
+                    if (!cursoGuardado) {
+                        return resultado = 'No se pudo guardar el Curso';
+                    }
                 }
             }
+
+
+            resultado = "ok";
+        }
+         else {
+            personaDTO = {
+                nombre: alumnoFull.nombre,
+                apellido: alumnoFull.apellido,
+                dni: alumnoFull.dni,
+                eMail: alumnoFull.eMail
+            };
+            persona = await this.personaService.updatePersona(idAlumno, personaDTO);
+            if (!persona) {
+                return resultado = 'No se pudo actualizar la Persona';
+            }
+            domicilioDTO = {
+                calle: alumnoFull.calle,
+                altura: alumnoFull.altura,
+                piso: alumnoFull.piso,
+                dpto: alumnoFull.dpto,
+                idPersona: persona.getIdPersona()
+            }
+            let idDomicilio: number = await this.alumnoRepository.query('select d.idDomicilio from domicilio AS d where d.idPersona = ' + idAlumno);
+            if (!idDomicilio) {
+                return resultado = 'No se pudo encontrar el Domicilio';
+            } else {
+                domicilio = await this.domicilioService.updateDomicilio(idDomicilio[0].idDomicilio, domicilioDTO);
+                if (!domicilio) {
+                    return resultado = 'No se pudo actualizar el Domicilio';
+                }
+            }
+            telefonoDTO = {
+                codArea: alumnoFull.codArea,
+                nro: alumnoFull.nro,
+                idPersona: persona.getIdPersona()
+            }
+            let idTelefono: number = await this.alumnoRepository.query('select t.idTelefono from telefono AS t where t.idPersona = ' + idAlumno);
+            if (!idTelefono) {
+                return resultado = 'No se pudo encontrar el Telefono';
+            } else {
+                telefono = await this.telefonoService.updateTelefono(idTelefono[0].idTelefono, telefonoDTO);
+                if (!telefono) {
+                    return resultado = 'No se pudo actualizar el Telefono';
+                }
+            }
+
+            alumnoDTO = {
+                nivelEstudioAlcanzado: alumnoFull.nivelEstudioAlcanzado,
+                adeudaDocumentacion: alumnoFull.adeudaDocumentacion,
+                idPersona: persona.getIdPersona()
+            };
+            alumno = await this.updateAlumno(idAlumno, alumnoDTO)
+            if (!alumno) {
+                return resultado = 'No se pudo actualizar el Alumno';
+            }
+
+            
+            let borrarCursos: any = await this.alumnoRepository.query('delete from alumno_curso where idAlumno = ' + idAlumno);
+            console.log(borrarCursos);
+            if (!borrarCursos) {
+                return resultado = 'No se pudo encontrar el/los Curso/s del Alumno';
+            } else {
+                for (let i = 0; i < alumnoFull.cursos.length; i++) {
+                    curso = alumnoFull.cursos[i];
+                    cursoGuardado = await this.alumnoRepository.query('insert into alumno_curso(idAlumno, idCurso) values(' + alumno.getIdAlumno() + ',' + curso.idCurso + ')');                
+                    if (!cursoGuardado) {
+                        return resultado = 'No se pudo guardar el Curso';
+                    }
+                }
+            }
+
 
             resultado = "ok";
         }
