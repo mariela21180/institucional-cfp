@@ -50,9 +50,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log(alumnodto);
         
         let result = await fetch ("/alumnos/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(alumnodto)})
+        console.log(result);
         
+
         if(result.status != 404){
-            //window.location.href = window.location.origin + '/alumnos.html';                     
+            window.location.href = window.location.origin + '/alumnos.html';                     
             //let json = await result.json(); //lo que me devuelve es un string por eso no me devuelve bien el json
         }
         return alumnodto;
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function armarAlumno() { 
         return {
-            'nivelEstudioAlcanzado': nivelAlumno.value, //
+            'nivelEstudioAlcanzado': nivelAlumno.value, 
             'adeudaDocumentacion': checkboxDocumentacion.checked,
             'nombre': nombreAlumno.value,
             'apellido': apellidoAlumno.value,
