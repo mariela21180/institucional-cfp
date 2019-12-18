@@ -1,6 +1,7 @@
+'use strict';
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    let tablaAlumnos = document.getElementById('tablaAlumnos');
+    let tablaAlumnos = document.getElementById('tblAlumnos');
 
     cargarAlumnos();
 
@@ -8,13 +9,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // Llamada ajax
         // Array de objetos alumnos
 
-        let alumnos = getAlumnosServidor().then((a) => {
+            getAlumnosServidor().then((alumnos) => {
             let html="";
 
             alumnos.forEach(alumno => {
                 html += getFilaAlumno(alumno);
             });
             tablaAlumnos.innerHTML = html;
+
             let btnsVer = document.querySelectorAll(".verAlumno");
             let btnsEliminar = document.querySelectorAll(".eliminarAlumno");
             let btnsEditar = document.querySelectorAll(".editarAlumno");
@@ -27,35 +29,48 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     async function getAlumnosServidor(){
         let result = await fetch ("/alumnos",{"method":"GET","headers":{"Content-Type":"application/json"}})
-        
+        let json = [];
         if(result.status != 404){
-            let json = await result.json();                      
+            json = await result.json();                      
         }
-        return result; //es asi??
+        console.log(json);
+        return json; //es asi??        
     }
 
-    // function verDetalleAlumno(){
-    //     let id = this.getAttribute("data-id");
-    //     console.log('ver detalles de alumno con id ' + id);        
-    // }
+    function verDetalleAlumno(){
+        let id = this.getAttribute("data-id");
+        console.log('ver detalles de alumno con id ' + id);        
+    }
 
-    // function editarAlumno(){
-    //     let id = this.getAttribute("data-id");
-    //     console.log('editando el alumno con id ' + id);        
-    // }
+    function editarAlumno(){ //va en js agregarAlumnos?
+        let id = this.getAttribute("data-id");
+        console.log('editando el alumno con id ' + id);        
+    }
 
-    // function eliminarAlumno(){
-    //     let id = this.getAttribute("data-id");
-    //     console.log('eliminando el alumno con id ' + id);        
-    // }
+    function eliminarAlumno(){
+        let id = this.getAttribute("data-id");
+        console.log('eliminando el alumno con id ' + id);        
+    }
 
     function getFilaAlumno(alumno){
+        console.log(alumno);
+        
+        let telefono = "";
+        if(alumno.datos.telefono != null){
+            if(alumno.datos.telefono.codArea != null){
+                telefono += alumno.datos.telefono.codArea;
+            }
+            if(alumno.datos.telefono.nro != null){
+                telefono += " " + alumno.datos.telefono.nro;
+            }
+        }
+
         return `
         <tr>
-            <td>${alumno.nombre + " " + alumno.apellido}</td>
-            <td>${alumno.nro}</td> //tiene que ser mismo nombre de variable que dto?
-            <td>${alumno.dni}</td>
-            <th class="col w-25">${alumno.eMail}</th>
+            <td>${alumno.datos.nombre + " " + alumno.datos.apellido}</td>
+            <td>${telefono}</td>
+            <td>${alumno.datos.dni}</td>
+            <th class="col w-25">${alumno.datos.eMail}</th>
             <td>
                 <div class="row align-items-center">
                     <div class="col-auto m-0 w-100">

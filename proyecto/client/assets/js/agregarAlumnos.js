@@ -15,12 +15,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let nivelAlumno = document.getElementById('nivelAlumno'); // tiene un select tde value 1,2,3,4,5
     let codAreaAlumno = document.getElementById('codAreaAlumno');
     let telefonoAlumno = document.getElementById('telefonoAlumno');
+    let checkboxDocumentacion = document.getElementById('adeudaDocumentacionCheckbox')
+
 
     guardarAlumno.addEventListener('click', crearAlumno); //llama a la funcion (solo en el addEventListener)
+
+
+    //window.location.assign('http://localhost:3000/alumnos.html');
 
     function crearAlumno() { 
         let alumno = armarAlumno();
         agregarAlumnoServidor(alumno);
+
 
 
         /* let persona = armarPersona();        
@@ -41,10 +47,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     async function agregarAlumnoServidor(alumnodto){
+        console.log(alumnodto);
+        
         let result = await fetch ("/alumnos/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(alumnodto)})
         
         if(result.status != 404){
-            let json = await result.json();                      
+            //window.location.href = window.location.origin + '/alumnos.html';                     
+            //let json = await result.json(); //lo que me devuelve es un string por eso no me devuelve bien el json
         }
         return alumnodto;
     }
@@ -52,15 +61,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function armarAlumno() { 
         return {
             'nivelEstudioAlcanzado': nivelAlumno.value, //
-            'adeudaDocumentacion': false,
+            'adeudaDocumentacion': checkboxDocumentacion.checked,
             'nombre': nombreAlumno.value,
             'apellido': apellidoAlumno.value,
-            'dni': documentoAlumno.value,
+            'dni': parseInt(documentoAlumno.value),
             'eMail': eMailAlumno.value,
-            'codArea': codAreaAlumno.value,
-            'nro': telefonoAlumno.value,
+            'codArea': parseInt(codAreaAlumno.value),
+            'nro': parseInt(telefonoAlumno.value),
             'calle': calleAlumno.value,
-            'altura': alturaDomicilioAlumno.value,
+            'altura': parseInt(alturaDomicilioAlumno.value),
             'piso?': pisoAlumno.value,
             'dpto?': dptoAlumno.value,
             'cursos': { 
@@ -68,11 +77,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }            
         }
     }
-
-
-
-   
-
 
 
     /* async function agregarPersonaServidor(personadto){
