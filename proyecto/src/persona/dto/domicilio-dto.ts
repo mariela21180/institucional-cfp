@@ -3,5 +3,4 @@ export class DomicilioDto {
     readonly altura: number;
     readonly piso?: string;
     readonly dpto?: string;
-    readonly idPersona: number;
 }

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
 import Persona from "./persona.entity";
 
 @Entity('telefono')
@@ -12,16 +12,17 @@ export default class Telefono {
     @Column('int')
     private nro: number;
 
-    @Column('int', {nullable: false})
-    idPersona: number;
+    // @Column('int', {nullable: false})
+    // idPersona: number;
 
-    @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
-    private persona: Persona;
+    // @JoinColumn({name: "idTelefono"})
+    // @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
+    // private persona: Persona;
 
-    public constructor(codArea:number, nro:number, idPersona: number) {
+    public constructor(codArea:number, nro:number) {//, idPersona: number
         this.codArea = codArea;
         this.nro = nro;
-        this.idPersona = idPersona;
+        // this.idPersona = idPersona;
     }
 
     public setIdtelefono(id: number) {
@@ -45,10 +46,10 @@ export default class Telefono {
         return this.nro;
     }
 
-    public setTitular(persona: Persona): void {
-        this.persona = persona;
-    }
-    public getTitular(): Persona {
-        return this.persona;
-    }
+    // public setTitular(persona: Persona): void {
+    //     this.persona = persona;
+    // }
+    // public getTitular(): Persona {
+    //     return this.persona;
+    // }
 }

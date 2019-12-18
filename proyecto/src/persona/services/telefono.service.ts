@@ -11,7 +11,7 @@ export class TelefonoService {
     ) { }
 
     async addTelefono(telefonoDto: TelefonoDto): Promise<Telefono> {
-        const telefono = new Telefono(telefonoDto['codArea'], telefonoDto['nro'], telefonoDto['idPersona']);
+        const telefono = new Telefono(telefonoDto['codArea'], telefonoDto['nro']);
         return await this.telefonoRepository.save(telefono);
     }
 
