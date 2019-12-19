@@ -46,11 +46,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let id = this.getAttribute("data-id");
         console.log('editando el alumno con id ' + id);        
     }
-
-    function eliminarAlumno(){
-        let id = this.getAttribute("data-id");
-        console.log('eliminando el alumno con id ' + id);        
+    async function eliminarAlumnoServidor(alumnoId){
+        
+        let r = await fetch(`/alumnos/${alumnoId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        
+        if (r.status != 404)
+        cargarAlumnos();
     }
+
+    function eliminarAlumno() {
+        let alumnoId = this.getAttribute("data-id");
+        if (confirm("Está a punto de eliminar a la Persona: "+alumnoId+"\n¿Desea continuar?")) {
+            eliminarAlumnoServidor(alumnoId);
+        }
+    }
+
+   
 
     function getFilaAlumno(alumno){
         console.log(alumno);
