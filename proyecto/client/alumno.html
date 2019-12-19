@@ -68,11 +68,14 @@
                     <label for="nivelAlumno">Nivel de Estudio</label>
                     <select name="" id="nivelAlumno" class="custom-select " type="text">
                         <option value="$">Nivel de Estudio</option>
-                        <option value="1">Primario Completo</option>
-                        <option value="2">Secundario Completo</option>
-                        <option value="3">Secundario Incompleto</option>
-                        <option value="4">Universitario Completo</option>
-                        <option value="5">Universitario Incompleto</option>
+                        <option value="Primario Completo">Primario Completo</option>
+                        <option value="Primario Incompleto">Primario Incompleto</option>
+                        <option value="Secundario Completo">Secundario Completo</option>
+                        <option value="Secundario Incompleto">Secundario Incompleto</option>
+                        <option value="Terciario Completo">Terciario Completo</option>
+                        <option value="Terciario Incompleto">Terciario Incompleto</option>
+                        <option value="Universitario Completo">Universitario Completo</option>
+                        <option value="Universitario Incompleto">Universitario Incompleto</option>
                     </select>
                 </div>
                 <div class="col-6 form-group">
@@ -95,8 +98,8 @@
                                     </button></th>
                             </tr>
                         </thead>
-                        <tbody id="tblAsistencias">
-                            <tr>
+                        <tbody id="tblCursos">
+                        <!-- <tr>
                                 <td>Curso de Programación FullStack</td>
                                 <td>Lunes,Miercoles,Viernes</td>
                                 <td>19 a 21</td>
@@ -108,7 +111,7 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                         </tbody>
                     </table>
@@ -139,16 +142,16 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Cursos</label>
-                        <select name="" id="selecCurso" class="custom-select " type="text">
-                            <option value="$">Seleccionar Curso...</option>
-                            <option value="1">Cursos de Progrmación FullStack</option>
+                        <select id="selectCurso" class="custom-select " type="text">
+                            <!-- <option value="$">Seleccionar Curso...</option>
+                            <option id="selecCurso" value="1">Cursos de Progrmación FullStack</option> -->
                         </select>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="agregarCursoModal">Agregar</button>
                 </div>
             </div>
         </div>
