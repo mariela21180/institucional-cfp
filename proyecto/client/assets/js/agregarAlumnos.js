@@ -31,10 +31,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     guardarAlumno.addEventListener('click', crearAlumno); //llama a la funcion (solo en el addEventListener)
     btnAgregarCurso.addEventListener('click', getCursosServidor);
 
-    function crearAlumno() { 
-        let alumno = armarAlumno();
-        agregarAlumnoServidor(alumno);
-    }    
+    function crearAlumno(event) { 
+        event.preventDefault();        
+        var form = $('#alumno-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            let alumno = armarAlumno();
+            agregarAlumnoServidor(alumno); 
+        }
+    }
 
     async function agregarAlumnoServidor(alumnodto){
         console.log(alumnodto);
