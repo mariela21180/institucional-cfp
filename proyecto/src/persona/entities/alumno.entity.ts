@@ -64,4 +64,8 @@ export default class Alumno {
     public setAdeudaDocumentacion(estado: boolean): void {
         this.adeudaDocumentacion = estado;
     }
+
+    public getDatos(): Persona {
+        return this.datos;
+    }
 }

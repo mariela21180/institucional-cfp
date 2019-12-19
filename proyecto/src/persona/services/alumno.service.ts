@@ -43,13 +43,46 @@ export class AlumnoService {
         return await this.alumnoRepository.find();
     }
 
-    async getAlumno(alumnoId: number): Promise<Alumno> {
+    async getAlumno(alumnoId: number): Promise<AlumnoFullDto> {
         const alumno = await this.alumnoRepository.findOne(alumnoId);
-
+        console.log(alumno);
+        let cursosAlumno: CursosAlumnoDto[] = [];
+        let alumnoFull: AlumnoFullDto;
+        
         if (!alumno) {
             throw new HttpException('Alumno inexistente', 404);
         }
-        return alumno;
+
+        let cursosExistentes = await this.alumnoRepository.query('select idCurso from alumno_curso where idAlumno = ' + alumnoId);
+        
+        if (!cursosExistentes) {
+            throw new HttpException('Error al traer los cursos', 404);
+        }
+        
+        for (let i = 0; i < cursosExistentes.length; i++) {
+            const cursoDto: CursosAlumnoDto = {
+                "idCurso": cursosExistentes[i].idCurso
+            }
+            cursosAlumno.push(cursoDto);
+        }
+
+        alumnoFull = {
+            "nivelEstudioAlcanzado": alumno.getNivelEstudioAlcanzado(),
+            "adeudaDocumentacion": alumno.getAdeudaDocumentacion(),
+            "nombre": alumno.getDatos().getNombre(),
+            "apellido": alumno.getDatos().getApellido(),
+            "dni": alumno.getDatos().getDni(),
+            "eMail": alumno.getDatos().getEMail(),
+            "codArea": alumno.getDatos().getTelefono().getCodArea(),
+            "nro": alumno.getDatos().getTelefono().getNro(),
+            "calle": alumno.getDatos().getDomicilio().getCalle(),
+            "altura": alumno.getDatos().getDomicilio().getAltura(),
+            "piso": alumno.getDatos().getDomicilio().getPiso(),
+            "dpto": alumno.getDatos().getDomicilio().getDpto(),
+            "cursos": cursosAlumno
+        } 
+        
+        return alumnoFull;
     }
 
     async deleteAlumno(alumnoId: number): Promise<Alumno[]> {
