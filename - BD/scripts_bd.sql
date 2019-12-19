@@ -1,6 +1,6 @@
 create database if not exists institucional_cfl;
 use `institucional_cfl`;
-alter user 'root'@'localhost' identified with mysql_native_password by 'asd123';
+-- alter user 'root'@'localhost' identified with mysql_native_password by 'asd123';
 
 insert into domicilio(idDomicilio, calle, altura) values (1, "Alberdi", 763);
 insert into domicilio(idDomicilio, calle, altura) values (2, "25 de Mayo", 963);
