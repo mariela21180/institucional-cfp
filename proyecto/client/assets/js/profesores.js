@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function eliminarProfesor() {
         let personaId = this.getAttribute("data-id");
-        if (confirm("Está a punto de eliminar a la Persona: "+personaId+"\n¿Desea continuar?")) {
+        if (confirm("Está a punto de eliminar al Docente: "+personaId+"\n¿Desea continuar?")) {
             eliminarProfesorServidor(personaId);
         }
     }

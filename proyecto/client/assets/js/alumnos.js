@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let btnsVer = document.querySelectorAll(".verAlumno");
             let btnsEliminar = document.querySelectorAll(".eliminarAlumno");
             let btnsEditar = document.querySelectorAll(".editarAlumno");
-            btnsVer.forEach(c => {c.addEventListener("click", verDetalleAlumno)});
-            btnsEditar.forEach(b => {b.addEventListener("click", editarAlumno)});
+            btnsVer.forEach(c => {c.addEventListener("click", verDetalleAlumno)}); // redireccionar a la pagina http://localhost:3000/alumno.html?action=view&id=1
+            btnsEditar.forEach(b => {b.addEventListener("click", editarAlumno)}); // redireccionar a la pagina http://localhost:3000/alumno.html?action=edit&id=1
             btnsEliminar.forEach(a => {a.addEventListener("click", eliminarAlumno)});
         });
         
@@ -37,6 +37,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return json; //es asi??        
     }
 
+    async function eliminarAlumnoServidor(personaId){
+        
+        let r = await fetch(`/personas/${personaId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        
+        if (r.status != 404)
+        cargarAlumnos();
+    }
+
     function verDetalleAlumno(){
         let id = this.getAttribute("data-id");
         console.log('ver detalles de alumno con id ' + id);        
@@ -48,8 +56,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function eliminarAlumno(){
-        let id = this.getAttribute("data-id");
-        console.log('eliminando el alumno con id ' + id);        
+        let personaId = this.getAttribute("data-id");
+        if (confirm("Está a punto de eliminar a la Alumno: "+personaId+"\n¿Desea continuar?")) {
+            eliminarAlumnoServidor(personaId);
+        }       
     }
 
     function getFilaAlumno(alumno){
