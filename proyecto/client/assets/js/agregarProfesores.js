@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     guardarProfesor.addEventListener('click', crearProfesor); //llama a la funcion (solo en el addEventListener)
 
-    function crearProfesor() { 
+    function crearProfesoresaa() { 
         let profesor = armarProfesor();        
         agregarServidor(profesor);
     }
-
+   
    
     async function agregarServidor(docentedto){
         let result = await fetch ("/docentes/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(docentedto)})
@@ -32,8 +32,42 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         return docentedto;
     }
+    async function actualizarEnServidor(profesor) {
+        let profesorId = profesor.idDocente;
+        console.log(profesorId);
+        let r = await fetch(`/docentes/${profesorId}`, { "method": "PUT", "headers": { "Content-Type": "application/json" }, "body": JSON.stringify(profesorId)});      
+        return (r.ok);
+    }
 
    
+    
+    async function crearProfesor() {
+        if (validarCampos()) {
+            let json = armarProfesor();
+            if (!editar) {
+                console.log("Creando Vehiculo:")
+                if (agregarServidor(json)) {
+                    armarProfesor();
+                    limpiarCampos()
+                    ocultarFormulario();
+                }
+                else {
+                    alert ("Error grabando en servidor");
+                }
+            } else {
+                console.log("Editando Vehiculo:")
+                if (confirm("Está a punto de editar el vehículo patente "+json.patente+"\n¿Desea continuar?")) {
+                    await actualizarEnServidor(json);
+                    armarProfesor();
+                    limpiarCampos();
+                    ocultarFormulario();
+                } else {
+                    cancelar();
+                }
+            }
+        }
+    }
+
     function armarProfesor() { 
         return {
             'nivelEstudioAlcanzado': nivelEstudiosProfesor.value, 
@@ -50,4 +84,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
             'dpto?': dptoProfesor.value,
         }
     } 
+    function limpiarCampos() {
+        nivelEstudiosProfesor.value = "";
+        tituloProfesor.value = "";
+        apellidoProfesor.value = "";
+        dniProfesor.value = "";
+        emailProfesor.value = "";
+        codAreaProfesor.value = "";
+        telefonoProfesor.value = "";
+        calleProfesor.value = "";
+        alturaDomicilioProfesor.value = "";
+        pisoProfesor.value = "";
+        dptoProfesor.value = "";
+    }
+    function limpiarValidacion() {    
+        alertContainer.innerHTML = "";
+        nivelEstudiosProfesor.classList.remove('is-invalid');
+        tituloProfesor.classList.remove('is-valid');
+        apellidoProfesor.classList.remove('is-invalid');
+        dniProfesor.classList.remove('is-valid');
+        emailProfesor.classList.remove('is-invalid');
+        codAreaProfesor.classList.remove('is-valid');
+        telefonoProfesor.classList.remove('is-invalid');
+        calleProfesor.classList.remove('is-valid');
+        alturaDomicilioProfesor.classList.remove('is-invalid');
+        pisoProfesor.classList.remove('is-valid');
+        dptoProfesor.classList.remove('is-invalid');
+    }
+    function ocultarFormulario() {
+        fomulario.style.display = "none";
+        acciones.style.display = "flex";
+        limpiarValidacion();
+        if (editar) {        
+            inputPatente.readOnly = false;
+            editar = false;
+        }
+    }
+    function cancelar() {
+        limpiarCampos();
+        ocultarFormulario();
+    }
+
 });
