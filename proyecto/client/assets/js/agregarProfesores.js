@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     async function crearProfesor() {
         if (validarCampos()) {
             let json = armarProfesor();
-            if (!editar) {
+            if (!edit) {
                 console.log("Creando Vehiculo:")
                 if (agregarServidor(json)) {
                     armarProfesor();

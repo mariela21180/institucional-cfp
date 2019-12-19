@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function verDetalleProfesor(){
          let personaId = this.getAttribute("data-id");
-         window.location.href = `http://localhost:3000/profesor.html?action=ver&id=${personaId}`
+         window.location.href = `http://localhost:3000/profesor.html?action=view&id=${personaId}`
                
     } 
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             <td>
                 <div class="row align-items-center">
                     <div class="col-auto m-0 w-100">
-                        <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-success verDetalleProfesor"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                        <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-success verProfesor"><i class="fa fa-eye" aria-hidden="true"></i></button>
                         <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-primary editarProfesor"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-danger eliminarProfesor"><i class="fa fa-trash" aria-hidden="true"></i></button>
                     </div>
