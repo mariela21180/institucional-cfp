@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
 
         if(result.status != 404){
-            //window.location.href = window.location.origin + '/alumnos.html';                     
+            window.location.href = window.location.origin + '/alumnos.html';                     
             //let json = await result.json(); 
         }
         return alumnodto;
