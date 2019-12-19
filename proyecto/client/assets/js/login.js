@@ -11,9 +11,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     btnLogin.addEventListener('click', login); //llama a la funcion (solo en el addEventListener)
 
     function login(event) { 
-        event.preventDefault();
-        let usuario = armarUsuario();
-        validarUsuario(usuario);   
+        event.preventDefault();        
+        var form = $('#login-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            let usuario = armarUsuario();
+            validarUsuario(usuario);   
+        }
     }
 
     async function validarUsuario(usuarioDto){
@@ -21,7 +27,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
               
        if(result.status != 404){
             let json = await result.json();
-            if(json.status == 200){
+            
+            if(json.status == 200){                
+                // Save token to local storage
+                var now = new Date().getTime();
+                var setupTime = localStorage.getItem('setupTime');
+                localStorage.setItem('setupTime', now)
+                window.localStorage.setItem('token', json['access_token']);
+                // Go to homepage
                 window.location.href = window.location.origin + '/home.html';
             }
                                 

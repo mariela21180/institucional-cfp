@@ -22,6 +22,31 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   
 // Main
 
+// Local Storage expiration
+
+var hours = 24; // Reset when storage is more than 24hours
+var now = new Date().getTime();
+var setupTime = localStorage.getItem('setupTime');
+if (setupTime == null) {
+    localStorage.setItem('setupTime', now)
+} else {
+    if(now-setupTime > hours*60*60*1000) {
+        localStorage.clear()
+        localStorage.setItem('setupTime', now);
+    }
+}
+
+// Validat if token exists on local storage. if not, redirects to login
+let token = window.localStorage.getItem('token');
+if(!token ){
+  if (window.location.href != window.location.origin + "/") {
+    window.location.href = window.location.origin;
+  }
+} else {
+  document.getElementsByTagName("BODY")[0].style = "";
+}
+
+
 // Metodos publicos
 
 // Metodos privados
