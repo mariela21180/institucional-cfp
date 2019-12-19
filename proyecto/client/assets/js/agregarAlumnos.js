@@ -23,9 +23,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //window.location.assign('http://localhost:3000/alumnos.html');
 
-    function crearAlumno() { 
-        let alumno = armarAlumno();
-        agregarAlumnoServidor(alumno);
+    function crearAlumno(event) { 
+        event.preventDefault();        
+        var form = $('#alumno-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            let alumno = armarAlumno();
+            agregarAlumnoServidor(alumno); 
+        }
 
 
 

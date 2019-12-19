@@ -22,31 +22,31 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <h1 class="mt-5">Alumno</h1>
-            <form class="row">
+            <form id="alumno-form" class="row" data-parsley-validate="">
                 <div class=" col-6 form-group">
                     <label for="nombreAlumno">Nombre</label>
-                    <input type="text" class="form-control" id="nombreAlumno" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombreAlumno" placeholder="Nombre" required="" data-parsley-error-message="El Nombre es requerido" >
                 </div>
                 <div class=" col-6 form-group">
                     <label for="apellidoAlumno">Apellido</label>
-                    <input type="text" class="form-control" id="apellidoAlumno" placeholder="Apellido">
+                    <input type="text" class="form-control" id="apellidoAlumno" placeholder="Apellido" required="" data-parsley-error-message="El Apellido es requerido">
                 </div>
                 <div class="col-4 form-group">
                     <label for="documentoAlumno">Documento</label>
-                    <input type="text" class="form-control" id="documentoAlumno" placeholder="D.N.I">
+                    <input type="text" class="form-control" id="documentoAlumno" placeholder="D.N.I" required="" data-parsley-error-message="El DNI es requerido">
                 </div>
                 <div class=" col-8 form-group">
                     <label for="eMailAlumno">E-mail</label>
                     <input type="email" class="form-control" id="eMailAlumno"
-                        placeholder="abcdef@gmail.com">
+                        placeholder="abcdef@gmail.com" required="" data-parsley-required-message="El E-Mail es requerido" data-parsley-type="email" data-parsley-type-message="Ingrese un E-Mail válido" >
                 </div>
                 <div class=" col-4 form-group">
                     <label for="calleAlumno">Calle</label>
-                    <input type="text" class="form-control" id="calleAlumno" placeholder="Calle">
+                    <input type="text" class="form-control" id="calleAlumno" placeholder="Calle" required="" data-parsley-error-message="El Calle es requerido">
                 </div>
                 <div class=" col-4 form-group">
                     <label for="alturaDomicilioAlumno">Altura</label>
-                    <input type="number" min="0" class="form-control" id="alturaDomicilioAlumno" placeholder="Altura">
+                    <input type="number" min="0" class="form-control" id="alturaDomicilioAlumno" placeholder="Altura" required="" data-parsley-error-message="La Altura es requerida">
                 </div>
                 <div class=" col-2 form-group">
                     <label for="pisoAlumno">Piso</label>
@@ -58,15 +58,15 @@
                 </div>
                 <div class=" col-6 form-group">
                     <label for="codAreaAlumno">Código de área</label>
-                    <input type="number" min="0" class="form-control" id="codAreaAlumno" placeholder="Código de área">
+                    <input type="number" min="0" class="form-control" id="codAreaAlumno" placeholder="Código de área" required="" data-parsley-error-message="El Código de área es requerido">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="telefonoAlumno">Teléfono</label>
-                    <input type="number" min="1" class="form-control" id="telefonoAlumno" placeholder="Teléfono">
+                    <input type="number" min="1" class="form-control" id="telefonoAlumno" placeholder="Teléfono" required="" data-parsley-error-message="El Teléfono es requerido">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="nivelAlumno">Nivel de Estudio</label>
-                    <select name="" id="nivelAlumno" class="custom-select " type="text">
+                    <select name="" id="nivelAlumno" class="custom-select " type="text" required="" data-parsley-error-message="El Nivel de Estudio es requerido">
                         <option value="">Nivel de Estudio</option>
                         <option value="Primario Completo">Primario Completo</option>
                         <option value="Secundario Completo">Secundario Completo</option>
@@ -117,7 +117,7 @@
             <div class="row ">
                 <div class="form-group col text-center">
                     <a class="btn btn-secondary" href="alumnos.html">Cancelar</a>
-                    <button type="button" id="guardarAlumno" class="btn col-auto btn-primary ">Guardar</button>
+                    <button type="submit" id="guardarAlumno" class="btn col-auto btn-primary ">Guardar</button>
                 </div>
             </div>
 
@@ -167,6 +167,7 @@
     <script src="/assets/js/itemNavActivo.js"></script>
     <script src="/assets/js/include.js"></script>
     <script>include(); </script>
+    <script src="/assets/js/parsley.min.js"></script>
     <script src="/assets/js/agregarAlumnos.js"></script>
 </body>
 
