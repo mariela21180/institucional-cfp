@@ -44,3 +44,13 @@ textarea{
 .lbr {
   line-height: 3px;
 }
+
+@media screen and (max-width: 767px) {
+  .navbar-collapse {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  .navbar-collapse .btn {
+    margin-top: 15px !important;
+  }
+}
