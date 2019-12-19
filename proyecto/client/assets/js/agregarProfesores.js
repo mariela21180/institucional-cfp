@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function crearProfesor() { 
         let profesor = armarProfesor();        
-        agregarServidor(profesor)          
-           
-      
+        agregarServidor(profesor);
     }
 
    
@@ -29,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let result = await fetch ("/docentes/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(docentedto)})
         
         if(result.status != 404){
-            let json = await result.json();          
+            window.location.href = window.location.origin + '/profesores.html'; 
+            //let json = await result.json();          
         }
         return docentedto;
     }
@@ -37,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
    
     function armarProfesor() { 
         return {
-            'nivelEstudioAlcanzado': nivelEstudiosProfesor.value, //
+            'nivelEstudioAlcanzado': nivelEstudiosProfesor.value, 
             'titulo': tituloProfesor.value,
             'nombre': nombreProfesor.value,
             'apellido': apellidoProfesor.value,
@@ -50,8 +49,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
             'piso?': pisoProfesor.value,
             'dpto?': dptoProfesor.value,
         }
-    }
-    
-   
- 
+    } 
 });

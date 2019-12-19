@@ -21,8 +21,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
               
        if(result.status != 404){
             let json = await result.json();
-            if(json.status == 200)
-            window.location.href = window.location.origin + '/home.html';
+            if(json.status == 200){
+                window.location.href = window.location.origin + '/home.html';
+            }
                                 
         }
     }

@@ -4,19 +4,7 @@
 /* let URLactual = window.location.href
 alert(URLactual);
  */
-function getGET(){
-  var loc = window.location.href;
-  var getString = loc.split('?')[1];
-  var GET = getString.split('&');
-  var get = {};//this object will be filled with the key-value pairs and returned.
 
-  for(var i = 0, l = GET.length; i < l; i++){
-     var tmp = GET[i].split('=');
-     get[tmp[0]] = unescape(decodeURI(tmp[1]));
-  }
-  return get;
-}
-var get = getGET();
 
 
 // Eventos
