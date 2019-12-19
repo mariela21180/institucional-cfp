@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             tablaProfesores.innerHTML = html;
 
             // let btnsVer = document.querySelectorAll(".verProfesor");
-            // let btnsEliminar = document.querySelectorAll(".eliminarProfesor");
+             let btnsEliminar = document.querySelectorAll(".eliminarProfesor");
             // let btnsEditar = document.querySelectorAll(".editarProfesor");
             // btnsVer.forEach(c => {c.addEventListener("click", verDetalleProfesor});
             // btnsEditar.forEach(b => {b.addEventListener("click", editarProfesor)});
-            // btnsEliminar.forEach(a => {a.addEventListener("click", eliminarProfesor)});
+            btnsEliminar.forEach(a => {a.addEventListener("click", eliminarProfesor)});
         });
         
     }
@@ -47,10 +47,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //     console.log('editando el Profesor con id ' + id);        
     // }
 
-    // function eliminarProfesor(){
-    //     let id = this.getAttribute("data-id");
-    //     console.log('eliminando el Profesor con id ' + id);        
-    // }
+    async function eliminarProfesorServidor(personaId){
+        
+        let r = await fetch(`/personas/${personaId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        
+        if (r.status != 404)
+        cargarProfesores();
+    }
+
+    function eliminarProfesor() {
+        let personaId = this.getAttribute("data-id");
+        if (confirm("Está a punto de eliminar a la Persona: "+personaId+"\n¿Desea continuar?")) {
+            eliminarProfesorServidor(personaId);
+        }
+    }
+
 
     function getFilaProfesor(profesor){
         console.log(profesor);
@@ -64,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 telefono += " " + profesor.datos.telefono.nro;
             }
         }
-
+        console.log(profesor.idDocente);
+        
         return `
         <tr>
             <td>${profesor.datos.nombre + " " + profesor.datos.apellido}</td>
@@ -74,9 +86,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             <td>
                 <div class="row align-items-center">
                     <div class="col-auto m-0 w-100">
-                        <button type="button" data-id="${profesor.idProfesor}" class="btn m-1 btn-success verProfesor"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                        <button type="button" data-id="${profesor.idProfesor}" class="btn m-1 btn-primary editarProfesor"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                        <button type="button" data-id="${profesor.idProfesor}" class="btn m-1 btn-danger eliminarProfesor"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-success verProfesor"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                        <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-primary editarProfesor"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button type="button" data-id="${profesor.idDocente}" class="btn m-1 btn-danger eliminarProfesor"><i class="fa fa-trash" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </td>
