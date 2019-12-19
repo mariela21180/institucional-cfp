@@ -12,7 +12,7 @@ export class PersonaService {
 
 
     async addPersona(personaDto: PersonaDto): Promise<Persona> {
-        const persona = new Persona(personaDto['nombre'], personaDto['apellido'], personaDto['dni'], personaDto['eMail']);
+        const persona = new Persona(personaDto['nombre'], personaDto['apellido'], personaDto['dni'], personaDto['eMail'], personaDto['idDomicilio'], personaDto['idTelefono']);
         return await this.personaRepository.save(persona);
     }
     

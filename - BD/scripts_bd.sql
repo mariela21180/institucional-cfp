@@ -2,13 +2,13 @@ create database if not exists institucional_cfl;
 use `institucional_cfl`;
 
 
-insert into domicilio(idDomicilio, calle, altura, idPersona) values (1, "Alberdi", 763, 2);
-insert into domicilio(idDomicilio, calle, altura, idPersona) values (2, "25 de Mayo", 963, 1);
-insert into domicilio(idDomicilio, calle, altura, idPersona) values (3, "Canada", 123, 3);
+insert into domicilio(idDomicilio, calle, altura) values (1, "Alberdi", 763);
+insert into domicilio(idDomicilio, calle, altura) values (2, "25 de Mayo", 963);
+insert into domicilio(idDomicilio, calle, altura) values (3, "Canada", 123);
 
-insert into telefono(idTelefono, codArea, nro, idPersona) values (1, 0249, 154633817, 1);
-insert into telefono(idTelefono, codArea, nro, idPersona) values (2, 0249, 4420983, 2);
-insert into telefono(idTelefono, codArea, nro, idPersona) values (3, 0249, 154997785, 3);
+insert into telefono(idTelefono, codArea, nro) values (1, 0249, 154633817);
+insert into telefono(idTelefono, codArea, nro) values (2, 0249, 4420983);
+insert into telefono(idTelefono, codArea, nro) values (3, 0249, 154997785);
 
 insert into persona(idPersona, nombre, apellido, dni, eMail, idTelefono, idDomicilio) values (1, "Mariela", "Gonzalez", 28200912, "mariela@gmail.com", 1, 1);
 insert into persona(idPersona, nombre, apellido, dni, eMail, idTelefono, idDomicilio) values (2, "Juan", "Salerno", 2000000, "juan@gmail.com", 2, 2);

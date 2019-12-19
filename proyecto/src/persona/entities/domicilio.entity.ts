@@ -12,8 +12,6 @@ export default class Domicilio {
     @Column('int')
     private altura: number;
 
-    @Column('int', {nullable: false})
-    private idPersona: number;
 
     @Column('varchar', {nullable: true})
     private piso: string;
@@ -21,13 +19,14 @@ export default class Domicilio {
     @Column('varchar', {nullable: true})
     private dpto: string;    
 
-    @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
-    private persona: Persona;
+    // @JoinColumn({name: "idDomicilio"})
+    // @OneToOne(type => Persona, persona => persona.getIdPersona, { onDelete: 'CASCADE'})
+    // private persona: Persona;
 
-    public constructor(calle: string, altura: number, idPersona: number, piso?: string, dpto?: string) {
+    public constructor(calle: string, altura: number, piso?: string, dpto?: string) {//, idPersona: number
         this.calle = calle;
         this.altura = altura;
-        this.idPersona = idPersona;
+        // this.idPersona = idPersona;
         if (piso) {
             this.piso = piso
         }
@@ -45,10 +44,6 @@ export default class Domicilio {
 
     public getIdDomicilio(): number {
         return this.idDomicilio;
-    }
-
-    public getIdPersona(): number {
-        return this.idPersona;
     }
 
     public getCalle(): string {

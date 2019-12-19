@@ -19,19 +19,27 @@ export default class Persona {
     @Column('varchar')
     private eMail: string;
 
+    @Column('int', {nullable: false})
+    private idTelefono: number;
+    
     @JoinColumn({name: "idTelefono"})
-    @OneToOne(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'CASCADE', eager: true})
+    @OneToOne(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'CASCADE', eager: true, nullable: true})
     private telefono: Telefono;
+
+    @Column('int', {nullable: false})
+    private idDomicilio: number;
     
     @JoinColumn({name: "idDomicilio"})
-    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio, { onDelete: 'CASCADE', eager: true})
+    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio, { onDelete: 'CASCADE', eager: true, nullable: true})
     private domicilio: Domicilio;
     
-    public constructor(nombre: string, apellido: string, dni: number, eMail: string) { 
+    public constructor(nombre: string, apellido: string, dni: number, eMail: string, idDomicilio: number, idTelefono: number) { 
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.eMail = eMail;
+        this.idDomicilio = idDomicilio;
+        this.idTelefono = idTelefono;
     }
 
     public setIdPersona(id: number) {
@@ -75,5 +83,20 @@ export default class Persona {
 
     public getDomicilio(): Domicilio {
         return this.domicilio;
+    }
+
+    
+    public setIdDomicilio(idDomicilio: number): void {
+        this.idDomicilio = idDomicilio;
+    }
+    public getIdDomicilio():number {
+        return this.idDomicilio;
+    }
+    
+    public setIdTelefono(idTelefono: number): void {
+        this.idTelefono = idTelefono;
+    }
+    public getIdTelefono():number {
+        return this.idTelefono;
     }
 }
