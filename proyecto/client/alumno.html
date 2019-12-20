@@ -25,15 +25,15 @@
             <form id="alumno-form" class="row" data-parsley-validate="">
                 <div class=" col-6 form-group">
                     <label for="nombreAlumno">Nombre</label>
-                    <input type="text" class="form-control" id="nombreAlumno" placeholder="Nombre" required="" data-parsley-error-message="El Nombre es requerido" >
+                    <input type="text" maxlength="40" class="form-control" id="nombreAlumno" placeholder="Nombre"  required="" data-parsley-error-message="El Nombre es requerido" >
                 </div>
                 <div class=" col-6 form-group">
                     <label for="apellidoAlumno">Apellido</label>
-                    <input type="text" class="form-control" id="apellidoAlumno" placeholder="Apellido" required="" data-parsley-error-message="El Apellido es requerido">
+                    <input type="text" maxlength="40" class="form-control" id="apellidoAlumno" placeholder="Apellido" required="" data-parsley-error-message="El Apellido es requerido" >
                 </div>
                 <div class="col-4 form-group">
                     <label for="documentoAlumno">Documento</label>
-                    <input type="text" class="form-control" id="documentoAlumno" placeholder="D.N.I" required="" data-parsley-error-message="El DNI es requerido">
+                    <input type="number" class="form-control" id="documentoAlumno" placeholder="D.N.I" required="" data-parsley-error-message="El DNI es requerido">
                 </div>
                 <div class=" col-8 form-group">
                     <label for="eMailAlumno">E-mail</label>
@@ -50,7 +50,7 @@
                 </div>
                 <div class=" col-2 form-group">
                     <label for="pisoAlumno">Piso</label>
-                    <input type="text" class="form-control" id="pisoAlumno" placeholder="Piso">
+                    <input type="number" class="form-control" id="pisoAlumno" placeholder="Piso">
                 </div>
                 <div class=" col-2 form-group">
                     <label for="dptoAlumno">Dpto</label>
@@ -58,11 +58,11 @@
                 </div>
                 <div class=" col-6 form-group">
                     <label for="codAreaAlumno">Código de área</label>
-                    <input type="tel" maxlength="4" class="form-control" id="codAreaAlumno" placeholder="Código de área" required="" data-parsley-error-message="El Código de área es requerido">
+                    <input type="tel number" maxlength="4" class="form-control" id="codAreaAlumno" data-parsley-type="number" placeholder="Código de área" required="" data-parsley-error-message="El Código de área es requerido">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="telefonoAlumno">Teléfono</label>
-                    <input type="tel" maxlength="10" class="form-control" id="telefonoAlumno" placeholder="Teléfono" required="" data-parsley-error-message="El Teléfono es requerido">
+                    <input type="tel" maxlength="10" class="form-control" id="telefonoAlumno" placeholder="Teléfono" data-parsley-type="number" required="" data-parsley-error-message="El Teléfono es requerido">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="nivelAlumno">Nivel de Estudio</label>
