@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 <td>${getHorarios(curso.horarios)}</td>
                 <td>${curso.descripcion}</td>
                 <td>
-                    <div class="row align-items-center">
+                    <div class="row align-items-center text-center">
                         <div class="col-auto m-0 w-100">
                             <button type="button" data-id="${curso.idCurso}" class="btn editarCurso m-1 btn-primary">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>

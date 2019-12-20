@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             html += `
             <tr>
                 <td>${getNombreCurso(parseInt(listaCursosAlumno[i].idCurso))}</td>
-                <td class="w-25">
+                <td class="text-center">
                     <div class="row align-items-center">
                         <div class="col-auto m-0 w-100">
                             <button type="button" data-id="${listaCursosAlumno[i].idCurso}" class="btn m-1 btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>

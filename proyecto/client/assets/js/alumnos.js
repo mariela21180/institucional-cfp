@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             <td>${alumno.datos.dni}</td>
             <th class="col w-25">${alumno.datos.eMail}</th>
             <td>
-                <div class="row align-items-center">
+                <div class="row align-items-center text-center">
                     <div class="col-auto m-0 w-100">
                         <button type="button" data-id="${alumno.idAlumno}" class="btn m-1 btn-success verAlumno"><i class="fa fa-eye" aria-hidden="true"></i></button>
                         <button type="button" data-id="${alumno.idAlumno}" class="btn m-1 btn-primary editarAlumno"><i class="fa fa-pencil" aria-hidden="true"></i></button>

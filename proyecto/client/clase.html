@@ -65,13 +65,13 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <h4>Alumnos que asistieron</h4>
-                        <table class="table table-hover table-responsive-lg text-center">
+                        <table class="table table-hover table-responsive-xs">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>#</th>
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
-                                    <th>Asistió</th>
+                                    <th class="text-center">Asistió</th>
                                 </tr>
                             </thead>
                             <tbody id="tblFormulario">
@@ -79,7 +79,7 @@
                                     <td>1</td>
                                     <td>John</td>
                                     <td>Boo</td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="col form-check">
                                             <input class="form-check-input" type="checkbox" name="" id="">
                                         </div>
@@ -89,7 +89,7 @@
                                     <td>2</td>
                                     <td>Mary</td>
                                     <td>Brown</td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="col form-check">
                                             <input class="form-check-input" type="checkbox" name="" id="">
                                         </div>
@@ -106,9 +106,9 @@
                         <table class="table table-hover table-responsive-lg">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th class="col w-50">Archivos</th>
-                                    <th class="col w-25 text-center">
-                                        <button type="button" class="w-50 btn btn-success col-8 " data-toggle="modal"
+                                    <th>Archivos</th>
+                                    <th class="w-25 text-center" style="min-width: 170px">
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
                                             data-target="#AgregarArchivo">Agregar archivo</button>
                                     </th>
                                 </tr>
@@ -152,9 +152,9 @@
                         <table class="table table-hover table-responsive-lg">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th class="col w-50">Temas</th>
-                                    <th class="col w-25 text-center">
-                                        <button type="button" class="w-50 btn btn-success col-8 " data-toggle="modal"
+                                    <th>Temas</th>
+                                    <th class="w-25 text-center" style="min-width: 170px">
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
                                             data-target="#AgregarTema">Agregar Tema</button>
                                     </th>
                                 </tr>
