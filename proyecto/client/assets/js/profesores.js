@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     async function eliminarProfesorServidor(personaId){
         
-        let r = await fetch(`/personas/${personaId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        let r = await fetch(`/docentes/${personaId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
         
         if (r.status != 404)
         cargarProfesores();
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function eliminarProfesor() {
         let personaId = this.getAttribute("data-id");
-        if (confirm("Está a punto de eliminar al Docente: "+personaId+"\n¿Desea continuar?")) {
+        if (confirm("Está a punto de eliminar el Docente: "+personaId+"\n¿Desea continuar?")) {
             eliminarProfesorServidor(personaId);
         }
     }

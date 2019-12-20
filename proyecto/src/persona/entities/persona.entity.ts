@@ -19,18 +19,18 @@ export default class Persona {
     @Column('varchar')
     private eMail: string;
 
-    @Column('int', {nullable: false})
+    @Column('int', {nullable: true})
     private idTelefono: number;
     
     @JoinColumn({name: "idTelefono"})
-    @OneToOne(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'CASCADE', eager: true, nullable: true})
+    @OneToOne(type => Telefono, telefono => telefono.getIdTelefono, { onDelete: 'SET NULL', eager: true, nullable: true})
     private telefono: Telefono;
 
-    @Column('int', {nullable: false})
+    @Column('int', {nullable: true})
     private idDomicilio: number;
     
     @JoinColumn({name: "idDomicilio"})
-    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio, { onDelete: 'CASCADE', eager: true, nullable: true})
+    @OneToOne(type => Domicilio, domicilio => domicilio.getIdDomicilio, { onDelete: 'SET NULL', eager: true, nullable: true})
     private domicilio: Domicilio;
     
     public constructor(nombre: string, apellido: string, dni: number, eMail: string, idDomicilio: number, idTelefono: number) { 

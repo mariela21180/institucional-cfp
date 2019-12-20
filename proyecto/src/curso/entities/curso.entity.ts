@@ -16,11 +16,11 @@ export default class Curso {
     @Column({type: 'varchar', length: 150, nullable: true})
     private descripcion: string;
 
-    @Column('int')
+    @Column('int', {nullable: true})
     private idDocente: number;
 
     @JoinColumn({name: "idDocente"})
-    @OneToOne(type => Docente, profesor => profesor.getIdDocente)
+    @OneToOne(type => Docente, profesor => profesor.getIdDocente, { nullable: true, onDelete: "SET NULL"})
     private profesor: Docente;
 
     @Column({type: 'int', nullable: true})
