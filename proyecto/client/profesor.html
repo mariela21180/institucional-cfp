@@ -62,11 +62,11 @@
                 
                 <div class=" col-6 form-group">
                     <label for="codAreaProfesor">Código de área</label>
-                    <input type="number" min="0" class="form-control" id="codAreaProfesor" placeholder="Código de área">
+                    <input type="tel" maxlength="4"  class="form-control" id="codAreaProfesor" placeholder="Código de área">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="telefonoProfesor">Teléfono</label>
-                    <input type="number" min="0" class="form-control" id="telefonoProfesor" placeholder="Teléfono">
+                    <input type="tel" maxlength="10" class="form-control" id="telefonoProfesor" placeholder="Teléfono">
                 </div>
                 
                 <div class=" col-6 form-group">
@@ -74,8 +74,11 @@
                     <select name="" id="nivelEstudiosProfesor" class="custom-select " type="text">
                         <option value="">Nivel de Estudio</option>
                         <option value="Primario Completo">Primario Completo</option>
+                        <option value="Primario Incompleto">Primario Incompleto</option>
                         <option value="Secundario Completo">Secundario Completo</option>
                         <option value="Secundario Incompleto">Secundario Incompleto</option>
+                        <option value="Terciario Completo">Terciario Completo</option>
+                        <option value="Terciario Incompleto">Terciario Incompleto</option>
                         <option value="Universitario Completo">Universitario Completo</option>
                         <option value="Universitario Incompleto">Universitario Incompleto</option>
                     </select>
@@ -141,6 +144,7 @@
     <script src="/assets/js/include.js"></script>
     <script>include(); </script>
     <script src="/assets/js/agregarProfesores.js"></script>
+    
 </body>
 
 </html>

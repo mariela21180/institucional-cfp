@@ -26,10 +26,38 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //volver a cargar la tabla llamando a armarFilasTablaCursos();
     //cerrar modal
     let listaCursosAlumno = [];
+    let cursos = [];
 
 
     guardarAlumno.addEventListener('click', crearAlumno); //llama a la funcion (solo en el addEventListener)
     btnAgregarCurso.addEventListener('click', getCursosServidor);
+    agregarCursoModal.addEventListener('click',guardarCurso );
+
+    function guardarCurso(){
+        let existe = false;
+        for (let i = 0; i < listaCursosAlumno.length; i++) {
+            const x = listaCursosAlumno[i];
+            if(x.idCurso == parseInt(selectCurso.value)){
+                existe = true;
+            }
+        }
+        if(!existe){
+            listaCursosAlumno.push({"idCurso": parseInt(selectCurso.value)})
+        }
+        //console.log(selectCurso.options[selectCurso.selectedIndex].text) //aca toma el nombre de la opcion del select
+        armarFilaTablaCursos()
+    }
+
+    function getNombreCurso(id){
+        let nombre="";
+        for (let i = 0; i < cursos.length; i++) {
+            const curso = cursos[i];
+            if(curso['idCurso'] == id){
+                nombre = curso['nombre'];
+            }
+        }
+        return nombre;
+    }
 
     function crearAlumno(event) { 
         event.preventDefault();        
@@ -59,24 +87,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     async function getCursosServidor(){
         let result = await fetch ("/cursos",{"method":"GET","headers":{"Content-Type":"application/json"}});
-        let cursos = [];
-        
+              
         if(result.status != 404){
             cursos = await result.json();  
-            console.log(cursos);
-            
-                                
-            armarSelect(cursos);
-            //armarFilaCursos(cursos);
-
-            
+            armarSelect(cursos);           
         }
     }     
 
     function armarSelect(cursos){
         let html="";
         for (let i=0; i<cursos.length;i++){
-            html += `<option value= ${cursos[i].nombre}>${cursos[i].nombre}</option>`;        
+            html += `<option value= ${cursos[i].idCurso}>${cursos[i].nombre}</option>`;        
         }
         selectCurso.innerHTML = html;
     }
@@ -86,13 +107,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         for (let i=0; i<listaCursosAlumno.length;i++){ //armar arreglo con cursos del select que me tome el id del curso seleccionado
             html += `
             <tr>
-                <td>${listaCursosAlumno[i].nombre}</td>
-                <td>Lunes,Miercoles,Viernes</td>
-                <td>19 a 21</td>
-                <td>
+                <td>${getNombreCurso(parseInt(listaCursosAlumno[i].idCurso))}</td>
+                <td class="w-25">
                     <div class="row align-items-center">
                         <div class="col-auto m-0 w-100">
-                            <button type="button" data-id="${listaCursosAlumno[i].idCurso}" class="btn m-1 btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="button" data-id="${listaCursosAlumno[i].idCurso}" class="btn m-1 btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                             <button type="button" data-id="${listaCursosAlumno[i].idCurso}" class="btn m-1 btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </div>
                     </div>
@@ -100,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             </tr>    
             `;        
         }
-        selectCurso.innerHTML = html;
+        tblCursos.innerHTML = html;
     }
 
     function armarAlumno() { 
