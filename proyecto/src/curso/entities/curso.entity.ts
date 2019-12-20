@@ -41,7 +41,7 @@ export default class Curso {
     @Column({type: 'date', nullable: true})
     private fechaFin: Date;
 
-    @ManyToMany(type => Alumno, alumno => alumno.getIdAlumno, { onUpdate: 'RESTRICT', onDelete: 'RESTRICT' })
+    @ManyToMany(type => Alumno, alumno => alumno.getIdAlumno)
     private alumnos: Alumno[];
 
     @OneToMany(type => Examen, examenes => examenes.getIdExamen)

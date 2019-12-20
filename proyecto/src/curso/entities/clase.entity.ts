@@ -22,7 +22,7 @@ export default class Clase {
     private fin: Date;
 
 
-    @ManyToMany(type => Alumno, asistencia => asistencia.getIdAlumno, { nullable: true })
+    @ManyToMany(type => Alumno, asistencia => asistencia.getIdAlumno, { nullable: true, cascade: true })
     @JoinTable({
         name: 'asistencia',
         joinColumn: {
