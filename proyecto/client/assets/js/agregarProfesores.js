@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     guardarProfesor.addEventListener('click', crearProfesor); //llama a la funcion (solo en el addEventListener)
 
-    function crearProfesoresaa() { 
+    function crearProfesor() { 
         let profesor = armarProfesor();        
         agregarServidor(profesor);
     }
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
    
     
-    async function crearProfesor() {
+     /* async function crearProfesor() {
         if (validarCampos()) {
             let json = armarProfesor();
             if (!edit) {
@@ -56,17 +56,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 }
             } else {
                 console.log("Editando Vehiculo:")
-                if (confirm("Está a punto de editar el vehículo patente "+json.patente+"\n¿Desea continuar?")) {
+                if (confirm("Está a punto de editar el vehículo patente "+json.idDocente+"\n¿Desea continuar?")) {
                     await actualizarEnServidor(json);
                     armarProfesor();
                     limpiarCampos();
                     ocultarFormulario();
+                    
                 } else {
                     cancelar();
                 }
             }
         }
-    }
+    } */
 
     function armarProfesor() { 
         return {
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         pisoProfesor.value = "";
         dptoProfesor.value = "";
     }
-    function limpiarValidacion() {    
+    /* function limpiarValidacion() {    
         alertContainer.innerHTML = "";
         nivelEstudiosProfesor.classList.remove('is-invalid');
         tituloProfesor.classList.remove('is-valid');
@@ -119,10 +120,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
             inputPatente.readOnly = false;
             editar = false;
         }
-    }
+    } */
     function cancelar() {
         limpiarCampos();
         ocultarFormulario();
     }
 
+
+    function maxLengthCheck(object){
+        if (object.value.length > object.maxLength)
+            object.value = object.value.slice(0, object.maxLength)
+        }
 });

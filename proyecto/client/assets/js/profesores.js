@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
        // tendria que redireccionarme a la paguina de agregar profesores
        window.location.href = `http://localhost:3000/profesor.html?action=edit&id=${personaId}`
        /* ?action=edit&id=${personaId} */
-      }
+    }
     
 
     async function getProfesoresServidor(){

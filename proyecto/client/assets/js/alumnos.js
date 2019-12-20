@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let btnsVer = document.querySelectorAll(".verAlumno");
             let btnsEliminar = document.querySelectorAll(".eliminarAlumno");
             let btnsEditar = document.querySelectorAll(".editarAlumno");
-            btnsVer.forEach(c => {c.addEventListener("click", verDetalleAlumno)});
-            btnsEditar.forEach(b => {b.addEventListener("click", editarAlumno)});
+            btnsVer.forEach(c => {c.addEventListener("click", verDetalleAlumno)}); // redireccionar a la pagina http://localhost:3000/alumno.html?action=view&id=1
+            btnsEditar.forEach(b => {b.addEventListener("click", editarAlumno)}); // redireccionar a la pagina http://localhost:3000/alumno.html?action=edit&id=1
             btnsEliminar.forEach(a => {a.addEventListener("click", eliminarAlumno)});
         });
         
@@ -38,27 +38,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return json;        
     }
 
-    //ver detalles de un alumno
-    function verDetalleAlumno(){
-        let id = this.getAttribute("data-id");
-        console.log('ver detalles de alumno con id ' + id);        
-    }
-
-    //modificar datos alumnos
-    function editarAlumno(){ //va en js agregarAlumnos?
-        let id = this.getAttribute("data-id");
-        console.log('editando el alumno con id ' + id);        
-    }
-
-
-    //elimina un alumno del servidor
-    async function eliminarAlumnoServidor(alumnoId){
+    async function eliminarAlumnoServidor(personaId){
         
-        let r = await fetch(`/alumnos/${alumnoId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        let r = await fetch(`/personas/${personaId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
         
         if (r.status != 404)
         cargarAlumnos();
     }
+
+   
+    //modificar datos alumnos
+    function editarAlumno(){
+        let alumnoId = this.getAttribute("data-id");
+        window.location.href = `http://localhost:3000/alumno.html?action=edit&id=${alumnoId}`
+       
+    }
+    
+    //ver detalles de un alumno
+    function verDetalleAlumno(){
+        let alumnoId = this.getAttribute("data-id");
+        window.location.href = `http://localhost:3000/alumno.html?action=view&id=${alumnoId}`
+    }  
 
     //elimina un alumno de la tabla
     function eliminarAlumno() {

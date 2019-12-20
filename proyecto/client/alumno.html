@@ -58,19 +58,22 @@
                 </div>
                 <div class=" col-6 form-group">
                     <label for="codAreaAlumno">Código de área</label>
-                    <input type="number" min="0" class="form-control" id="codAreaAlumno" placeholder="Código de área" required="" data-parsley-error-message="El Código de área es requerido">
+                    <input type="tel" maxlength="4" class="form-control" id="codAreaAlumno" placeholder="Código de área" required="" data-parsley-error-message="El Código de área es requerido">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="telefonoAlumno">Teléfono</label>
-                    <input type="number" min="1" class="form-control" id="telefonoAlumno" placeholder="Teléfono" required="" data-parsley-error-message="El Teléfono es requerido">
+                    <input type="tel" maxlength="10" class="form-control" id="telefonoAlumno" placeholder="Teléfono" required="" data-parsley-error-message="El Teléfono es requerido">
                 </div>
                 <div class=" col-6 form-group">
                     <label for="nivelAlumno">Nivel de Estudio</label>
                     <select name="" id="nivelAlumno" class="custom-select " type="text" required="" data-parsley-error-message="El Nivel de Estudio es requerido">
                         <option value="">Nivel de Estudio</option>
                         <option value="Primario Completo">Primario Completo</option>
+                        <option value="Primario Incompleto">Primario Incompleto</option>
                         <option value="Secundario Completo">Secundario Completo</option>
                         <option value="Secundario Incompleto">Secundario Incompleto</option>
+                        <option value="Terciario Completo">Terciario Completo</option>
+                        <option value="Terciario Incompleto">Terciario Incompleto</option>
                         <option value="Universitario Completo">Universitario Completo</option>
                         <option value="Universitario Incompleto">Universitario Incompleto</option>
                     </select>
@@ -88,9 +91,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>Curso</th>
-                                <th>Dias</th>
-                                <th>Horarios</th>
-                                <th><button type="button" class="w-75 btn btn-success" data-toggle="modal" id="btnAgregarCurso" data-target="#agregarCurso">
+                                <th class="w-25"><button type="button" class="btn btn-success btn-block" data-toggle="modal" id="btnAgregarCurso" data-target="#agregarCurso">
                                         Agregar Curso
                                     </button></th>
                             </tr>
@@ -137,18 +138,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Cursos</label>
-                        <select id="selectCurso" class="custom-select " type="text">
-                            <!-- <option value="$">Seleccionar Curso...</option>
-                            <option id="selecCurso" value="1">Cursos de Progrmación FullStack</option> -->
-                        </select>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="recipient-name" class="col-form-label">Cursos</label>
+                            <select id="selectCurso" class="custom-select " type="text">
+                                <!-- <option value="$">Seleccionar Curso...</option>
+                                <option id="selecCurso" value="1">Cursos de Progrmación FullStack</option> -->
+                            </select>
+                        </div>
+
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="agregarCursoModal">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="agregarCursoModal" data-dismiss="modal">Agregar</button>
                 </div>
             </div>
         </div>
