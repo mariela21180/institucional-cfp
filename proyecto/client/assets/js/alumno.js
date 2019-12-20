@@ -29,6 +29,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let cursos = [];
 
 
+    let idCursosArr = [];
+
+    for (let i = 0; i < listaCursosAlumno.length; i++) {
+        listaCursosAlumno[i].idCurso.push(idCursosArr);
+    }
+
     guardarAlumno.addEventListener('click', crearAlumno); //llama a la funcion (solo en el addEventListener)
     btnAgregarCurso.addEventListener('click', getCursosServidor);
     agregarCursoModal.addEventListener('click',guardarCurso );
@@ -47,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     existe = true;
                 }
             }
+
             if(!existe){
                 listaCursosAlumno.push({"idCurso": parseInt(selectCurso.value)})
             }
@@ -83,11 +90,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log(alumnodto);
         
         let result = await fetch ("/alumnos/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(alumnodto)})
-        console.log(result);
-        
-
+              
         if(result.status != 404){
-            window.location.href = window.location.origin + '/alumnos.html';                     
+            //window.location.href = window.location.origin + '/alumnos.html';                     
             //let json = await result.json(); 
         }
         return alumnodto;
@@ -131,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function armarAlumno() { 
+
         return {
             'nivelEstudioAlcanzado': nivelAlumno.value, 
             'adeudaDocumentacion': checkboxDocumentacion.checked,
@@ -144,12 +150,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             'altura': parseInt(alturaDomicilioAlumno.value),
             'piso?': pisoAlumno.value,
             'dpto?': dptoAlumno.value,
-            'cursos': [
-                { 
-                'idCurso': 1 //ver como agregar
-                }  
-            ]          
+            'cursos': listaCursosAlumno
         }
     }
- 
 }) 
