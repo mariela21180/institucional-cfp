@@ -29,12 +29,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let cursos = [];
 
 
-    let idCursosArr = [];
-
-    for (let i = 0; i < listaCursosAlumno.length; i++) {
-        listaCursosAlumno[i].idCurso.push(idCursosArr);
-    }
-
     guardarAlumno.addEventListener('click', crearAlumno); //llama a la funcion (solo en el addEventListener)
     btnAgregarCurso.addEventListener('click', getCursosServidor);
     agregarCursoModal.addEventListener('click',guardarCurso );
@@ -92,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let result = await fetch ("/alumnos/guardar",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(alumnodto)})
               
         if(result.status != 404){
-            //window.location.href = window.location.origin + '/alumnos.html';                     
+            window.location.href = window.location.origin + '/alumnos.html';                     
             //let json = await result.json(); 
         }
         return alumnodto;
