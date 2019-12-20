@@ -18,8 +18,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     guardarProfesor.addEventListener('click', crearProfesor); //llama a la funcion (solo en el addEventListener)
 
     function crearProfesor() { 
-        let profesor = armarProfesor();        
-        agregarServidor(profesor);
+        event.preventDefault();        
+        var form = $('#profesor-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            let profesor = armarProfesor();        
+            agregarServidor(profesor);
+        }
     }
    
    

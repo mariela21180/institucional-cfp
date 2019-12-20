@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 <tr>
                 <td>${curso.nombreFormulario}</td>
                 <td>${curso.descripcion}</td>
-                <td>
+                <td class="w-25 text-center">
                 <div class="row align-items-center">
                     <div class="col-auto m-0 w-100">
                         <button type="button" data-id="${curso.idCurso}" class="btn editarCurso m-1 btn-primary">
