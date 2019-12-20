@@ -1,6 +1,6 @@
 create database if not exists institucional_cfl;
 use `institucional_cfl`;
-
+-- alter user 'root'@'localhost' identified with mysql_native_password by 'asd123';
 
 insert into domicilio(idDomicilio, calle, altura) values (1, "Alberdi", 763);
 insert into domicilio(idDomicilio, calle, altura) values (2, "25 de Mayo", 963);
@@ -21,7 +21,7 @@ insert into alumno(idAlumno, nivelEstudioAlcanzado, adeudaDocumentacion) values 
 insert into alumno(idAlumno, nivelEstudioAlcanzado, adeudaDocumentacion) values (2, "Universitario Completo", false);
 insert into alumno(idAlumno, nivelEstudioAlcanzado, adeudaDocumentacion) values (3, "Terciario Incompleto", true);
 
-insert into usuario(idUsuario, usuario, password, nivelAcceso) values (1, "mariela21180", "testpass123", 1);
+insert into usuario(idUsuario, usuario, password, nivelAcceso) values (1, "admin", "47dfbc37d2577197c6db50e5e52693a27dee2f3725671e2bb917f9b38fd44795", 1);
 
 insert into curso(idCurso, nombre, descripcion, cupoMaximoAlumnos, asistenciaMinima, cargaHorariaTotal, fechaInicio, fechaFin, idDocente) values (1, "Programador Full-Stack", "-", 30, 80, 180.5, "2019-01-02", "2019-12-02", 1);
 insert into curso(idCurso, nombre, descripcion, cupoMaximoAlumnos, asistenciaMinima, cargaHorariaTotal, fechaInicio, fechaFin, idDocente) values (2, "Android", "-", 30, 70, 180.5, "2019-01-02", "2019-12-02", 2);

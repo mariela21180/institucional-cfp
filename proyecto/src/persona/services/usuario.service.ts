@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import Usuario from '../entities/usuario.entity';
 import { PersonaService } from './persona.service';
 import { UsuarioDto } from '../dto/usuario-dto';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class UsuarioService {
@@ -17,7 +18,7 @@ export class UsuarioService {
         if(!persona) {
             throw new HttpException('Persona does not exist!', 404);
         } 
-        const usuario = new Usuario(usuarioDto['usuario'], usuarioDto['password'], usuarioDto['idPersona'], usuarioDto['nivelAcceso'] );
+        const usuario = new Usuario(usuarioDto['usuario'], crypto.createHmac('sha256', usuarioDto['password']).digest('hex'), usuarioDto['idPersona'], usuarioDto['nivelAcceso'] );
         return await this.usuarioRepository.save(usuario);
     }
 
@@ -46,7 +47,7 @@ export class UsuarioService {
             throw new HttpException('Usuario inexistente', 404);
         }
 
-        usuario.setPassword(usuarioDto.password);
+        usuario.setPassword(crypto.createHmac('sha256', usuarioDto.password).digest('hex'));
         usuario.setNivelAcceso(usuarioDto.nivelAcceso);
 
         return await this.usuarioRepository.save(usuario);

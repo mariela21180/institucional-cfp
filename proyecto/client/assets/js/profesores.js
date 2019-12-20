@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
     let tablaProfesores = document.getElementById('tblProfesores');
-
     cargarProfesores();
 
     function cargarProfesores() { 
@@ -17,15 +16,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
             });
             tablaProfesores.innerHTML = html;
 
-            // let btnsVer = document.querySelectorAll(".verProfesor");
-             let btnsEliminar = document.querySelectorAll(".eliminarProfesor");
-            // let btnsEditar = document.querySelectorAll(".editarProfesor");
-            // btnsVer.forEach(c => {c.addEventListener("click", verDetalleProfesor});
-            // btnsEditar.forEach(b => {b.addEventListener("click", editarProfesor)});
-            btnsEliminar.forEach(a => {a.addEventListener("click", eliminarProfesor)});
+            let btnsVer = document.querySelectorAll(".verProfesor");
+            let btnsEliminar = document.querySelectorAll(".eliminarProfesor");
+            let btnsEditar = document.querySelectorAll(".editarProfesor");
+            btnsVer.forEach(p => {p.addEventListener("click", verDetalleProfesor)});
+            btnsEditar.forEach(e => {e.addEventListener("click", editarProfesor)});
+            btnsEliminar.forEach(b => {b.addEventListener("click", eliminarProfesor)});
         });
         
     }
+
+    function editarProfesor(){
+        let personaId = this.getAttribute("data-id");
+       // tendria que redireccionarme a la paguina de agregar profesores
+       window.location.href = `http://localhost:3000/profesor.html?action=edit&id=${personaId}`
+       /* ?action=edit&id=${personaId} */
+      }
+    
 
     async function getProfesoresServidor(){
         let result = await fetch ("/docentes",{"method":"GET","headers":{"Content-Type":"application/json"}})
@@ -37,15 +44,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return json; //es asi??        
     }
 
-    // function verDetalleProfesor(){
-    //     let id = this.getAttribute("data-id");
-    //     console.log('ver detalles de Profesor con id ' + id);        
-    // }
+    function verDetalleProfesor(){
+         let personaId = this.getAttribute("data-id");
+         window.location.href = `http://localhost:3000/profesor.html?action=view&id=${personaId}`
+               
+    } 
 
-    // function editarProfesor(){ //va en js agregarProfesores?
-    //     let id = this.getAttribute("data-id");
-    //     console.log('editando el Profesor con id ' + id);        
-    // }
+    
 
     async function eliminarProfesorServidor(personaId){
         

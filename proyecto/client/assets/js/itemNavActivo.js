@@ -6,6 +6,7 @@ function activarNav(){
     activarItemClick();
 
     cerrarSesionBtn.addEventListener('click', function () { 
+        window.localStorage.removeItem('token');
         window.location.href = window.location.origin;
     });
     

@@ -2,14 +2,15 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
     let tablaAlumnos = document.getElementById('tblAlumnos');
+    
 
     cargarAlumnos();
+       
 
     function cargarAlumnos() { 
-        // Llamada ajax
-        // Array de objetos alumnos
-
-            getAlumnosServidor().then((alumnos) => {
+        // Llamada ajax - Array de objetos alumnos
+                
+        getAlumnosServidor().then((alumnos) => {
             let html="";
 
             alumnos.forEach(alumno => {
@@ -28,13 +29,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     async function getAlumnosServidor(){
-        let result = await fetch ("/alumnos",{"method":"GET","headers":{"Content-Type":"application/json"}})
+        let result = await fetch ("/alumnos",{"method":"GET","headers":{"Content-Type":"application/json"}});
         let json = [];
         if(result.status != 404){
             json = await result.json();                      
         }
         console.log(json);
-        return json; //es asi??        
+        return json;        
     }
 
     async function eliminarAlumnoServidor(personaId){
@@ -45,26 +46,47 @@ document.addEventListener("DOMContentLoaded", function(event) {
         cargarAlumnos();
     }
 
+    //ver detalles de un alumno
     function verDetalleAlumno(){
         let id = this.getAttribute("data-id");
         console.log('ver detalles de alumno con id ' + id);        
     }
 
+    //modificar datos alumnos
     function editarAlumno(){ //va en js agregarAlumnos?
         let id = this.getAttribute("data-id");
         console.log('editando el alumno con id ' + id);        
     }
 
+<<<<<<< HEAD
     function eliminarAlumno(){
         let personaId = this.getAttribute("data-id");
         if (confirm("Está a punto de eliminar a la Alumno: "+personaId+"\n¿Desea continuar?")) {
             eliminarAlumnoServidor(personaId);
         }       
+=======
+
+    //elimina un alumno del servidor
+    async function eliminarAlumnoServidor(alumnoId){
+        
+        let r = await fetch(`/alumnos/${alumnoId}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        
+        if (r.status != 404)
+        cargarAlumnos();
+>>>>>>> fbfc979a4756573a608c77e1e51a5d3a56416aa4
     }
 
+    //elimina un alumno de la tabla
+    function eliminarAlumno() {
+        let alumnoId = this.getAttribute("data-id");
+        if (confirm("Está a punto de eliminar a la Persona: "+alumnoId+"\n¿Desea continuar?")) {
+            eliminarAlumnoServidor(alumnoId);
+        }
+    }   
+
+    //arma la fila de la tabla
     function getFilaAlumno(alumno){
-        console.log(alumno);
-        
+      
         let telefono = "";
         if(alumno.datos.telefono != null){
             if(alumno.datos.telefono.codArea != null){
@@ -93,4 +115,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         </tr>            
         `;
     }
+
+    
+    
+
+
 });
