@@ -75,38 +75,71 @@ export class DocenteService {
         let docenteDTO: DocenteDto;
         let docente: Docente;
         let personaExistente: Persona;
-
-        if (!idDocente) {
-            domicilioDTO = {
-                calle: docenteFull.calle,
-                altura: docenteFull.altura,
-                piso: docenteFull.piso,
-                dpto: docenteFull.dpto
-            }
-            domicilio = await this.domicilioService.addDomicilio(domicilioDTO);
-            if (!domicilio) {
-                return resultado = 'No se pudo crear el Domicilio';
-            }
-            telefonoDTO = {
-                codArea: docenteFull.codArea,
-                nro: docenteFull.nro
-            }
-
-            telefono = await this.telefonoService.addTelefono(telefonoDTO);
-            if (!telefono) {
-                return resultado = 'No se pudo crear el Telefono';
-            }
-            personaDTO = {
-                nombre: docenteFull.nombre,
-                apellido: docenteFull.apellido,
-                dni: docenteFull.dni,
-                eMail: docenteFull.eMail, 
-                idDomicilio: domicilio.getIdDomicilio(),
-                idTelefono: telefono.getIdTelefono()
-            };
-            persona = await this.personaService.addPersona(personaDTO);
-            if (!persona) {
-                return resultado = 'No se pudo crear la Persona';
+        if (!idDocente) {          
+            personaExistente = await this.personaService.getPersonaByDNI(docenteFull.dni);
+            if (!personaExistente) {    
+                domicilioDTO = {
+                    calle: docenteFull.calle,
+                    altura: docenteFull.altura,
+                    piso: docenteFull.piso,
+                    dpto: docenteFull.dpto
+                }
+                domicilio = await this.domicilioService.addDomicilio(domicilioDTO);
+                if (!domicilio) {
+                    return resultado = 'No se pudo crear el Domicilio';
+                }
+                telefonoDTO = {
+                    codArea: docenteFull.codArea,
+                    nro: docenteFull.nro
+                }
+    
+                telefono = await this.telefonoService.addTelefono(telefonoDTO);
+                if (!telefono) {
+                    return resultado = 'No se pudo crear el Telefono';
+                }
+                personaDTO = {
+                    nombre: docenteFull.nombre,
+                    apellido: docenteFull.apellido,
+                    dni: docenteFull.dni,
+                    eMail: docenteFull.eMail, 
+                    idDomicilio: domicilio.getIdDomicilio(),
+                    idTelefono: telefono.getIdTelefono()
+                };
+                persona = await this.personaService.addPersona(personaDTO);
+                if (!persona) {
+                    return resultado = 'No se pudo crear la Persona';
+                }
+            } else {                          
+                personaDTO = {
+                    nombre: docenteFull.nombre,
+                    apellido: docenteFull.apellido,
+                    dni: docenteFull.dni,
+                    eMail: docenteFull.eMail,
+                    idDomicilio: personaExistente.getIdDomicilio(),
+                    idTelefono: personaExistente.getIdTelefono()
+                };
+                persona = await this.personaService.updatePersona(personaExistente.getIdPersona(), personaDTO);
+                if (!persona) {
+                    return resultado = 'No se pudo actualizar la Persona';
+                }
+                domicilioDTO = {
+                    calle: docenteFull.calle,
+                    altura: docenteFull.altura,
+                    piso: docenteFull.piso,
+                    dpto: docenteFull.dpto
+                }
+                domicilio = await this.domicilioService.updateDomicilio(personaExistente.getIdDomicilio(), domicilioDTO);
+                if (!domicilio) {
+                    return resultado = 'No se pudo actualizar el Domicilio';
+                }
+                telefonoDTO = {
+                    codArea: docenteFull.codArea,
+                    nro: docenteFull.nro
+                }
+                telefono = await this.telefonoService.updateTelefono(personaExistente.getIdTelefono(), telefonoDTO);
+                if (!telefono) {
+                    return resultado = 'No se pudo actualizar el Telefono';
+                }
             }
             docenteDTO = {
                 nivelEstudioAlcanzado: docenteFull.nivelEstudioAlcanzado,
@@ -121,6 +154,7 @@ export class DocenteService {
             resultado = "ok";
         } else {
             personaExistente = await this.personaService.getPersona(idDocente)
+            
             if (!personaExistente) {
                 return resultado = 'No se pudo encontrar la Persona';
             }            

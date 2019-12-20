@@ -13,7 +13,7 @@ export default class Persona {
     @Column('varchar')
     private apellido: string;
 
-    @Column('int')
+    @Column('int', {unique: true})
     private dni: number;
 
     @Column('varchar')

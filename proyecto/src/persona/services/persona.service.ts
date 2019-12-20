@@ -36,7 +36,14 @@ export class PersonaService {
 
     async updatePersona(personaId:number, personaDto: PersonaDto): Promise<Persona> {
         const persona = await this.personaRepository.findOne(personaId);
-
+        let dni: Persona = await this.personaRepository.findOne({
+            where: {
+                "dni": personaDto.dni
+            }
+        })
+        if (dni) {
+            throw new HttpException('Ya existe otra persona con este mismo DNI', 404)
+        }
         if (!persona) {
             throw new HttpException('Persona inexistente', 404);
         }
@@ -46,6 +53,19 @@ export class PersonaService {
         persona.setEMail(personaDto.eMail); 
 
         return await this.personaRepository.save(persona);
+    }
+
+    async getPersonaByDNI(dni: number): Promise<Persona> {
+        let persona: Persona = await this.personaRepository.findOne({
+            where: {
+                "dni": dni
+            }
+        })
+        if (!persona) {
+            persona = null;
+        }
+
+        return persona;
     }
 
 } 
