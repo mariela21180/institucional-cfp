@@ -1,17 +1,26 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    let guardarCurso = document.getElementById('guardar-curso');
+    let guardarCurso = document.getElementById('guardarCurso');
 
     let nombreCurso = document.getElementById('nombreCurso');
     let descripcionCurso = document.getElementById('descripcionCurso');
+    let agregarHorarioModal = document.getElementById('agregarHorarioModal'); 
 
     guardarCurso.addEventListener('click', crearCurso); //llama a la funcion (solo en el addEventListener)
+    agregarHorarioModal.addEventListener('click',guardarHorario );
 
     function crearCurso() { 
-        let curso = armarCurso();
-        console.log(curso);
-        
-        //llamadaAjax post curso
+        event.preventDefault();        
+        var form = $('#curso-form');
+
+        form.parsley().validate();
+
+            if (form.parsley().isValid()){
+            let curso = armarCurso();
+            // console.log(curso);
+            
+            //llamadaAjax post curso
+        }
     }
 
     function armarCurso() { 
@@ -33,4 +42,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
+    function guardarHorario(){
+        event.preventDefault();        
+        var form = $('#horario-modal-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            // Poner acá las funciones para agregar horario a la tabla y validar que aun no exista
+
+            $('#modalHorario').modal('hide');
+        }
+    }
 });

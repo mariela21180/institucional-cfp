@@ -81,10 +81,10 @@
                                     <th style="min-width: 110px">Hora Inicio</th>
                                     <th style="min-width: 110px">Hora Fin</th>
                                     <th class="w-25 text-center" style="min-width: 170px">
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Agregar horario</button></th>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalHorario">Agregar horario</button></th>
                                 </tr>
                             </thead>
-                            <tbody id="tblFormulario">
+                            <tbody id="tblHorario">
                                 <tr>
                                     <td>Lunes</td>
                                     <td>19</td>
@@ -119,7 +119,7 @@
                                     <th class="w-25 text-center" style="min-width: 180px"><a class="btn btn-success" id="btnAgregarClase" href="clase.html">Agregar Clase </a></th>
                                 </tr>
                             </thead>
-                            <tbody id="tblFormulario">
+                            <tbody id="tblClase">
                                 <tr>
                                     <td>25/07/2020</td>
                                     <td>19</td>
@@ -173,12 +173,12 @@
 
 
     <!-- Modal agregar horario -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalHorario" tabindex="-1" role="dialog" aria-labelledby="modalHorarioLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="titulo-modal">Agregar horario</h5>
+                    <h5 class="titulo-modal" id="modalHorarioLabel">Agregar horario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -186,24 +186,26 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form>
-                                <label for="diadelasemana">Día de la Semana</label>
-                                <select class="form-control  custom-select">
-                                    <option>Seleccionar día</option>
-                                    <option>Lunes</option>
-                                    <option>Martes</option>
-                                    <option>Miércoles</option>
-                                    <option>Jueves</option>
-                                    <option>Viernes</option>
-                                    <option>Sábado</option>
-                                </select>
+                            <form id="horario-modal-form" data-parsley-validate="">
+                                <div class="form-group">
+                                    <label for="diadelasemana">Día de la Semana</label>
+                                    <select class="form-control  custom-select" required="" data-parsley-required-message="El Día es requerido">
+                                        <option value="">Seleccionar día</option>
+                                        <option value="1">Lunes</option>
+                                        <option value="2">Martes</option>
+                                        <option value="3">Miércoles</option>
+                                        <option value="4">Jueves</option>
+                                        <option value="5">Viernes</option>
+                                        <option value="6">Sábado</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Hora de Inicio</label>
-                                    <input type="time" class="form-control">
+                                    <input type="time" class="form-control" required="" data-parsley-required-message="La Hora de Inicio es requerida">
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Hora de Fin</label>
-                                    <input type="time" class="form-control">
+                                    <input type="time" class="form-control" required="" data-parsley-required-message="La Hora de Fin es requerida">
 
                                 </div>
                             </form>
@@ -214,7 +216,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" class="btn btn-primary" id="agregarHorarioModal">Guardar Cambios</button>
                 </div>
             </div>
         </div>

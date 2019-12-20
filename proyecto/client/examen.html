@@ -31,13 +31,13 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#textModal" value="0">Texto</a>
+                            data-target="#modalTexto" value="0">Texto</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opSimpleModal" value="1">Opcion Simple</a>
+                            data-target="#modalOpSimple" value="1">Opcion Simple</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opMultiModal" value="2">Opcion Multiple</a>
+                            data-target="#modalOpMulti" value="2">Opcion Multiple</a>
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
-                            data-target="#opListaModal" value="3">Opcion por Lista</a>
+                            data-target="#modalOpLista" value="3">Opcion por Lista</a>
                     </div>
                 </div>
             </div>
@@ -46,16 +46,16 @@
                 <div class="row">
                     <div class="form-group col-12 col-lg-6">
                         <label for="NombreFormulario" class="">Nombre de Formulario</label>
-                        <input type="text" class="form-control" id="nombreFormulario"
+                        <input type="text" class="form-control" id="nombreExamen"
                             placeholder="Nombre de Formulario" required="" data-parsley-error-message="El Nombre es requerido">
                     </div>
                     <div class="form-group col-12 col-lg-6">
                         <label for="descripcion">Descripción</label>
-                        <input type="text" class="form-control " id="descripcion" placeholder="Descripción" required="" data-parsley-error-message="La Descripción es requerida">
+                        <input type="text" class="form-control " id="descripcionExamen" placeholder="Descripción" required="" data-parsley-error-message="La Descripción es requerida">
                     </div>
                     <div class="form-group col-12 col-lg-6">
                         <label for="formGroupExampleInput2">Curso</label>
-                        <select name="" id="" class="custom-select " type="text" required="" data-parsley-error-message="El Curso es requerido">
+                        <select name="" id="cursoExamen" class="custom-select " type="text" required="" data-parsley-error-message="El Curso es requerido">
                             <option value="">Seleccionar Curso...</option>
                         </select>
                     </div>
@@ -63,7 +63,7 @@
                 <hr />
 
                 <h5>Campos </h5>
-                <div  id="tblCampos">
+                <div id="tblCampos">
                     
                 </div>
             </form>
@@ -85,23 +85,23 @@
 
     <!-- Modal de Texto -->
 
-    <div class="modal fade " id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade " id="modalTexto" tabindex="-1" role="dialog" aria-labelledby="modalTextoLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar Texto</h5>
+                    <h5 class="modal-title" id="modalTextoLabel">Agregar Texto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="texto-modal-form" data-parsley-validate="">
                         <p>Complete la consigna y el puntaje de la pregunta.</p>
                         <div class="form-group">
 
-                            <label for="recipient-name" class="col-form-label">Consigna</label>
-                            <input type="text" class="form-control" id="texto-consigna">
+                            <label for="texto-consigna" class="col-form-label">Consigna</label>
+                            <input type="text" class="form-control" id="texto-consigna" required="" data-parsley-required-message="La Consigna es requerida">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success" id="agregarTextoModal">Agregar</button>
                 </div>
             </div>
         </div>
@@ -120,24 +120,24 @@
 
     <!-- Modal de Opcion Multiple -->
 
-    <div class="modal fade " id="opMultiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade " id="modalOpMulti" tabindex="-1" role="dialog" aria-labelledby="modalOpMultiLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                    <h5 class="modal-title" id="modalOpMultiLabel">Opcion Simple</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="op-multi-modal-form" data-parsley-validate="">
                         <p>Complete la consigna, y agregue la lista de opciones indicando cual/es es/son
                             la/s correcta</p>
 
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Consigna</label>
-                            <input type="text" class="form-control" id="texto-consigna">
+                            <input type="text" class="form-control" id="op-multi-consigna" required="" data-parsley-required-message="La Consigna es requerida">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
@@ -149,8 +149,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="checkbox" name="" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="checkbox" name="" id="op-multi-opcion1">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -160,8 +160,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="checkbox" name="" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="checkbox" name="" id="op-multi-opcion2">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -173,7 +173,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success" id="agregarOpMultiModal">Agregar</button>
                 </div>
             </div>
         </div>
@@ -181,24 +181,24 @@
 
     <!-- Modal de Opcion Simple -->
 
-    <div class="modal fade " id="opSimpleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade " id="modalOpSimple" tabindex="-1" role="dialog" aria-labelledby="modalOpSimpleLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                    <h5 class="modal-title" id="modalOpSimpleLabel">Opcion Simple</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="op-simple-modal-form" data-parsley-validate="">
                         <p>Complete la consigna, y agregue la lista de opciones indicando cual es la
                             correcta y el puntaje de la pregunta.</p>
 
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Consigna</label>
-                            <input type="text" class="form-control" id="texto-consigna">
+                            <input type="text" class="form-control" id="op-simple-consigna" required="" data-parsley-required-message="La Consigna es requerida">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Puntaje</label>
@@ -210,8 +210,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="radio" name="customRadio" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="radio" name="customRadio" id="op-simple-opcion1">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -221,8 +221,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="radio" name="customRadio" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="radio" name="customRadio" id="op-simple-opcion2">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -232,8 +232,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="radio" name="customRadio" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="radio" name="customRadio" id="op-simple-opcion3">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -245,7 +245,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success" id="agregarOpSimpleModal">Agregar</button>
                 </div>
             </div>
         </div>
@@ -253,23 +253,23 @@
 
     <!-- Modal de Opcion Lista -->
 
-    <div class="modal fade " id="opListaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade " id="modalOpLista" tabindex="-1" role="dialog" aria-labelledby="modalOpListaLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Opcion Simple</h5>
+                    <h5 class="modal-title" id="modalOpListaLabel">Opcion Simple</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="op-lista-modal-form" data-parsley-validate="">
                         <p>Complete la consigna, y agregue la lista de opciones y el puntaje de la pregunta.</p>
 
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Consigna</label>
-                            <input type="text" class="form-control" id="texto-consigna">
+                            <input type="text" class="form-control" id="op-lista-consigna" required="" data-parsley-required-message="La Consigna es requerida">
 
                         </div>
                         <div class="form-group">
@@ -282,8 +282,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="radio" name="customRadio" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="radio" name="customRadio" id="op-lista-opcion1">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -293,8 +293,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="radio" name="customRadio" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="radio" name="customRadio" id="op-lista-opcion2">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -304,8 +304,8 @@
                         </div>
                         <div class="row m-0 mb-2">
                             <div class="col form-check">
-                                <input class="form-check-input" type="radio" name="customRadio" id="">
-                                <input type="text" class="form-control">
+                                <input class="form-check-input" type="radio" name="customRadio" id="op-lista-opcion3">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Texto es requerido">
 
                             </div>
                             <div class="col-auto p-0">
@@ -315,7 +315,7 @@
                         </div>
                         <div class="modal-footer ">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-success">Agregar</button>
+                            <button type="button" class="btn btn-success" id="agregarOpListaModal">Agregar</button>
                         </div>
                 </div>
             </div>

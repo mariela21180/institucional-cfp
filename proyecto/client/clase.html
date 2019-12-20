@@ -109,7 +109,7 @@
                                     <th>Archivos</th>
                                     <th class="w-25 text-center" style="min-width: 170px">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
-                                            data-target="#AgregarArchivo">Agregar archivo</button>
+                                            data-target="#modalArchivo">Agregar archivo</button>
                                     </th>
                                 </tr>
                             </thead>
@@ -155,7 +155,7 @@
                                     <th>Temas</th>
                                     <th class="w-25 text-center" style="min-width: 170px">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
-                                            data-target="#AgregarTema">Agregar Tema</button>
+                                            data-target="#modalTema">Agregar Tema</button>
                                     </th>
                                 </tr>
                             </thead>
@@ -205,12 +205,12 @@
 
 
     <!-- Modal Agregar Archivo -->
-    <div class="modal fade" id="AgregarArchivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalArchivo" tabindex="-1" role="dialog" aria-labelledby="modalArchivoLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="titulo-modal">Agregar archivo</h5>
+                    <h5 class="titulo-modal" id="modalArchivoLabel">Agregar archivo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -218,15 +218,15 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form name="formulario" method="post" enctype="multipart/form-data">
-                                <input type="file" name="adjunto" accept=".pdf,.jpg,.png" multiple>
+                            <form id="archivo-modal-form" data-parsley-validate="" name="formulario" method="post" enctype="multipart/form-data">
+                                <input class="w-100" type="file" name="adjunto" accept=".pdf,.jpg,.png" multiple  data-parsley-trigger="change" required="" data-parsley-required-message="El Archivo es requerido" >
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="agregarArchivoModal">Agregar</button>
                 </div>
             </div>
         </div>
@@ -234,12 +234,12 @@
 
 
     <!-- Modal Agregar Tema -->
-    <div class="modal fade" id="AgregarTema" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalTema" tabindex="-1" role="dialog" aria-labelledby="modalTemaLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="titulo-modal">Agregar Tema</h5>
+                    <h5 class="titulo-modal" id="modalTemaLabel">Agregar Tema</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -247,16 +247,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form>
+                            <form id="tema-modal-form" data-parsley-validate="">
                                 <label for="recipient-name" class="col-form-label">Tema</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" required="" data-parsley-required-message="El Tema es requerido">
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="agregarTemaModal">Agregar</button>
                 </div>
             </div>
         </div>

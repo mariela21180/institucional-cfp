@@ -34,18 +34,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     agregarCursoModal.addEventListener('click',guardarCurso );
 
     function guardarCurso(){
-        let existe = false;
-        for (let i = 0; i < listaCursosAlumno.length; i++) {
-            const x = listaCursosAlumno[i];
-            if(x.idCurso == parseInt(selectCurso.value)){
-                existe = true;
+        event.preventDefault();        
+        var form = $('#curso-modal-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            let existe = false;
+            for (let i = 0; i < listaCursosAlumno.length; i++) {
+                const x = listaCursosAlumno[i];
+                if(x.idCurso == parseInt(selectCurso.value)){
+                    existe = true;
+                }
             }
+            if(!existe){
+                listaCursosAlumno.push({"idCurso": parseInt(selectCurso.value)})
+            }
+            $('#modalCurso').modal('hide');
+            //console.log(selectCurso.options[selectCurso.selectedIndex].text) //aca toma el nombre de la opcion del select
+            armarFilaTablaCursos();
         }
-        if(!existe){
-            listaCursosAlumno.push({"idCurso": parseInt(selectCurso.value)})
-        }
-        //console.log(selectCurso.options[selectCurso.selectedIndex].text) //aca toma el nombre de la opcion del select
-        armarFilaTablaCursos()
     }
 
     function getNombreCurso(id){
@@ -95,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }     
 
     function armarSelect(cursos){
-        let html="";
+        let html=`<option value="">Seleccionar Curso...</option>`;
         for (let i=0; i<cursos.length;i++){
-            html += `<option value= ${cursos[i].idCurso}>${cursos[i].nombre}</option>`;        
+            html += `<option value="${cursos[i].idCurso}">${cursos[i].nombre}</option>`;        
         }
         selectCurso.innerHTML = html;
     }
