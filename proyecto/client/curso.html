@@ -25,10 +25,10 @@
                 <h1 class="mt-5">Curso</h1>
             </div>
             <div>
-                <form>
+                <form id="curso-form" data-parsley-validate="">
                     <div class="form-group">
                         <label for="nombreCurso">Nombre del curso</label>
-                        <input type="email" class="form-control nombreCurso" id="nombreCurso" placeholder="Nombre del curso">
+                        <input type="email" class="form-control nombreCurso" id="nombreCurso" placeholder="Nombre del curso" required="" data-parsley-error-message="El Nombre es requerido">
                     </div>
                     <div class="form-group">
                         <label for="descripcionCurso" >Descripción</label>
@@ -36,8 +36,8 @@
                     </div>
                     <div class="form-group">
                         <label for="seleccionProfesor">Seleccione profesor</label>
-                        <select class="form-control seleccionarProfesor" id="seleccionProfesor">
-                            <option value="$">Seleccione...</option>
+                        <select class="form-control seleccionarProfesor" id="seleccionProfesor" required="" data-parsley-error-message="El Nombre es requerido">
+                            <option value="">Seleccione...</option>
                             <option value="1">Juan Perez</option>
                             <option value="2">Jorge Gomez</option>
                             <option value="3">Andrea Martinez</option>
@@ -56,15 +56,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="fechaInicio">Fecha de inicio</label>
-                            <input type="date" class="form-control fechaInicio" id="fechaInicio" placeholder="Fecha de inicio">
+                            <input type="date" class="form-control fechaInicio" id="fechaInicio" placeholder="Fecha de inicio" required="" data-parsley-error-message="El Nombre es requerido">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="fechaFin">Fecha Fin (opcional)</label>
                             <input type="date" class="form-control fechaFin" id="fechaFin" placeholder="Fecha Fin">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="cargaHoraria">Carga Horaria (opcional)</label>
-                            <input type="number" min="1" class="form-control cargaHoraria" id="cargaHoraria" placeholder="Carga Horaria">
+                            <label for="cargaHoraria">Carga Horaria</label>
+                            <input type="number" min="1" class="form-control cargaHoraria" id="cargaHoraria" placeholder="Carga Horaria" required="" data-parsley-error-message="El Nombre es requerido">
                         </div>
                     </div>
                 </form>
@@ -158,7 +158,7 @@
             <div class="row ">
                 <div class="form-group col text-center">
                     <a class="btn btn-secondary" href="cursos.html">Cancelar</a>
-                    <button id="guardarCurso" type="button" class="btn col-auto btn-primary ">Guardar</button>
+                    <button id="guardarCurso" type="submit" class="btn col-auto btn-primary ">Guardar</button>
                 </div>
             </div>
 
@@ -227,6 +227,7 @@
     <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/parsley.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/itemNavActivo.js"></script>
     <script src="assets/js/include.js"></script>

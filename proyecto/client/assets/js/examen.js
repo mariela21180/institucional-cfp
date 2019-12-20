@@ -1,7 +1,20 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
     let tblCampos = document.querySelector('#tblCampos');
+    let guardarExamen = document.getElementById('guardarExamen');
 
+    guardarExamen.addEventListener('click', crearExamen);
+    
+    function crearExamen(event) { 
+        event.preventDefault();        
+        var form = $('#examen-form');
+
+        form.parsley().validate();
+
+        if (form.parsley().isValid()){
+            // Poner acá las funciones para guardar en servidor
+        }
+    }
 
     cargarCampos();
 

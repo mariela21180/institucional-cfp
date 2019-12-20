@@ -42,21 +42,21 @@
                 </div>
             </div>
 
-            <form>
+            <form id="examen-form" data-parsley-validate="">
                 <div class="row">
                     <div class="form-group col-12 col-lg-6">
                         <label for="NombreFormulario" class="">Nombre de Formulario</label>
                         <input type="text" class="form-control" id="nombreFormulario"
-                            placeholder="Nombre de Formulario">
+                            placeholder="Nombre de Formulario" required="" data-parsley-error-message="El Nombre es requerido">
                     </div>
                     <div class="form-group col-12 col-lg-6">
                         <label for="descripcion">Descripción</label>
-                        <input type="text" class="form-control " id="descripcion" placeholder="Descripción">
+                        <input type="text" class="form-control " id="descripcion" placeholder="Descripción" required="" data-parsley-error-message="La Descripción es requerida">
                     </div>
                     <div class="form-group col-12 col-lg-6">
                         <label for="formGroupExampleInput2">Curso</label>
-                        <select name="" id="" class="custom-select " type="text">
-                            <option value="$">Seleccionar Curso...</option>
+                        <select name="" id="" class="custom-select " type="text" required="" data-parsley-error-message="El Curso es requerido">
+                            <option value="">Seleccionar Curso...</option>
                         </select>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
             <div class="row ">
                 <div class="form-group col  text-center">
                     <a class="btn btn-secondary" href="formularios.html">Cancelar</a>
-                    <button type="button" class="btn col-auto btn-primary" id="btnGuardarFormulario" >Guardar</button>
+                    <button type="submit" class="btn col-auto btn-primary" id="guardarExamen" >Guardar</button>
                 </div>
             </div>
         </footer>
@@ -335,6 +335,7 @@
     <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/parsley.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/itemNavActivo.js"></script>
     <script src="assets/js/include.js"></script>
